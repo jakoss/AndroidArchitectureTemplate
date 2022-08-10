@@ -16,6 +16,7 @@ android {
     }
 
     compileOptions {
+        coreLibraryDesugaringEnabled true
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
@@ -30,6 +31,10 @@ android {
 }
 
 dependencies {
+    coreLibraryDesugaring libs.desugaring
+
+    implementation libs.coroutines.lib
+
     implementation libs.androidx.core
     testImplementation libs.junit4
 }

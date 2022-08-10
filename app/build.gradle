@@ -1,0 +1,60 @@
+plugins {
+    alias libs.plugins.android.application
+    alias libs.plugins.kotlin.android
+}
+
+android {
+    namespace 'pl.jsyty.architecturetemplate'
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "pl.jsyty.architecturetemplate"
+        minSdk 21
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion libs.versions.compose.compiler.get()
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+    implementation libs.androidx.core
+    implementation libs.androidx.activity.compose
+
+    implementation libs.bundles.compose.ui.core
+    testImplementation libs.junit4
+
+    androidTestImplementation libs.bundles.androidx.test
+    androidTestImplementation libs.bundles.compose.test
+
+    debugImplementation libs.bundles.compose.ui.debug
+}

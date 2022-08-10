@@ -1,0 +1,34 @@
+[versions]
+kotlin = "1.7.10"
+android-gradle = "7.4.0-alpha09"
+compose-ui = "1.2.0"
+compose-compiler = "1.3.0-rc02"
+
+[libraries]
+compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose-ui" }
+compose-uitooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" , version.ref = "compose-ui" }
+compose-uitooling-core = { module = "androidx.compose.ui:ui-tooling" , version.ref = "compose-ui" }
+compose-material = { module = "androidx.compose.material:material" , version.ref = "compose-ui" }
+compose-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" , version.ref = "compose-ui" }
+compose-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" , version.ref = "compose-ui" }
+
+junit4 = { module = "junit:junit", version = "4.13.2" }
+
+androidx-test-junit4 = { module = "androidx.test.ext:junit", version = "1.1.3" }
+androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version = "3.4.0" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.5.1" }
+androidx-core = { module = "androidx.core:core-ktx", version = "1.8.0" }
+
+[plugins]
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+android-application = { id = "com.android.application", version.ref = "android-gradle" }
+android-library = { id = "com.android.library", version.ref = "android-gradle" }
+
+[bundles]
+compose-ui-core = ["compose-ui", "compose-uitooling-preview", "compose-material"]
+compose-ui-debug = ["compose-uitooling-core", "compose-test-manifest"]
+compose-test = ["compose-test-junit4"]
+
+androidx-test = ["androidx-test-junit4", "androidx-test-espresso-core"]

@@ -13,4 +13,8 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Architecture Template"
+
+includeBuild 'build-logic'
+
 include ':app'
+include ':core:infrastructure'

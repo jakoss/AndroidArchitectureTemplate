@@ -21,3 +21,5 @@ build
 .idea/kotlinScripting.xml
 
 .idea/codestream.xml
+
+.idea/vcs.xml

@@ -1,0 +1,15 @@
+buildscript {
+    dependencies {
+        // this is required for gradle version catalogs auto-complete in groovy build scripts
+        classpath files(libs.class.superclass.protectionDomain.codeSource.location)
+    }
+}
+
+plugins {
+    id 'groovy-gradle-plugin'
+}
+
+dependencies {
+    implementation libs.kotlin.android.plugin
+    implementation libs.android.plugin
+}

@@ -1,22 +1,27 @@
 [versions]
-kotlin = "1.7.10"
+kotlin = "1.7.0"
 android-gradle = "7.4.0-alpha09"
-compose-ui = "1.2.0"
-compose-compiler = "1.3.0-rc02"
+compose-ui = "1.2.1"
+compose-compiler = "1.2.0"
 orbitmvi = "4.3.2"
 androidx-room = "2.4.2"
 coroutines = "1.6.4"
-ksp = "1.7.10-1.0.6"
+ksp = "1.7.0-1.0.6"
+anvil = "2.4.1"
+dagger = "2.43.2"
 
 [libraries]
 kotlin-android-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 android-plugin = { module = "com.android.tools.build:gradle", version.ref = "android-gradle" }
 desugaring = { module = "com.android.tools:desugar_jdk_libs", version = "1.2.0" }
-androidx-fragment = { module = "androidx.fragment:fragment-ktx", version = "1.5.1" }
 
 coroutines-lib = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 
 ksp-plugin = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
+anvil-plugin = { module = "com.squareup.anvil:gradle-plugin" , version.ref = "anvil" }
+
+dagger-core = { module = "com.google.dagger:dagger", version.ref = "dagger" }
+dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
 
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose-ui" }
 compose-uitooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" , version.ref = "compose-ui" }
@@ -27,15 +32,20 @@ compose-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" , vers
 
 junit4 = { module = "junit:junit", version = "4.13.2" }
 
+fragNav = { module = "com.github.ncapdevi:FragNav", version = "3.3.0" }
+timber = { module = "com.jakewharton.timber:timber", version = "5.0.1" }
+
 androidx-test-junit4 = { module = "androidx.test.ext:junit", version = "1.1.3" }
 androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version = "3.4.0" }
 
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.5.1" }
 androidx-core = { module = "androidx.core:core-ktx", version = "1.8.0" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version = "1.5.0" }
+androidx-fragment = { module = "androidx.fragment:fragment-ktx", version = "1.5.2" }
 
-androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "androidx-room" }
-androidx-room-core = { module = "androidx.room:room-ktx", version.ref = "androidx-room" }
-androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "androidx-room" }
+androidx-coordinatorlayour = { module = "androidx.coordinatorlayout:coordinatorlayout", version = "1.2.0" }
+
+material = { module = "com.google.android.material:material", version = "1.6.1" }
 
 orbitmvi-viewmodel = { module = "org.orbit-mvi:orbit-viewmodel", version.ref = "orbitmvi" }
 orbitmvi-compose = { module = "org.orbit-mvi:orbit-compose", version.ref = "orbitmvi" }
@@ -47,6 +57,8 @@ kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref =
 android-application = { id = "com.android.application", version.ref = "android-gradle" }
 android-library = { id = "com.android.library", version.ref = "android-gradle" }
 
+anvil = { id = "com.squareup.anvil", version.ref = "anvil" }
+
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 benManesVersions = { id = "com.github.ben-manes.versions", version = "0.42.0" }
 gradleDoctor = { id = "com.osacky.doctor", version = "0.8.1" }
@@ -56,4 +68,5 @@ compose-ui-core = ["compose-ui", "compose-uitooling-preview", "compose-material"
 compose-ui-debug = ["compose-uitooling-core", "compose-test-manifest"]
 compose-test = ["compose-test-junit4"]
 
+androidx-core = ["androidx-core", "androidx-appcompat", "androidx-fragment"]
 androidx-test = ["androidx-test-junit4", "androidx-test-espresso-core"]

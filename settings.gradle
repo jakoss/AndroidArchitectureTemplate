@@ -10,6 +10,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url = "https://jitpack.io"
+        }
     }
 }
 rootProject.name = "Architecture Template"
@@ -18,3 +21,4 @@ includeBuild 'build-logic'
 
 include ':app'
 include ':core:infrastructure'
+include ':core:ui'

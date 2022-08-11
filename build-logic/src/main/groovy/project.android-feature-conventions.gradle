@@ -1,7 +1,3 @@
 plugins {
     id 'project.android-library-conventions'
 }
-
-dependencies {
-    implementation libs.androidx.fragment
-}

@@ -1,0 +1,12 @@
+plugins {
+    id 'project.android-library-conventions'
+    id 'project.android-compose-conventions'
+}
+
+android {
+    namespace 'pl.jsyty.architecturetemplate.ui'
+}
+
+dependencies {
+    implementation libs.material
+}

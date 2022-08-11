@@ -1,5 +1,7 @@
 plugins {
     id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.plugin.parcelize'
+    id 'com.squareup.anvil'
 }
 
 android {
@@ -30,11 +32,18 @@ android {
     }
 }
 
+anvil {
+    generateDaggerFactories = true
+}
+
 dependencies {
     coreLibraryDesugaring libs.desugaring
 
     implementation libs.coroutines.lib
 
-    implementation libs.androidx.core
+    implementation libs.dagger.core
+
+    implementation libs.bundles.androidx.core
+    implementation libs.timber
     testImplementation libs.junit4
 }

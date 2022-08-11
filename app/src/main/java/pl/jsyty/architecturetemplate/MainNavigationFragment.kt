@@ -1,0 +1,93 @@
+package pl.jsyty.architecturetemplate
+
+import android.os.Bundle
+import android.view.View
+import androidx.activity.addCallback
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
+import com.ncapdevi.fragnav.*
+import kotlinx.coroutines.launch
+import pl.jsyty.architecturetemplate.infrastructure.animR
+import pl.jsyty.architecturetemplate.infrastructure.di.ComponentHolder
+import pl.jsyty.architecturetemplate.infrastructure.navigation.NavigationComponent
+import pl.jsyty.architecturetemplate.infrastructure.navigation.NavigationEvent
+import pl.jsyty.architecturetemplate.test.StartDirection
+import timber.log.Timber
+
+class MainNavigationFragment : Fragment(R.layout.fragment_main_navigation) {
+    private val navigationComponent by lazy { ComponentHolder.component<NavigationComponent>() }
+
+    private val fragNavController by lazy {
+        FragNavController(
+            childFragmentManager,
+            R.id.fragmentContainer
+        )
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val fragmentResolver = navigationComponent.navigationFragmentResolver()
+
+        fragNavController.apply {
+            fragNavLogger = object : FragNavLogger {
+                override fun error(message: String, throwable: Throwable) {
+                    Timber.e(throwable, message)
+                }
+            }
+
+            defaultTransactionOptions = FragNavTransactionOptions.newBuilder().customAnimations(
+                animR.slide_left_from_right,
+                animR.slide_left_from_middle,
+                animR.slide_right_from_left,
+                animR.slide_right_from_middle
+            ).build()
+
+            val startFragment = fragmentResolver.resolveFragment(StartDirection())
+            rootFragments = listOf(startFragment)
+            initialize(savedInstanceState = savedInstanceState)
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            if (fragNavController.isRootFragment) {
+                requireActivity().finish()
+            } else {
+                if (fragNavController.popFragment().not()) {
+                    requireActivity().onBackPressed()
+                }
+            }
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            navigationComponent.navigationEventsProvider().navigationEvents
+                .flowWithLifecycle(viewLifecycleOwner.lifecycle)
+                .collect {
+                    Timber.i("Handling navigation event: $it")
+                    when (it) {
+                        is NavigationEvent.Pop -> fragNavController.popFragments(it.level)
+                        NavigationEvent.PopToRoot -> fragNavController.clearStack()
+                        is NavigationEvent.PopToRootAndReplace -> {
+                            fragNavController.clearStack()
+                            fragNavController.replaceFragment(it.fragment)
+                        }
+                        is NavigationEvent.PopToRootAndPush -> {
+                            fragNavController.clearStack()
+                            fragNavController.pushFragment(it.fragment)
+                        }
+                        is NavigationEvent.PushFragment -> fragNavController.pushFragment(it.fragment)
+                        is NavigationEvent.ReplaceFragment -> fragNavController.replaceFragment(
+                            it.fragment
+                        )
+                        is NavigationEvent.ShowDialog -> fragNavController.showDialogFragment(
+                            it.fragment
+                        )
+                    }
+                }
+        }
+    }
+}

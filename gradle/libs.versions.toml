@@ -9,6 +9,8 @@ coroutines = "1.6.4"
 ksp = "1.7.0-1.0.6"
 anvil = "2.4.1"
 dagger = "2.43.2"
+tangle = "0.15.0"
+lifecycle = "2.5.1"
 
 [libraries]
 kotlin-android-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -30,6 +32,8 @@ compose-material = { module = "androidx.compose.material:material" , version.ref
 compose-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" , version.ref = "compose-ui" }
 compose-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" , version.ref = "compose-ui" }
 
+tangle-plugin = { module = "com.rickbusarow.tangle:tangle-gradle-plugin", version.ref = "tangle" }
+
 junit4 = { module = "junit:junit", version = "4.13.2" }
 
 fragNav = { module = "com.github.ncapdevi:FragNav", version = "3.3.0" }
@@ -42,6 +46,7 @@ androidx-activity-compose = { module = "androidx.activity:activity-compose", ver
 androidx-core = { module = "androidx.core:core-ktx", version = "1.8.0" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version = "1.5.0" }
 androidx-fragment = { module = "androidx.fragment:fragment-ktx", version = "1.5.2" }
+androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
 
 androidx-coordinatorlayour = { module = "androidx.coordinatorlayout:coordinatorlayout", version = "1.2.0" }
 
@@ -63,6 +68,8 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 benManesVersions = { id = "com.github.ben-manes.versions", version = "0.42.0" }
 gradleDoctor = { id = "com.osacky.doctor", version = "0.8.1" }
 
+tangle = { id = "com.rickbusarow.tangle", version.ref = "tangle" }
+
 [bundles]
 compose-ui-core = ["compose-ui", "compose-uitooling-preview", "compose-material"]
 compose-ui-debug = ["compose-uitooling-core", "compose-test-manifest"]
@@ -70,3 +77,5 @@ compose-test = ["compose-test-junit4"]
 
 androidx-core = ["androidx-core", "androidx-appcompat", "androidx-fragment"]
 androidx-test = ["androidx-test-junit4", "androidx-test-espresso-core"]
+
+orbitmvi = ["orbitmvi-viewmodel", "orbitmvi-compose"]

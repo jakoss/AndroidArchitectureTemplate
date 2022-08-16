@@ -1,3 +1,22 @@
 plugins {
     id 'project.android-library-conventions'
+    id 'com.rickbusarow.tangle'
+}
+
+tangle {
+    fragmentsEnabled = false
+    workEnabled = false
+    viewModelOptions {
+        enabled = true
+        composeEnabled = true
+        fragmentsEnabled = false
+        activitiesEnabled = false
+    }
+}
+
+dependencies {
+    implementation project(':core:infrastructure')
+    implementation project(':core:ui')
+
+    implementation libs.bundles.orbitmvi
 }

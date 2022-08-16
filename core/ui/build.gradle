@@ -8,5 +8,6 @@ android {
 }
 
 dependencies {
+    implementation project(':core:infrastructure')
     implementation libs.material
 }

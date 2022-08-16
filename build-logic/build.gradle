@@ -12,4 +12,5 @@ plugins {
 dependencies {
     implementation libs.kotlin.android.plugin
     implementation libs.android.plugin
+    implementation libs.tangle.plugin
 }

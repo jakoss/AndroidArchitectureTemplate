@@ -1,10 +1,9 @@
 package pl.jsyty.architecturetemplate
 
 import android.app.Application
+import pl.jsyty.architecturetemplate.feature.dashboard.impl.DashboardModule
 import pl.jsyty.architecturetemplate.infrastructure.di.ComponentHolder
-import pl.jsyty.architecturetemplate.infrastructure.navigation.DirectionAggregator
-import pl.jsyty.architecturetemplate.test.StartDirection
-import pl.jsyty.architecturetemplate.test.TestFragment
+import tangle.inject.TangleGraph
 import timber.log.Timber
 
 class MyApplication : Application() {
@@ -13,9 +12,11 @@ class MyApplication : Application() {
 
         Timber.plant(Timber.DebugTree())
 
-        // TODO : just temporary navigation registration site
-        DirectionAggregator.registerDirection<StartDirection> { TestFragment() }
+        // TODO : only a temporary solution to register feature modules
+        DashboardModule.register()
 
-        ComponentHolder.components += DaggerAppComponent.create()
+        val appComponent = DaggerAppComponent.factory().create(this)
+        ComponentHolder.components += appComponent
+        TangleGraph.add(appComponent)
     }
 }

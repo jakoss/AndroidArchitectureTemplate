@@ -18,6 +18,7 @@ object DirectionAggregator {
     }
 
     inline fun <reified T: Direction> registerDirection(crossinline fragmentFactory: () -> Fragment) {
+        @Suppress("UNCHECKED_CAST") // trust me, I'm an engineer
         registerDirection(T::class as KClass<Direction>, object : FragmentFactory{
             override fun create() = fragmentFactory()
         })

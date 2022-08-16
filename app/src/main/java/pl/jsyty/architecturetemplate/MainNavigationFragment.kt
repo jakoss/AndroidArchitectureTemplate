@@ -1,18 +1,20 @@
 package pl.jsyty.architecturetemplate
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.window.OnBackInvokedDispatcher
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.ncapdevi.fragnav.*
 import kotlinx.coroutines.launch
+import pl.jsyty.architecturetemplate.feature.dashboard.DashboardDirection
 import pl.jsyty.architecturetemplate.infrastructure.animR
 import pl.jsyty.architecturetemplate.infrastructure.di.ComponentHolder
 import pl.jsyty.architecturetemplate.infrastructure.navigation.NavigationComponent
 import pl.jsyty.architecturetemplate.infrastructure.navigation.NavigationEvent
-import pl.jsyty.architecturetemplate.test.StartDirection
 import timber.log.Timber
 
 class MainNavigationFragment : Fragment(R.layout.fragment_main_navigation) {
@@ -44,18 +46,34 @@ class MainNavigationFragment : Fragment(R.layout.fragment_main_navigation) {
                 animR.slide_right_from_middle
             ).build()
 
-            val startFragment = fragmentResolver.resolveFragment(StartDirection())
+            val startFragment = fragmentResolver.resolveFragment(DashboardDirection())
             rootFragments = listOf(startFragment)
             initialize(savedInstanceState = savedInstanceState)
         }
 
-        requireActivity().onBackPressedDispatcher.addCallback(this) {
+        handleBackPress()
+    }
+
+    private fun handleBackPress() {
+        fun runBackAction() {
             if (fragNavController.isRootFragment) {
                 requireActivity().finish()
             } else {
                 if (fragNavController.popFragment().not()) {
-                    requireActivity().onBackPressed()
+                    requireActivity().finish()
                 }
+            }
+        }
+
+        if (Build.VERSION.SDK_INT >= 33) {
+            requireActivity().onBackInvokedDispatcher.registerOnBackInvokedCallback(
+                OnBackInvokedDispatcher.PRIORITY_DEFAULT
+            ) {
+                runBackAction()
+            }
+        } else {
+            requireActivity().onBackPressedDispatcher.addCallback(this) {
+                runBackAction()
             }
         }
     }

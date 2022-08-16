@@ -1,7 +1,5 @@
 package pl.jsyty.architecturetemplate.feature.dashboard.impl
 
-import android.os.Bundle
-import android.view.View
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -13,22 +11,11 @@ import org.orbitmvi.orbit.compose.collectAsState
 import pl.jsyty.architecturetemplate.feature.dashboard.DashboardDirection
 import pl.jsyty.architecturetemplate.feature.message.MessageConstants
 import pl.jsyty.architecturetemplate.ui.BaseDirectionComposeFragment
+import pl.jsyty.architecturetemplate.ui.helpers.RegisterForFragmentResult
 import pl.jsyty.architecturetemplate.ui.myViewModel
 import pl.jsyty.architecturetemplate.ui.theme.ArchitectureTemplateTheme
-import tangle.viewmodel.fragment.tangleViewModel
 
 class DashboardFragment : BaseDirectionComposeFragment<DashboardDirection>() {
-    private val fragmentViewModel by tangleViewModel<DashboardViewModel>()
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        childFragmentManager.setFragmentResultListener(MessageConstants.MESSAGE_RESULT_KEY, viewLifecycleOwner) { _, bundle ->
-            val fullMessage = bundle.getString(MessageConstants.MESSAGE_RESULT_FULLMESSAGE_KEY) ?: error("No result passed")
-            fragmentViewModel.setFullMessage(fullMessage)
-        }
-    }
-
     @Composable
     override fun Content() {
         Surface(
@@ -42,6 +29,11 @@ class DashboardFragment : BaseDirectionComposeFragment<DashboardDirection>() {
                 createMessage = viewModel::createMessage,
                 updateName = viewModel::setName
             )
+
+            RegisterForFragmentResult(MessageConstants.MESSAGE_RESULT_KEY) { _, bundle ->
+                val fullMessage = bundle.getString(MessageConstants.MESSAGE_RESULT_FULLMESSAGE_KEY) ?: error("No result passed")
+                viewModel.setFullMessage(fullMessage)
+            }
         }
     }
 

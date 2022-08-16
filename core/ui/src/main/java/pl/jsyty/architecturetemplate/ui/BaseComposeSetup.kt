@@ -4,6 +4,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import pl.jsyty.architecturetemplate.infrastructure.di.ComponentHolder
 import pl.jsyty.architecturetemplate.infrastructure.navigation.*
 import pl.jsyty.architecturetemplate.ui.theme.ArchitectureTemplateTheme
@@ -15,7 +16,9 @@ fun Fragment.baseComposeSetup(content: @Composable () -> Unit) =
         setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
         setContent {
             CompositionLocalProvider(
-                LocalNavigationController provides navigationComponent.navigationControllerProvider()
+                LocalNavigationController provides navigationComponent.navigationControllerProvider(),
+                LocalChildFragmentManager provides this@baseComposeSetup.childFragmentManager,
+                LocalParentFragmentManager provides this@baseComposeSetup.parentFragmentManager,
             ) {
                 ArchitectureTemplateTheme {
                     content()
@@ -55,3 +58,5 @@ private val navigationControllerFake = object : NavigationController{
 }
 
 val LocalNavigationController = compositionLocalOf<NavigationController> { navigationControllerFake }
+val LocalChildFragmentManager = compositionLocalOf<FragmentManager> { object : FragmentManager(){} }
+val LocalParentFragmentManager = compositionLocalOf<FragmentManager> { object : FragmentManager(){} }

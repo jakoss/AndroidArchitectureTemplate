@@ -10,4 +10,8 @@ android {
 dependencies {
     implementation project(':core:infrastructure')
     implementation libs.material
+
+    // FIXME: remove when my PR: https://github.com/RBusarow/Tangle/pull/527 get's merged and released
+    implementation libs.androidx.lifecycle.viewmodel.compose
+    implementation libs.tangle.viewmodel.api
 }

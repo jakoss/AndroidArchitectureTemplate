@@ -33,6 +33,7 @@ compose-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" , version.
 compose-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" , version.ref = "compose-ui" }
 
 tangle-plugin = { module = "com.rickbusarow.tangle:tangle-gradle-plugin", version.ref = "tangle" }
+tangle-viewmodel-api = { module = "com.rickbusarow.tangle:tangle-viewmodel-api", version.ref = "tangle" }
 
 junit4 = { module = "junit:junit", version = "4.13.2" }
 

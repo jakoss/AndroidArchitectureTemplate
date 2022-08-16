@@ -5,18 +5,13 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
 import org.orbitmvi.orbit.compose.collectAsState
 import pl.jsyty.architecturetemplate.feature.dashboard.DashboardDirection
 import pl.jsyty.architecturetemplate.ui.BaseDirectionComposeFragment
+import pl.jsyty.architecturetemplate.ui.myViewModel
 import pl.jsyty.architecturetemplate.ui.theme.ArchitectureTemplateTheme
-import tangle.viewmodel.compose.tangleViewModel
-import timber.log.Timber
 
 class DashboardFragment : BaseDirectionComposeFragment<DashboardDirection>() {
     @Composable
@@ -25,7 +20,7 @@ class DashboardFragment : BaseDirectionComposeFragment<DashboardDirection>() {
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colors.background
         ) {
-            val viewModel = tangleViewModel<DashboardViewModel>()
+            val viewModel = myViewModel<DashboardViewModel>()
             val state by viewModel.collectAsState()
             DashboardPanel(state = state, createMessage = viewModel::createMessage)
         }

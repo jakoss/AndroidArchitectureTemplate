@@ -4,10 +4,9 @@ plugins {
 }
 
 android {
-    namespace 'pl.jsyty.architecturetemplate.feature.dashboard.impl'
+    namespace 'pl.jsyty.architecturetemplate.feature.message.impl'
 }
 
 dependencies {
-    implementation project(':features:dashboard')
     implementation project(':features:message')
 }

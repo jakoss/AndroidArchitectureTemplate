@@ -5,16 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
-import pl.jsyty.architecturetemplate.ui.theme.ArchitectureTemplateTheme
 
 /**
  * Base fragment for usage with composable screen.
  *
  * [Content] method will be called inside the [ComposeView] with theme provider applied
  */
-abstract class BaseComposeFragment: Fragment() {
+abstract class BaseComposeFragment : Fragment() {
     /**
      * Override this to provide composable screen for this fragment
      */
@@ -25,12 +23,7 @@ abstract class BaseComposeFragment: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) = ComposeView(requireContext()).apply {
-        setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
-        setContent {
-            ArchitectureTemplateTheme {
-                this@BaseComposeFragment.Content()
-            }
-        }
+    ) = baseComposeSetup {
+        Content()
     }
 }

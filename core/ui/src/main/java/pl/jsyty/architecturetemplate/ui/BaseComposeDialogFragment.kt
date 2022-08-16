@@ -5,10 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.platform.ViewCompositionStrategy
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import pl.jsyty.architecturetemplate.ui.theme.ArchitectureTemplateTheme
 
 /**
  * Base fragment for usage with composable screen.
@@ -32,13 +30,8 @@ abstract class BaseComposeDialogFragment : BottomSheetDialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) = ComposeView(requireContext()).apply {
-        setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
-        setContent {
-            ArchitectureTemplateTheme {
-                    this@BaseComposeDialogFragment.Content()
-            }
-        }
+    ) = baseComposeSetup {
+        Content()
     }
 
     fun setDraggable(isDraggable: Boolean) {

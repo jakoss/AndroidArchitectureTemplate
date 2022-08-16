@@ -9,7 +9,7 @@ tangle {
     viewModelOptions {
         enabled = true
         composeEnabled = true
-        fragmentsEnabled = false
+        fragmentsEnabled = true
         activitiesEnabled = false
     }
 }
@@ -19,4 +19,5 @@ dependencies {
     implementation project(':core:ui')
 
     implementation libs.bundles.orbitmvi
+    implementation libs.material
 }

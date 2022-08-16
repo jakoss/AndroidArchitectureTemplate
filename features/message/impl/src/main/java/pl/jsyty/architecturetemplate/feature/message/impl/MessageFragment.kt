@@ -1,0 +1,94 @@
+package pl.jsyty.architecturetemplate.feature.message.impl
+
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
+import org.orbitmvi.orbit.compose.collectAsState
+import org.orbitmvi.orbit.compose.collectSideEffect
+import pl.jsyty.architecturetemplate.feature.message.MessageConstants
+import pl.jsyty.architecturetemplate.feature.message.MessageDirection
+import pl.jsyty.architecturetemplate.ui.*
+import pl.jsyty.architecturetemplate.ui.theme.ArchitectureTemplateTheme
+
+class MessageFragment : BaseDirectionComposeDialogFragment<MessageDirection>() {
+    @Composable
+    override fun Content() {
+        Surface(
+            modifier = Modifier
+                .wrapContentHeight()
+                .fillMaxWidth(),
+            color = MaterialTheme.colors.background
+        ) {
+            val viewModel = myViewModel<MessageViewModel>()
+            val state by viewModel.collectAsState()
+            MessagePanel(
+                state = state,
+                updateMessage = viewModel::updateMessage,
+                returnMessage = viewModel::returnMessage
+            )
+
+            val navigationController = LocalNavigationController.current
+            viewModel.collectSideEffect {
+                when (it) {
+                    is MessageViewModel.SideEffects.ReturnMessage -> {
+                        setFragmentResult(
+                            MessageConstants.MESSAGE_RESULT_KEY, bundleOf(
+                                MessageConstants.MESSAGE_RESULT_FULLMESSAGE_KEY to it.fullMessage
+                            )
+                        )
+                        navigationController.pop()
+                    }
+                }
+            }
+        }
+    }
+
+    @Composable
+    private fun MessagePanel(
+        state: MessageViewModel.State,
+        updateMessage: (String) -> Unit,
+        returnMessage: () -> Unit
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            Text(text = "Provided name: ${state.name}")
+            TextField(
+                value = state.message,
+                onValueChange = updateMessage,
+                label = { Text(text = "Message") },
+                keyboardActions = KeyboardActions(
+                    onDone = {
+                        returnMessage()
+                    }
+                ),
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done)
+            )
+            Button(onClick = returnMessage) {
+                Text(text = "Return message")
+            }
+        }
+    }
+
+    @Preview(showBackground = true)
+    @Composable
+    private fun DefaultPreview() {
+        ArchitectureTemplateTheme {
+            MessagePanel(
+                state = MessageViewModel.State(name = "Test name"),
+                updateMessage = {},
+                returnMessage = {}
+            )
+        }
+    }
+}

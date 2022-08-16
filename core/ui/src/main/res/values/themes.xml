@@ -15,8 +15,9 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowFrame">@null</item>
-        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsFloating">false</item>
         <item name="backgroundTint">@android:color/transparent</item>
         <item name="android:elevation">0dp</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
     </style>
 </resources>

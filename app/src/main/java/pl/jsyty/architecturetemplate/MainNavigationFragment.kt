@@ -87,7 +87,13 @@ class MainNavigationFragment : Fragment(R.layout.fragment_main_navigation) {
                 .collect {
                     Timber.i("Handling navigation event: $it")
                     when (it) {
-                        is NavigationEvent.Pop -> fragNavController.popFragments(it.level)
+                        is NavigationEvent.Pop -> {
+                            if (fragNavController.currentDialogFrag != null){
+                                fragNavController.clearDialogFragment()
+                            }else {
+                                fragNavController.popFragments(it.level)
+                            }
+                        }
                         NavigationEvent.PopToRoot -> fragNavController.clearStack()
                         is NavigationEvent.PopToRootAndReplace -> {
                             fragNavController.clearStack()

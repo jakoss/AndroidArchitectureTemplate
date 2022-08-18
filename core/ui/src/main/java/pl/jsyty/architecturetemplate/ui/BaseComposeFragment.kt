@@ -22,7 +22,7 @@ abstract class BaseComposeFragment : Fragment() {
     final override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ) = baseComposeSetup {
         Content()
     }

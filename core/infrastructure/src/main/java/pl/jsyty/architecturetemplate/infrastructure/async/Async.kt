@@ -10,7 +10,7 @@ package pl.jsyty.architecturetemplate.infrastructure.async
  * @property shouldLoad Should the resource be loaded? It will be true for uninitialized and failed states
  * @property value Value of loaded resource (null for failed, unitialized or loaded states)
  */
-sealed class Async<out T>(val complete: Boolean, val shouldLoad: Boolean, private val value: T?){
+sealed class Async<out T>(val complete: Boolean, val shouldLoad: Boolean, private val value: T?) {
     /**
      * Returns the value or null.
      *

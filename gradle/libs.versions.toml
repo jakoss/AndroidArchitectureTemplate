@@ -11,6 +11,8 @@ anvil = "2.4.1"
 dagger = "2.43.2"
 tangle = "0.15.0"
 lifecycle = "2.5.1"
+ktlint = "0.46.1"
+kotlinter = "3.11.1"
 
 [libraries]
 kotlin-android-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -56,6 +58,8 @@ material = { module = "com.google.android.material:material", version = "1.6.1" 
 orbitmvi-viewmodel = { module = "org.orbit-mvi:orbit-viewmodel", version.ref = "orbitmvi" }
 orbitmvi-compose = { module = "org.orbit-mvi:orbit-compose", version.ref = "orbitmvi" }
 
+kotlinter-plugin = { module = "org.jmailen.gradle:kotlinter-gradle", version.ref = "kotlinter" }
+
 [plugins]
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
@@ -70,6 +74,8 @@ benManesVersions = { id = "com.github.ben-manes.versions", version = "0.42.0" }
 gradleDoctor = { id = "com.osacky.doctor", version = "0.8.1" }
 
 tangle = { id = "com.rickbusarow.tangle", version.ref = "tangle" }
+
+kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
 
 [bundles]
 compose-ui-core = ["compose-ui", "compose-uitooling-preview", "compose-material"]

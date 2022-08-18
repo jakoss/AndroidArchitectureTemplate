@@ -3,7 +3,6 @@ package pl.jsyty.architecturetemplate.infrastructure.navigation
 import androidx.fragment.app.Fragment
 import kotlin.reflect.KClass
 
-
 /**
  * This objects holds all registered navigation directions
  *
@@ -17,10 +16,13 @@ object DirectionAggregator {
         directions[directionClass] = fragmentFactory
     }
 
-    inline fun <reified T: Direction> registerDirection(crossinline fragmentFactory: () -> Fragment) {
+    inline fun <reified T : Direction> registerDirection(crossinline fragmentFactory: () -> Fragment) {
         @Suppress("UNCHECKED_CAST") // trust me, I'm an engineer
-        registerDirection(T::class as KClass<Direction>, object : FragmentFactory{
-            override fun create() = fragmentFactory()
-        })
+        registerDirection(
+            T::class as KClass<Direction>,
+            object : FragmentFactory {
+                override fun create() = fragmentFactory()
+            }
+        )
     }
 }

@@ -13,7 +13,7 @@ fun RegisterForFragmentResult(
     resultKey: String,
     fragmentManager: FragmentManager = LocalChildFragmentManager.current,
     lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current,
-    callback: (key: String, bundle: Bundle) -> Unit
+    callback: (key: String, bundle: Bundle) -> Unit,
 ) {
     LaunchedEffect(Unit) {
         fragmentManager.setFragmentResultListener(resultKey, lifecycleOwner, callback)

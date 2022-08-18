@@ -12,8 +12,8 @@ import androidx.compose.ui.unit.dp
 fun FullscreenError(
     modifier: Modifier = Modifier,
     retryAction: (() -> Unit)? = null,
-){
-    Box(modifier = Modifier.fillMaxSize().then(modifier), contentAlignment = Alignment.Center){
+) {
+    Box(modifier = Modifier.fillMaxSize().then(modifier), contentAlignment = Alignment.Center) {
         Column {
             Text(text = "Error!")
             if (retryAction != null) {

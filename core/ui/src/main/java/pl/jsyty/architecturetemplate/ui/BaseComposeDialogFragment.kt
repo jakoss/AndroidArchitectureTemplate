@@ -29,7 +29,7 @@ abstract class BaseComposeDialogFragment : BottomSheetDialogFragment() {
     final override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ) = baseComposeSetup {
         Content()
     }

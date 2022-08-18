@@ -18,7 +18,7 @@ fun Fragment.baseComposeSetup(content: @Composable () -> Unit) =
             CompositionLocalProvider(
                 LocalNavigationController provides navigationComponent.navigationControllerProvider(),
                 LocalChildFragmentManager provides this@baseComposeSetup.childFragmentManager,
-                LocalParentFragmentManager provides this@baseComposeSetup.parentFragmentManager,
+                LocalParentFragmentManager provides this@baseComposeSetup.parentFragmentManager
             ) {
                 ArchitectureTemplateTheme {
                     content()
@@ -27,7 +27,7 @@ fun Fragment.baseComposeSetup(content: @Composable () -> Unit) =
         }
     }
 
-private val navigationControllerFake = object : NavigationController{
+private val navigationControllerFake = object : NavigationController {
     override fun push(direction: Direction) {
         error("Used fake navigation controller")
     }
@@ -58,5 +58,5 @@ private val navigationControllerFake = object : NavigationController{
 }
 
 val LocalNavigationController = compositionLocalOf<NavigationController> { navigationControllerFake }
-val LocalChildFragmentManager = compositionLocalOf<FragmentManager> { object : FragmentManager(){} }
-val LocalParentFragmentManager = compositionLocalOf<FragmentManager> { object : FragmentManager(){} }
+val LocalChildFragmentManager = compositionLocalOf<FragmentManager> { object : FragmentManager() {} }
+val LocalParentFragmentManager = compositionLocalOf<FragmentManager> { object : FragmentManager() {} }

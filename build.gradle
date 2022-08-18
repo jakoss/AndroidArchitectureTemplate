@@ -1,4 +1,20 @@
 buildscript {
+    def ktlintVersion = libs.versions.ktlint.get()
+    configurations.classpath {
+        resolutionStrategy {
+            force(
+                    "com.pinterest.ktlint:ktlint-core:$ktlintVersion",
+                    "com.pinterest.ktlint:ktlint-reporter-checkstyle:$ktlintVersion",
+                    "com.pinterest.ktlint:ktlint-reporter-json:$ktlintVersion",
+                    "com.pinterest.ktlint:ktlint-reporter-html:$ktlintVersion",
+                    "com.pinterest.ktlint:ktlint-reporter-plain:$ktlintVersion",
+                    "com.pinterest.ktlint:ktlint-reporter-sarif:$ktlintVersion",
+                    "com.pinterest.ktlint:ktlint-ruleset-experimental:$ktlintVersion",
+                    "com.pinterest.ktlint:ktlint-ruleset-standard:$ktlintVersion"
+            )
+        }
+    }
+
     dependencies {
         // this is required for gradle version catalogs auto-complete in groovy build scripts
         classpath files(libs.class.superclass.protectionDomain.codeSource.location)
@@ -14,6 +30,7 @@ plugins {
     alias libs.plugins.ksp apply false
     alias libs.plugins.anvil apply false
     alias libs.plugins.tangle apply false
+    alias libs.plugins.kotlinter apply false
 
     alias libs.plugins.benManesVersions
     alias libs.plugins.gradleDoctor

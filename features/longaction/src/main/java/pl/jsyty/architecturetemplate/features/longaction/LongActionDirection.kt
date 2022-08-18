@@ -4,4 +4,4 @@ import kotlinx.parcelize.Parcelize
 import pl.jsyty.architecturetemplate.infrastructure.navigation.Direction
 
 @Parcelize
-object LongActionDirection: Direction
+object LongActionDirection : Direction

@@ -41,7 +41,8 @@ class MessageFragment : BaseDirectionComposeDialogFragment<MessageDirection>() {
                 when (it) {
                     is MessageViewModel.SideEffects.ReturnMessage -> {
                         setFragmentResult(
-                            MessageConstants.MESSAGE_RESULT_KEY, bundleOf(
+                            MessageConstants.MESSAGE_RESULT_KEY,
+                            bundleOf(
                                 MessageConstants.MESSAGE_RESULT_FULLMESSAGE_KEY to it.fullMessage
                             )
                         )
@@ -56,7 +57,7 @@ class MessageFragment : BaseDirectionComposeDialogFragment<MessageDirection>() {
     private fun MessagePanel(
         state: MessageViewModel.State,
         updateMessage: (String) -> Unit,
-        returnMessage: () -> Unit
+        returnMessage: () -> Unit,
     ) {
         Column(
             modifier = Modifier.padding(16.dp),

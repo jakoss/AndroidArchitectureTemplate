@@ -88,9 +88,9 @@ class MainNavigationFragment : Fragment(R.layout.fragment_main_navigation) {
                     Timber.i("Handling navigation event: $it")
                     when (it) {
                         is NavigationEvent.Pop -> {
-                            if (fragNavController.currentDialogFrag != null){
+                            if (fragNavController.currentDialogFrag != null) {
                                 fragNavController.clearDialogFragment()
-                            }else {
+                            } else {
                                 fragNavController.popFragments(it.level)
                             }
                         }

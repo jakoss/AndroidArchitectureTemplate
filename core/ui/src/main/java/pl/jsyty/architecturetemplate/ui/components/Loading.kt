@@ -20,7 +20,8 @@ fun FullscreenLoader(
         modifier = Modifier
             .fillMaxSize()
             .background(color = background.copy(alpha = alpha))
-            .then(modifier), contentAlignment = Alignment.Center
+            .then(modifier),
+        contentAlignment = Alignment.Center
     ) {
         CircularProgressIndicator(color = color)
     }

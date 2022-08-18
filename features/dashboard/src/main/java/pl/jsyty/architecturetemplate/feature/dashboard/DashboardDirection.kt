@@ -4,4 +4,4 @@ import kotlinx.parcelize.Parcelize
 import pl.jsyty.architecturetemplate.infrastructure.navigation.Direction
 
 @Parcelize
-object DashboardDirection: Direction
+object DashboardDirection : Direction

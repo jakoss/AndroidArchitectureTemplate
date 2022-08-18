@@ -41,7 +41,7 @@ class DashboardFragment : BaseDirectionComposeFragment<DashboardDirection>() {
     private fun DashboardPanel(
         state: DashboardViewModel.State,
         createMessage: () -> Unit,
-        updateName: (String) -> Unit
+        updateName: (String) -> Unit,
     ) {
         Column(
             modifier = Modifier.padding(16.dp),
@@ -56,13 +56,14 @@ class DashboardFragment : BaseDirectionComposeFragment<DashboardDirection>() {
             TextField(
                 value = state.name,
                 onValueChange = updateName,
-                label = { Text(text = "Name") })
+                label = { Text(text = "Name") }
+            )
             Button(onClick = createMessage, enabled = state.name.isNotBlank()) {
                 Text(text = "Create message")
             }
             val navigationController = LocalNavigationController.current
 
-            Button(onClick = { navigationController.push(LongActionDirection)}) {
+            Button(onClick = { navigationController.push(LongActionDirection) }) {
                 Text(text = "Navigate to long action screen")
             }
         }
@@ -75,7 +76,7 @@ class DashboardFragment : BaseDirectionComposeFragment<DashboardDirection>() {
             DashboardPanel(
                 state = DashboardViewModel.State(returnedMessage = "test"),
                 createMessage = {},
-                updateName = {},
+                updateName = {}
             )
         }
     }

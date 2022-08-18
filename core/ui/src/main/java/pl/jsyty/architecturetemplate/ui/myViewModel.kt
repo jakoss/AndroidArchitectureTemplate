@@ -21,11 +21,10 @@ import tangle.viewmodel.internal.TangleViewModelFactory
 inline fun <reified VM : ViewModel> myViewModel(
     viewModelStoreOwner: ViewModelStoreOwner = checkNotNull(LocalViewModelStoreOwner.current) {
         "No ViewModelStoreOwner was provided via LocalViewModelStoreOwner"
-    }
+    },
 ): VM {
     return when {
         viewModelStoreOwner is ComponentActivity -> {
-
             val args = viewModelStoreOwner.intent.extras
             val defaultFactory = viewModelStoreOwner.defaultViewModelProviderFactory
 
@@ -34,7 +33,6 @@ inline fun <reified VM : ViewModel> myViewModel(
         }
         viewModelStoreOwner is SavedStateRegistryOwner &&
             viewModelStoreOwner is HasDefaultViewModelProviderFactory -> {
-
             val args = currentFragmentOrNull(viewModelStoreOwner)?.arguments
             val defaultFactory = viewModelStoreOwner.defaultViewModelProviderFactory
 
@@ -50,7 +48,7 @@ inline fun <reified VM : ViewModel> myViewModel(
 @Composable
 @PublishedApi
 internal fun currentFragmentOrNull(
-    viewModelStoreOwner: ViewModelStoreOwner
+    viewModelStoreOwner: ViewModelStoreOwner,
 ): Fragment? {
     val view = LocalView.current
     return try {

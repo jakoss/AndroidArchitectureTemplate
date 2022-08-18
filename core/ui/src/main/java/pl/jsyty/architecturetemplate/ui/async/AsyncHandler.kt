@@ -13,7 +13,7 @@ fun <T> FullscreenAsyncHandler(
     error: @Composable (Throwable) -> Unit = { FullscreenError(retryAction = retryAction) },
     loading: @Composable () -> Unit = { FullscreenLoader() },
     uninitialized: @Composable () -> Unit = { FullscreenLoader() },
-    success: @Composable (T) -> Unit
+    success: @Composable (T) -> Unit,
 ) {
     Crossfade(targetState = state) {
         when (it) {

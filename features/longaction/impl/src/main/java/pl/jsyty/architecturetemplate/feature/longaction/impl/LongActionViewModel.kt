@@ -7,7 +7,7 @@ import pl.jsyty.architecturetemplate.infrastructure.async.Uninitialized
 import pl.jsyty.architecturetemplate.infrastructure.viewmodel.BaseViewModel
 import pl.jsyty.architecturetemplate.infrastructure.viewmodel.async
 
-class LongActionViewModel: BaseViewModel<LongActionViewModel.State, Unit>(State()){
+class LongActionViewModel : BaseViewModel<LongActionViewModel.State, Unit>(State()) {
     data class State(
         val action: Async<String> = Uninitialized,
     )
@@ -16,9 +16,9 @@ class LongActionViewModel: BaseViewModel<LongActionViewModel.State, Unit>(State(
         async {
             // simulate long running operation
             delay(5000)
-            if (fail){
+            if (fail) {
                 throw RuntimeException("Operation failed!")
-            }else {
+            } else {
                 "Success!"
             }
         }.execute {

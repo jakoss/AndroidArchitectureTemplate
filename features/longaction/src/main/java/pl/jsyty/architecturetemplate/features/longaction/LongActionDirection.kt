@@ -1,7 +1,7 @@
-package pl.jsyty.architecturetemplate.feature.dashboard
+package pl.jsyty.architecturetemplate.features.longaction
 
 import kotlinx.parcelize.Parcelize
 import pl.jsyty.architecturetemplate.infrastructure.navigation.Direction
 
 @Parcelize
-object DashboardDirection: Direction
+object LongActionDirection: Direction

@@ -3,12 +3,11 @@ plugins {
     id 'project.android-compose-conventions'
 }
 
+
 android {
-    namespace 'pl.jsyty.architecturetemplate.feature.dashboard.impl'
+    namespace 'pl.jsyty.architecturetemplate.feature.longaction.impl'
 }
 
 dependencies {
-    implementation project(':features:dashboard')
-    implementation project(':features:message')
     implementation project(':features:longaction')
 }

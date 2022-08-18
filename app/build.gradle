@@ -48,6 +48,7 @@ dependencies {
     implementation project(':features:dashboard')
     implementation project(':features:dashboard:impl')
     implementation project(':features:message:impl')
+    implementation project(':features:longaction:impl')
 
     kapt libs.dagger.compiler
 

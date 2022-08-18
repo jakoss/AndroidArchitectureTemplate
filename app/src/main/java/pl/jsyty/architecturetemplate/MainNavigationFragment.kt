@@ -46,7 +46,7 @@ class MainNavigationFragment : Fragment(R.layout.fragment_main_navigation) {
                 animR.slide_right_from_middle
             ).build()
 
-            val startFragment = fragmentResolver.resolveFragment(DashboardDirection())
+            val startFragment = fragmentResolver.resolveFragment(DashboardDirection)
             rootFragments = listOf(startFragment)
             initialize(savedInstanceState = savedInstanceState)
         }

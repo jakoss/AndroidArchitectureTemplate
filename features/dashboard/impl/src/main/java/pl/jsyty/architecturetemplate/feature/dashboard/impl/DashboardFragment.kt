@@ -10,9 +10,9 @@ import androidx.compose.ui.unit.dp
 import org.orbitmvi.orbit.compose.collectAsState
 import pl.jsyty.architecturetemplate.feature.dashboard.DashboardDirection
 import pl.jsyty.architecturetemplate.feature.message.MessageConstants
-import pl.jsyty.architecturetemplate.ui.BaseDirectionComposeFragment
+import pl.jsyty.architecturetemplate.features.longaction.LongActionDirection
+import pl.jsyty.architecturetemplate.ui.*
 import pl.jsyty.architecturetemplate.ui.helpers.RegisterForFragmentResult
-import pl.jsyty.architecturetemplate.ui.myViewModel
 import pl.jsyty.architecturetemplate.ui.theme.ArchitectureTemplateTheme
 
 class DashboardFragment : BaseDirectionComposeFragment<DashboardDirection>() {
@@ -59,6 +59,11 @@ class DashboardFragment : BaseDirectionComposeFragment<DashboardDirection>() {
                 label = { Text(text = "Name") })
             Button(onClick = createMessage, enabled = state.name.isNotBlank()) {
                 Text(text = "Create message")
+            }
+            val navigationController = LocalNavigationController.current
+
+            Button(onClick = { navigationController.push(LongActionDirection)}) {
+                Text(text = "Navigate to long action screen")
             }
         }
     }

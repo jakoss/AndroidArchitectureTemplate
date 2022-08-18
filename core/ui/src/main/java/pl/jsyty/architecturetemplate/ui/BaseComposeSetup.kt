@@ -27,7 +27,8 @@ fun Fragment.baseComposeSetup(content: @Composable () -> Unit) =
         }
     }
 
-private val navigationControllerFake = object : NavigationController {
+private val navigationControllerFake = object :
+    NavigationController {
     override fun push(direction: Direction) {
         error("Used fake navigation controller")
     }

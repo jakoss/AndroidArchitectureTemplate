@@ -9,7 +9,7 @@ import kotlin.reflect.KClass
  * TODO : create aggregations automatically via the Anvil plugin
  */
 object DirectionAggregator {
-    internal val directions = mutableMapOf<KClass<Direction>, FragmentFactory>()
+    val directions = mutableMapOf<KClass<Direction>, FragmentFactory>()
 
     fun registerDirection(directionClass: KClass<Direction>, fragmentFactory: FragmentFactory) {
         if (directions.containsKey(directionClass)) error("This direction has already been registered")

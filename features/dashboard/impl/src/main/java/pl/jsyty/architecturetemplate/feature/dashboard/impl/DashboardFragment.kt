@@ -11,10 +11,12 @@ import org.orbitmvi.orbit.compose.collectAsState
 import pl.jsyty.architecturetemplate.feature.dashboard.DashboardDirection
 import pl.jsyty.architecturetemplate.feature.message.MessageConstants
 import pl.jsyty.architecturetemplate.features.longaction.LongActionDirection
+import pl.jsyty.architecturetemplate.infrastructure.navigation.BindDirection
 import pl.jsyty.architecturetemplate.ui.*
 import pl.jsyty.architecturetemplate.ui.helpers.RegisterForFragmentResult
 import pl.jsyty.architecturetemplate.ui.theme.ArchitectureTemplateTheme
 
+@BindDirection(DashboardDirection::class)
 class DashboardFragment : BaseDirectionComposeFragment<DashboardDirection>() {
     @Composable
     override fun Content() {

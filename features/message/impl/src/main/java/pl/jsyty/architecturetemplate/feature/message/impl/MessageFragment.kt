@@ -16,9 +16,11 @@ import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 import pl.jsyty.architecturetemplate.feature.message.MessageConstants
 import pl.jsyty.architecturetemplate.feature.message.MessageDirection
+import pl.jsyty.architecturetemplate.infrastructure.navigation.BindDirection
 import pl.jsyty.architecturetemplate.ui.*
 import pl.jsyty.architecturetemplate.ui.theme.ArchitectureTemplateTheme
 
+@BindDirection(MessageDirection::class)
 class MessageFragment : BaseDirectionComposeDialogFragment<MessageDirection>() {
     @Composable
     override fun Content() {

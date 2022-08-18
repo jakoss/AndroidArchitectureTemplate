@@ -13,6 +13,9 @@ tangle = "0.15.0"
 lifecycle = "2.5.1"
 ktlint = "0.46.1"
 kotlinter = "3.11.1"
+kotlinPoet = "1.12.0"
+
+test-kotlinCompileTesting = "1.4.7"
 
 [libraries]
 kotlin-android-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -23,6 +26,8 @@ coroutines-lib = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", 
 
 ksp-plugin = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 anvil-plugin = { module = "com.squareup.anvil:gradle-plugin" , version.ref = "anvil" }
+anvil-compiler-api = { module = "com.squareup.anvil:compiler-api", version.ref = "anvil"}
+anvil-compiler-utils = { module = "com.squareup.anvil:compiler-utils", version.ref = "anvil"}
 
 dagger-core = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
@@ -60,10 +65,20 @@ orbitmvi-compose = { module = "org.orbit-mvi:orbit-compose", version.ref = "orbi
 
 kotlinter-plugin = { module = "org.jmailen.gradle:kotlinter-gradle", version.ref = "kotlinter" }
 
+autoService-Ksp = { module = "dev.zacsweers.autoservice:auto-service-ksp", version = "1.0.0" }
+autoService-annotations = { module = "com.google.auto.service:auto-service-annotations", version = "1.0.1" }
+
+kotlinPoet-base = { module = "com.squareup:kotlinpoet", version.ref = "kotlinPoet" }
+kotlinPoet-ksp = { module = "com.squareup:kotlinpoet-ksp", version.ref = "kotlinPoet" }
+
+test-kotlinCompile-base = { module = "com.github.tschuchortdev:kotlin-compile-testing", version.ref = "test-kotlinCompileTesting" }
+test-kotlinCompile-ksp = { module = "com.github.tschuchortdev:kotlin-compile-testing-ksp", version.ref = "test-kotlinCompileTesting" }
+
 [plugins]
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "android-gradle" }
 android-library = { id = "com.android.library", version.ref = "android-gradle" }
 
@@ -86,3 +101,8 @@ androidx-core = ["androidx-core", "androidx-appcompat", "androidx-fragment"]
 androidx-test = ["androidx-test-junit4", "androidx-test-espresso-core"]
 
 orbitmvi = ["orbitmvi-viewmodel", "orbitmvi-compose"]
+
+kotlinPoet = ["kotlinPoet-base", "kotlinPoet-ksp"]
+test-kotlinCompile = ["test-kotlinCompile-base", "test-kotlinCompile-ksp"]
+
+anvil-compiler = ["anvil-compiler-api", "anvil-compiler-utils"]

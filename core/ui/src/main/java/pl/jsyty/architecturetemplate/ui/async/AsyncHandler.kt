@@ -1,3 +1,4 @@
+// ktlint-disable filename
 package pl.jsyty.architecturetemplate.ui.async
 
 import androidx.compose.animation.Crossfade

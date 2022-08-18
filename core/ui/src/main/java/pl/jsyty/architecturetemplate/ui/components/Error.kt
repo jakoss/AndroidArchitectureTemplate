@@ -1,3 +1,4 @@
+// ktlint-disable filename
 package pl.jsyty.architecturetemplate.ui.components
 
 import androidx.compose.foundation.layout.*

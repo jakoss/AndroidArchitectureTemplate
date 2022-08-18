@@ -1,0 +1,36 @@
+plugins {
+    alias libs.plugins.kotlin.jvm
+    alias libs.plugins.ksp
+}
+
+ksp {
+    arg("autoserviceKsp.verify", "true")
+    arg("autoserviceKsp.verbose", "true")
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+dependencies {
+    ksp libs.autoService.ksp
+    compileOnly libs.autoService.annotations
+
+    implementation libs.bundles.anvil.compiler
+    implementation libs.bundles.kotlinPoet
+
+    testImplementation 'org.jetbrains.kotlin:kotlin-test'
+    testImplementation libs.bundles.test.kotlinCompile
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = '11'
+        freeCompilerArgs += '-opt-in=com.squareup.anvil.annotations.ExperimentalAnvilApi'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -16,10 +16,13 @@ import javax.inject.Singleton
 @ContributesBinding(AppScope::class, boundType = NavigationController::class)
 @ContributesBinding(AppScope::class, boundType = NavigationEventsProvider::class)
 @ContributesBinding(AppScope::class, boundType = NavigationFragmentResolver::class)
-class NavigationControllerImpl @Inject constructor() :
+class NavigationControllerImpl @Inject constructor(
+    private val handlers: Map<String, @JvmSuppressWildcards FragmentFactory>,
+) :
     NavigationController,
     NavigationEventsProvider,
     NavigationFragmentResolver {
+
     private val mutableNavigationEventsDispatcher = MutableSharedFlow<NavigationEvent>(
         extraBufferCapacity = 5,
         onBufferOverflow = BufferOverflow.DROP_OLDEST
@@ -77,11 +80,12 @@ class NavigationControllerImpl @Inject constructor() :
     }
 
     override fun resolveFragment(direction: Direction): Fragment {
-        val value = DirectionAggregator.directions[direction::class]
-        check(value != null) {
+        val factory =
+            handlers[direction.javaClass.canonicalName ?: error("No canonical name for direction")]
+        check(factory != null) {
             "Direction not registered"
         }
-        val fragment = value.create()
+        val fragment = factory.create()
         fragment.arguments = bundleOf(ARGUMENT_KEY to direction)
         return fragment
     }

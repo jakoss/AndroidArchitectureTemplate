@@ -17,7 +17,7 @@ import pl.jsyty.architecturetemplate.ui.helpers.RegisterForFragmentResult
 import pl.jsyty.architecturetemplate.ui.theme.ArchitectureTemplateTheme
 
 @BindDirection(DashboardDirection::class)
-class DashboardFragment : BaseDirectionComposeFragment<DashboardDirection>() {
+class DashboardFragment : BaseComposeFragment() {
     @Composable
     override fun Content() {
         Surface(
@@ -33,7 +33,8 @@ class DashboardFragment : BaseDirectionComposeFragment<DashboardDirection>() {
             )
 
             RegisterForFragmentResult(MessageConstants.MESSAGE_RESULT_KEY) { _, bundle ->
-                val fullMessage = bundle.getString(MessageConstants.MESSAGE_RESULT_FULLMESSAGE_KEY) ?: error("No result passed")
+                val fullMessage = bundle.getString(MessageConstants.MESSAGE_RESULT_FULLMESSAGE_KEY)
+                    ?: error("No result passed")
                 viewModel.setFullMessage(fullMessage)
             }
         }

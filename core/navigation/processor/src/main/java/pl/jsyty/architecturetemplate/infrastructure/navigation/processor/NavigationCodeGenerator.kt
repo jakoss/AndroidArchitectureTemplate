@@ -60,10 +60,10 @@ class NavigationCodeGenerator : CodeGenerator {
         // super class that marks directable fragment
         if (!reference.allSuperTypeClassReferences()
                 .any {
-                    it.fqName == baseDirectionComposeFragmentFqName || it.fqName == baseDirectionComposeDialogFragmentFqName
+                    it.asClassName() == androidFragmentClassName
                 }
         ) {
-            throw AnvilCompilationException(message = "@BindDirection can only be used on BaseDirectionComposeFragment or BaseDirectionComposeDialogFragment inheritants")
+            throw AnvilCompilationException(message = "@BindDirection can only be used on Fragments inheritants")
         }
         return DirectableFragment(reference, directionType)
     }

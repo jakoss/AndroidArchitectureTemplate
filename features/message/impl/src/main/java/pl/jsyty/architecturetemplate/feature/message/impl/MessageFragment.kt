@@ -1,5 +1,7 @@
 package pl.jsyty.architecturetemplate.feature.message.impl
 
+import android.os.Bundle
+import android.view.View
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -18,10 +20,17 @@ import pl.jsyty.architecturetemplate.feature.message.MessageConstants
 import pl.jsyty.architecturetemplate.feature.message.MessageDirection
 import pl.jsyty.architecturetemplate.infrastructure.navigation.BindDirection
 import pl.jsyty.architecturetemplate.ui.*
+import pl.jsyty.architecturetemplate.ui.helpers.direction
 import pl.jsyty.architecturetemplate.ui.theme.ArchitectureTemplateTheme
+import timber.log.Timber
 
 @BindDirection(MessageDirection::class)
-class MessageFragment : BaseDirectionComposeDialogFragment<MessageDirection>() {
+class MessageFragment : BaseComposeDialogFragment(){
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        Timber.d("Name passed via argument: ${direction<MessageDirection>().name}")
+    }
     @Composable
     override fun Content() {
         Surface(

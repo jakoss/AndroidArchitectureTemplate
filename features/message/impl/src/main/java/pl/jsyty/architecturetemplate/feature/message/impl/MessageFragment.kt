@@ -12,13 +12,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.os.bundleOf
-import androidx.fragment.app.setFragmentResult
 import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
-import pl.jsyty.architecturetemplate.feature.message.MessageConstants
 import pl.jsyty.architecturetemplate.feature.message.MessageDirection
+import pl.jsyty.architecturetemplate.feature.message.MessageNavigationResult
 import pl.jsyty.architecturetemplate.ui.*
+import pl.jsyty.architecturetemplate.ui.helpers.setNavigationResult
 import pl.jsyty.architecturetemplate.ui.theme.ArchitectureTemplateTheme
 import timber.log.Timber
 
@@ -49,12 +48,7 @@ class MessageFragment : BaseDirectableComposeDialogFragment<MessageDirection>() 
             viewModel.collectSideEffect {
                 when (it) {
                     is MessageViewModel.SideEffects.ReturnMessage -> {
-                        setFragmentResult(
-                            MessageConstants.MESSAGE_RESULT_KEY,
-                            bundleOf(
-                                MessageConstants.MESSAGE_RESULT_FULLMESSAGE_KEY to it.fullMessage
-                            )
-                        )
+                        setNavigationResult(MessageNavigationResult(), it.fullMessage)
                         navigationController.pop()
                     }
                 }

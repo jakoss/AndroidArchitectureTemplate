@@ -18,19 +18,17 @@ import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 import pl.jsyty.architecturetemplate.feature.message.MessageConstants
 import pl.jsyty.architecturetemplate.feature.message.MessageDirection
-import pl.jsyty.architecturetemplate.infrastructure.navigation.BindDirection
 import pl.jsyty.architecturetemplate.ui.*
-import pl.jsyty.architecturetemplate.ui.helpers.direction
 import pl.jsyty.architecturetemplate.ui.theme.ArchitectureTemplateTheme
 import timber.log.Timber
 
-@BindDirection(MessageDirection::class)
-class MessageFragment : BaseComposeDialogFragment(){
+class MessageFragment : BaseDirectableComposeDialogFragment<MessageDirection>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Timber.d("Name passed via argument: ${direction<MessageDirection>().name}")
+        Timber.d("Name passed via argument: ${direction.name}")
     }
+
     @Composable
     override fun Content() {
         Surface(

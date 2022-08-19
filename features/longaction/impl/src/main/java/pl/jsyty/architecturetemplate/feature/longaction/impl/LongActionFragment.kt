@@ -8,13 +8,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import org.orbitmvi.orbit.compose.collectAsState
 import pl.jsyty.architecturetemplate.features.longaction.LongActionDirection
-import pl.jsyty.architecturetemplate.infrastructure.navigation.BindDirection
-import pl.jsyty.architecturetemplate.ui.BaseComposeFragment
+import pl.jsyty.architecturetemplate.ui.*
 import pl.jsyty.architecturetemplate.ui.async.FullscreenAsyncHandler
-import pl.jsyty.architecturetemplate.ui.myViewModel
 
-@BindDirection(LongActionDirection::class)
-class LongActionFragment : BaseComposeFragment() {
+class LongActionFragment : BaseDirectableComposeFragment<LongActionDirection>() {
     @Composable
     override fun Content() {
         Surface(

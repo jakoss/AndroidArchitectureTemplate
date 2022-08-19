@@ -44,27 +44,26 @@ class NavigationCodeGenerator : CodeGenerator {
     override fun isApplicable(context: AnvilContext) = true
 
     private fun isDirectableFragment(reference: ClassReference): DirectableFragment? {
-        // search for classes with @BindDirection annotation
-        if (!reference.isAnnotatedWith(bindDirectionFqName)) return null
+        // search for all classes that have BaseDirectableComposeFragment as ancestor
+        val ancestor = reference.directSuperTypeReferences()
+            .firstOrNull {
+                it.asClassReference().fqName == FqNames.baseDirectableComposeFragment || it.asClassReference().fqName == FqNames.baseDirectableComposeDialogFragment
+            } ?: return null
 
-        // check for the argument and type of annotation
-        val annotation = reference.annotations.first { it.fqName == bindDirectionFqName }
-        val argument = annotation.arguments.first { it.resolvedName == "to" }
-        val directionType = argument.value<ClassReference>()
-        if (!directionType.directSuperTypeReferences()
-                .any { it.asClassReference().fqName == directionFqName }
-        ) {
-            throw AnvilCompilationException(message = "@BindDirection has invalid type (not inheriting the Direction interface)")
-        }
+        // check for the direction type
+        val directionType =
+            ancestor.unwrappedTypes.single().resolveGenericTypeNameOrNull(reference)?.toString()
+                ?: error("No Direction type can be inferred by generic type")
 
         // super class that marks directable fragment
         if (!reference.allSuperTypeClassReferences()
                 .any {
-                    it.asClassName() == androidFragmentClassName
+                    it.fqName == FqNames.androidFragment
                 }
         ) {
             throw AnvilCompilationException(message = "@BindDirection can only be used on Fragments inheritants")
         }
+
         return DirectableFragment(reference, directionType)
     }
 
@@ -78,29 +77,29 @@ class NavigationCodeGenerator : CodeGenerator {
                 .addModifiers(KModifier.PUBLIC)
                 .primaryConstructor(
                     FunSpec.constructorBuilder()
-                        .addAnnotation(injectAnnotationClassName)
+                        .addAnnotation(ClassNames.injectAnnotation)
                         .build()
                 )
                 .addAnnotation(
                     AnnotationSpec
                         .builder(ContributesMultibinding::class)
-                        .addMember("%T::class", appScopeClassName)
+                        .addMember("%T::class", ClassNames.appScope)
                         .build()
                 )
                 .addAnnotation(
                     AnnotationSpec
-                        .builder(directionKeyClassName)
+                        .builder(ClassNames.directionKey)
                         .addMember(
                             "%S",
-                            directableFragment.directionReference.asClassName().canonicalName
+                            directableFragment.directionCanonicalName
                         )
                         .build()
                 )
-                .addSuperinterface(fragmentFactoryClassName)
+                .addSuperinterface(ClassNames.fragmentFactory)
                 .addFunction(
                     FunSpec.builder("create")
                         .addModifiers(KModifier.OVERRIDE)
-                        .returns(androidFragmentClassName)
+                        .returns(ClassNames.androidFragment)
                         .addStatement(
                             "return %T()",
                             directableFragment.fragmentReference.asClassName()
@@ -113,6 +112,6 @@ class NavigationCodeGenerator : CodeGenerator {
 
     private data class DirectableFragment(
         val fragmentReference: ClassReference,
-        val directionReference: ClassReference
+        val directionCanonicalName: String,
     )
 }

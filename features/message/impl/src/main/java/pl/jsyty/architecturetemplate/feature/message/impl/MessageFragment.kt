@@ -48,7 +48,7 @@ class MessageFragment : BaseDirectableComposeDialogFragment<MessageDirection>() 
             viewModel.collectSideEffect {
                 when (it) {
                     is MessageViewModel.SideEffects.ReturnMessage -> {
-                        setNavigationResult(MessageNavigationResult(), it.fullMessage)
+                        setNavigationResult(MessageNavigationResult, it.fullMessage)
                         navigationController.pop()
                     }
                 }

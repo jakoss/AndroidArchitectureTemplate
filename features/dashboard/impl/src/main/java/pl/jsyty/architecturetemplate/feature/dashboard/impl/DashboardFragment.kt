@@ -30,7 +30,7 @@ class DashboardFragment : BaseDirectableComposeFragment<DashboardDirection>() {
                 updateName = viewModel::setName
             )
 
-            RegisterForFragmentResult(MessageNavigationResult()) { fullMessage ->
+            RegisterForFragmentResult(MessageNavigationResult) { fullMessage ->
                 viewModel.setFullMessage(fullMessage)
             }
         }

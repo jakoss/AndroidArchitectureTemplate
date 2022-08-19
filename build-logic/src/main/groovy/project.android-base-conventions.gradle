@@ -31,6 +31,10 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
+    buildFeatures {
+        // we want this to be disabled for everything besides the app project for perforamnce reasons
+        buildConfig = false
+    }
 }
 
 anvil {

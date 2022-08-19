@@ -1,6 +1,6 @@
 # Navigation
 
-Navigation is build around Direction class. This class is an representation of navigation to some place. It might have some parameters if we want to pass data to another screen.
+Navigation is build around [Direction](./src/main/java/pl/jsyty/architecturetemplate/infrastructure/navigation/Direction.kt) class. This class is an representation of navigation to some place. It might have some parameters if we want to pass data to another screen.
 
 ## Example
 
@@ -24,7 +24,7 @@ class ScreenTwoFragment: BaseDirectableComposeFragment<ScreenTwoDirection>() {
 }
 ```
 
-Anvil plugin will automatically bind this fragment to direction, so you don't have to do anything more.
+[Custom Anvil plugin](./processor/src/main/java/pl/jsyty/architecturetemplate/infrastructure/navigation/processor/NavigationCodeGenerator.kt) will automatically bind this fragment to direction, so you don't have to do anything more.
 
 Benefit of separating direction from fragment is that direction can be defined in some shared module (public for another modules) and fragment can be enclosed in impl module that other modules won't depend on.
 This gives us great benefits of flattening the module graph which will drastically reduce build times in bigger apps.
@@ -37,4 +37,34 @@ navigationController.push(ScreenTwoDirection(name = "Jakub"))
 
 And that's it, the framework will handle the navigation for us!
 
-We can do another standard navigation action like `replace` or `pop` from the `NavigationController` interface.
+We can do another standard navigation action like `replace` or `pop` from the [NavigationController](./src/main/java/pl/jsyty/architecturetemplate/infrastructure/navigation/NavigationController.kt) interface.
+
+## Retrieving the result
+
+We can retrieve the result from one screen in other places. The mechanism is built opon [Fragment Results api](https://developer.android.com/guide/fragments/communicate)
+using type safe helpers to simplify whole process.
+
+To handle a result we have to create a [NavigationResult](./src/main/java/pl/jsyty/architecturetemplate/infrastructure/navigation/NavigationResult.kt). For example to pass
+string we have to create it:
+
+```kotlin
+class MessageNavigationResult : NavigationResult<String>()
+```
+
+Then in class we want to **receive** result we have to register for a result (this is based on [compose helper](../ui/src/main/java/pl/jsyty/architecturetemplate/ui/helpers/RegisterForFragmentResult.kt))
+but can be easily ported to view system.
+
+```kotlin
+RegisterForFragmentResult(MessageNavigationResult()) { fullMessage ->
+    // we have result from some another screen!
+}
+```
+
+Lastly, we have to send result back from the target screen, using [helper on fragment class](../ui/src/main/java/pl/jsyty/architecturetemplate/ui/helpers/RegisterForFragmentResult.kt)
+
+```kotlin
+setNavigationResult(MessageNavigationResult(), it.fullMessage)
+navigationController.pop()
+```
+
+> It's important to remember that setting navigation result **won't** do a pop, we have to do that ourselves!

@@ -9,7 +9,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.orbitmvi.orbit.compose.collectAsState
 import pl.jsyty.architecturetemplate.feature.dashboard.DashboardDirection
-import pl.jsyty.architecturetemplate.feature.message.MessageConstants
+import pl.jsyty.architecturetemplate.feature.message.MessageNavigationResult
 import pl.jsyty.architecturetemplate.features.longaction.LongActionDirection
 import pl.jsyty.architecturetemplate.ui.*
 import pl.jsyty.architecturetemplate.ui.helpers.RegisterForFragmentResult
@@ -30,9 +30,7 @@ class DashboardFragment : BaseDirectableComposeFragment<DashboardDirection>() {
                 updateName = viewModel::setName
             )
 
-            RegisterForFragmentResult(MessageConstants.MESSAGE_RESULT_KEY) { _, bundle ->
-                val fullMessage = bundle.getString(MessageConstants.MESSAGE_RESULT_FULLMESSAGE_KEY)
-                    ?: error("No result passed")
+            RegisterForFragmentResult(MessageNavigationResult) { fullMessage ->
                 viewModel.setFullMessage(fullMessage)
             }
         }

@@ -51,7 +51,7 @@ I'll complement the documentation in the future. Every module should have it's o
 
 We are using Anvil as our DI framework which is much faster than Hilt due to usage of kotlin compiler plugin instead kapt. We are trying to avoid kapt as much as possible since the performance hit from it is pretty much always significant.
 
-TODO: We are using Android Cache Fix Gradle Plugin to fix some AGP cache issues
+We are using [Android Cache Fix Gradle Plugin](https://github.com/gradle/android-cache-fix-gradle-plugin) to fix some AGP cache issues.
 
 ## To be done
 
@@ -61,7 +61,6 @@ TODO: We are using Android Cache Fix Gradle Plugin to fix some AGP cache issues
 - Internal qa build with debugging tools for testing purposes
 - Documentation of more complex solutions
 - Clean Architecture showcase (usage of ViewModel/UseCase/Repo/DataSource chains)
-- Setup android-cache-fix-gradle-plugin
 - Testing setup and patterns!
 - Dokka setup
 - Detekt setup

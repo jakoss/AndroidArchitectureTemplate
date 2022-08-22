@@ -18,6 +18,7 @@ Whole solution is created with consideration of how gradle works, so we are tryi
 
 - This project does not aim to provide a final and full solution for any project. It should be always review and modified according to the needs of particular project
 - Library enforcement or flame wars. Since the goal is to provide patterns and starting point - pretty much all libraries used can be replace with something similar or even custom solution
+- Provide patterns that are tighly coupled - you can take anything you need from this template and leave out everything that does not apply to your use-case
 - It's never final. The template will evolve with my knowledge and the ecosystem
 
 ## Libraries and Patterns used:
@@ -44,6 +45,14 @@ I'll complement the documentation in the future. Every module should have it's o
 
 - [Modularization](./MODULARIZATION.md)
 - [Navigation](./core/navigation/README.md)
+- [Networking](./core/networking/README.md)
+
+## Sample implementations:
+
+- Passing arguments and result during navigation - modules [features/dashboard](./features/dashboard/impl/src/main/java/pl/jsyty/architecturetemplate/feature/dashboard/impl)
+and [features/message](./features/message/impl/src/main/java/pl/jsyty/architecturetemplate/feature/message/impl)
+- Asynchronous resource loading - module [features/longaction](./features/longaction/impl/src/main/java/pl/jsyty/architecturetemplate/feature/longaction/impl)
+- Clean architecture and networking = module [features/weather](./features/weather/impl/src/main/java/pl/jsyty/architecturetemplate/feature/weather/impl)
 
 ## Build performance
 
@@ -64,3 +73,7 @@ We are using [Android Cache Fix Gradle Plugin](https://github.com/gradle/android
 - Testing setup and patterns!
 - Dokka setup
 - Detekt setup
+
+## Mentions
+
+[Weather data by Open-Meteo.com](https://open-meteo.com/)

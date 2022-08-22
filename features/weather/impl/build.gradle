@@ -1,0 +1,13 @@
+plugins {
+    id 'project.android-feature-conventions'
+    id 'project.android-compose-conventions'
+}
+
+android {
+    namespace 'pl.jsyty.architecturetemplate.feature.weather.impl'
+}
+
+dependencies {
+    implementation project(':features:weather')
+    implementation project(':data:weather')
+}

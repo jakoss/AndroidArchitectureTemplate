@@ -10,6 +10,7 @@ import androidx.compose.ui.unit.dp
 import org.orbitmvi.orbit.compose.collectAsState
 import pl.jsyty.architecturetemplate.feature.dashboard.DashboardDirection
 import pl.jsyty.architecturetemplate.feature.message.MessageNavigationResult
+import pl.jsyty.architecturetemplate.feature.weather.WeatherDirection
 import pl.jsyty.architecturetemplate.features.longaction.LongActionDirection
 import pl.jsyty.architecturetemplate.ui.*
 import pl.jsyty.architecturetemplate.ui.helpers.RegisterForFragmentResult
@@ -64,6 +65,9 @@ class DashboardFragment : BaseDirectableComposeFragment<DashboardDirection>() {
 
             Button(onClick = { navigationController.push(LongActionDirection) }) {
                 Text(text = "Navigate to long action screen")
+            }
+            Button(onClick = { navigationController.push(WeatherDirection) }) {
+                Text(text = "Navigation to weather screen")
             }
         }
     }

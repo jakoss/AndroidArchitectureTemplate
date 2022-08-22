@@ -15,11 +15,16 @@ ktlint = "0.46.1"
 kotlinter = "3.11.1"
 kotlinPoet = "1.12.0"
 androidCacheFix = "2.5.6"
+kotlinxSerialization = "1.4.0"
+okhttp = "4.10.0"
+retrofit = "2.9.0"
+resilience4j = "1.7.0"
 
 test-kotlinCompileTesting = "1.4.9"
 
 [libraries]
 kotlin-android-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlinx-serialization-plugin = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
 android-plugin = { module = "com.android.tools.build:gradle", version.ref = "android-gradle" }
 desugaring = { module = "com.android.tools:desugar_jdk_libs", version = "1.2.0" }
 
@@ -74,14 +79,25 @@ kotlinPoet-ksp = { module = "com.squareup:kotlinpoet-ksp", version.ref = "kotlin
 
 androidCacheFix = { module = "org.gradle.android.cache-fix:org.gradle.android.cache-fix.gradle.plugin", version.ref = "androidCacheFix" }
 
+okhttp-core = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+
+retrofit-core = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofit-kotlinSerializationConverter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version = "0.8.0" }
+
 test-kotlinCompile-base = { module = "com.github.tschuchortdev:kotlin-compile-testing", version.ref = "test-kotlinCompileTesting" }
 test-kotlinCompile-ksp = { module = "com.github.tschuchortdev:kotlin-compile-testing-ksp", version.ref = "test-kotlinCompileTesting" }
+
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization"}
+
+resilience4j-kotlin = { module = "io.github.resilience4j:resilience4j-kotlin", version.ref = "resilience4j" }
+resilience4j-retry = { module = "io.github.resilience4j:resilience4j-retry", version.ref = "resilience4j" }
 
 [plugins]
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "android-gradle" }
 android-library = { id = "com.android.library", version.ref = "android-gradle" }
 
@@ -94,6 +110,8 @@ gradleDoctor = { id = "com.osacky.doctor", version = "0.8.1" }
 tangle = { id = "com.rickbusarow.tangle", version.ref = "tangle" }
 
 kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
+
+
 
 [bundles]
 compose-ui-core = ["compose-ui", "compose-uitooling-preview", "compose-material"]
@@ -109,3 +127,5 @@ kotlinPoet = ["kotlinPoet-base", "kotlinPoet-ksp"]
 test-kotlinCompile = ["test-kotlinCompile-base", "test-kotlinCompile-ksp"]
 
 anvil-compiler = ["anvil-compiler-api", "anvil-compiler-utils"]
+
+networking = ["okhttp-core", "kotlinx-serialization-json"]

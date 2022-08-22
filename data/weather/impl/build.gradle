@@ -1,0 +1,13 @@
+plugins {
+    id 'project.android-library-conventions'
+    id 'project.android-networking-conventions'
+}
+
+android {
+    namespace 'pl.jsyty.architecturetemplate.data.weather.impl'
+}
+
+dependencies {
+    implementation project(':data:weather')
+    implementation project(':core:infrastructure')
+}

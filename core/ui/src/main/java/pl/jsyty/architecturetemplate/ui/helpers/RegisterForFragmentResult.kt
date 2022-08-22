@@ -10,7 +10,7 @@ import pl.jsyty.architecturetemplate.infrastructure.navigation.NavigationResult
 import pl.jsyty.architecturetemplate.ui.LocalChildFragmentManager
 
 @Composable
-fun <T: Any> RegisterForFragmentResult(
+fun <T : Any> RegisterForFragmentResult(
     navigationResult: NavigationResult<T>,
     fragmentManager: FragmentManager = LocalChildFragmentManager.current,
     lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current,
@@ -25,8 +25,11 @@ fun <T: Any> RegisterForFragmentResult(
     }
 }
 
-fun <T: Any> Fragment.setNavigationResult(navigationResult: NavigationResult<T>, value: T) {
-    setFragmentResult(navigationResult.resultKey, bundleOf(
-        navigationResult.parameterKey to value
-    ))
+fun <T : Any> Fragment.setNavigationResult(navigationResult: NavigationResult<T>, value: T) {
+    setFragmentResult(
+        navigationResult.resultKey,
+        bundleOf(
+            navigationResult.parameterKey to value
+        )
+    )
 }

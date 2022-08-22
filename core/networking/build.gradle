@@ -1,0 +1,18 @@
+plugins {
+    id 'project.android-library-conventions'
+    alias libs.plugins.kotlin.serialization
+}
+
+android {
+    namespace 'pl.jsyty.architecturetemplate.core.networking'
+}
+
+dependencies {
+    implementation project(':core:infrastructure')
+
+    implementation libs.bundles.networking
+    implementation libs.retrofit.core
+    implementation libs.retrofit.kotlinSerializationConverter
+    implementation libs.resilience4j.kotlin
+    implementation libs.resilience4j.retry
+}

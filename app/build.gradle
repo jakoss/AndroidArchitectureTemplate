@@ -13,6 +13,8 @@ android {
         applicationId "pl.jsyty.architecturetemplate"
         versionCode 1
         versionName "1.0"
+
+        buildConfigField "String", "API_URL", "\"https://api.open-meteo.com/v1\""
     }
 
     buildTypes {
@@ -49,6 +51,7 @@ kapt {
 dependencies {
     implementation project(':core:ui')
     implementation project(':core:infrastructure')
+    implementation project(':core:networking')
     implementation project(':core:navigation')
     implementation project(':core:navigation:impl')
 
@@ -56,9 +59,15 @@ dependencies {
     implementation project(':features:dashboard:impl')
     implementation project(':features:message:impl')
     implementation project(':features:longaction:impl')
+    implementation project(':features:weather:impl')
+
+    implementation project(':data:weather')
+    implementation project(':data:weather:impl')
 
     kapt libs.dagger.compiler
 
     implementation libs.androidx.coordinatorlayour
     implementation libs.fragNav
+
+    implementation libs.bundles.networking
 }

@@ -1,0 +1,7 @@
+plugins {
+    id 'project.android-library-conventions'
+}
+
+android {
+    namespace 'pl.jsyty.architecturetemplate.data.weather'
+}

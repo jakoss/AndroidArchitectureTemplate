@@ -14,4 +14,5 @@ dependencies {
     implementation libs.android.plugin
     implementation libs.tangle.plugin
     implementation libs.androidCacheFix
+    implementation libs.kotlinx.serialization.plugin
 }

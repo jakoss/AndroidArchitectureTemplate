@@ -18,7 +18,7 @@ androidCacheFix = "2.5.6"
 kotlinxSerialization = "1.4.0"
 okhttp = "4.10.0"
 retrofit = "2.9.0"
-resilience4j = "1.7.0"
+resilience4j = "1.7.1"
 
 test-kotlinCompileTesting = "1.4.9"
 

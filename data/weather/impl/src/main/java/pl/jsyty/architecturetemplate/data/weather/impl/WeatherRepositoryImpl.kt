@@ -7,15 +7,14 @@ import pl.jsyty.architecturetemplate.infrastructure.di.AppScope
 import javax.inject.Inject
 
 @ContributesBinding(scope = AppScope::class)
-class WeatherRepositoryImpl @Inject constructor(private val weatherService: WeatherService) : WeatherRepository {
+class WeatherRepositoryImpl @Inject constructor(
+    private val weatherService: WeatherService,
+    private val weatherMapper: WeatherMapper,
+) : WeatherRepository {
     override suspend fun getCurrentWeather(latitude: Double, longitude: Double): CurrentWeather {
-        val weather = weatherService.getWeather(latitude, longitude, currentWeather = true, timezone = "UTC")
+        val weather =
+            weatherService.getWeather(latitude, longitude, currentWeather = true, timezone = "UTC")
 
-        // TODO : introduce MapStruct for that
-        return CurrentWeather(
-            temperature = weather.currentWeather.temperature,
-            windspeed = weather.currentWeather.windspeed,
-            time = weather.currentWeather.time.toLocalDateTime()
-        )
+        return weatherMapper.fromDto(weather.currentWeather)
     }
 }

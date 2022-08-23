@@ -13,6 +13,7 @@ Whole solution is created with consideration of how gradle works, so we are tryi
 - Provide an easy starting point for new android projects with most things set up to start development
 - Provide a place to search for patterns around certain areas (like navigation, or UI)
 - Create patterns that are easy to use, scalable and gradle performance friendly
+- Create the most overkill and over-engineered mini application in existence
 
 ### Non-goals
 
@@ -46,6 +47,7 @@ I'll complement the documentation in the future. Every module should have it's o
 - [Modularization](./MODULARIZATION.md)
 - [Navigation](./core/navigation/README.md)
 - [Networking](./core/networking/README.md)
+- [Object Mapping](#object-mapping)
 
 ## Sample implementations:
 
@@ -62,14 +64,29 @@ We are using Anvil as our DI framework which is much faster than Hilt due to usa
 
 We are using [Android Cache Fix Gradle Plugin](https://github.com/gradle/android-cache-fix-gradle-plugin) to fix some AGP cache issues.
 
+## Object Mapping
+
+This is somewhat controversial topic. A lot of people argue that we can just write out mappers as a simple extension method. And yes, we can,
+but this have a few disadvantages:
+
+- You have to maintain the code, like any other
+- Any change in fields of mapped object might brake the app because of out-of-date mapping code (and i found it to be the case too many times already). This can happen because:
+  - New field has default value which **should** be mapped as well. Compiler won't argue about that
+  - Some new field was introduced in the middle of data class with the same type of field nearby. This can be solved by always using named parameters, but this is one more thing to remember and enforce
+- You have to write this boring code, which can be really long at times
+- You have to share the type conversion logic if it's necessary
+
+All of those issues can be solved by using code generation library. In this pattern I'm using [MapStruct](https://mapstruct.org/).
+Disadvantage here is that this library is designed to be used for Java code, so i had to implement a few workarounds for annoying issues.
+Those can be found [here](./libraries/mapstructspi/src/main/java/pl/jsyty/architecturetemplate/libraries/mapstructspi/CustomAccessorNamingStrategy.kt).
+Another disadvantage is that this library is using kapt, which might lower the build speed of a module that it is used in.
+So it's not a clear win and **you should always consider if it is worth doing in your use-case**.
+
 ## To be done
 
-- Network calls setup (weather page)
-- Object mapping (probably some solution around MapStruct library)
 - CI setup
 - Internal qa build with debugging tools for testing purposes
 - Documentation of more complex solutions
-- Clean Architecture showcase (usage of ViewModel/UseCase/Repo/DataSource chains)
 - Testing setup and patterns!
 - Dokka setup
 - Detekt setup

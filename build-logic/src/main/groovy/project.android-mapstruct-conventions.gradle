@@ -1,0 +1,19 @@
+plugins {
+    id 'org.jetbrains.kotlin.kapt'
+}
+
+android {
+    defaultConfig {
+        javaCompileOptions {
+            annotationProcessorOptions {
+                argument("mapstruct.unmappedTargetPolicy", "ERROR")
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation libs.mapstruct.library
+    kapt libs.mapstruct.compiler
+    kapt project(':libraries:mapstructspi')
+}

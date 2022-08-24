@@ -39,6 +39,11 @@ Whole solution is created with consideration of how gradle works, so we are tryi
   - Stable ecosystem of navigation libraries (navigation around compose is still in it's infancy)
   - A lot of issues was solved using Fragment-based systems (similar set of issues still have to be solved in compose world)
 - Async class that greatly simplifies working with asynchronous data in MVI style
+- Pluto and Niddler as debugging tools
+- MapStruct as object mapping library
+- Resilience4j as resilience library (used for retry logic)
+- Kotlinx.Serialization as json serialization library
+- OkHttp and Retrofit as network stack
 
 ## Documentation
 

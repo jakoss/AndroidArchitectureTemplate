@@ -8,8 +8,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import org.orbitmvi.orbit.compose.collectAsState
 import pl.jsyty.architecturetemplate.features.longaction.LongActionDirection
-import pl.jsyty.architecturetemplate.ui.*
+import pl.jsyty.architecturetemplate.ui.BaseDirectableComposeFragment
 import pl.jsyty.architecturetemplate.ui.async.FullscreenAsyncHandler
+import tangle.viewmodel.compose.tangleViewModel
 
 class LongActionFragment : BaseDirectableComposeFragment<LongActionDirection>() {
     @Composable
@@ -18,7 +19,7 @@ class LongActionFragment : BaseDirectableComposeFragment<LongActionDirection>() 
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colors.background
         ) {
-            val viewModel = myViewModel<LongActionViewModel>()
+            val viewModel = tangleViewModel<LongActionViewModel>()
             val state by viewModel.collectAsState()
 
             FullscreenAsyncHandler(

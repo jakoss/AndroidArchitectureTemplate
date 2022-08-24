@@ -1,6 +1,7 @@
 package pl.jsyty.architecturetemplate.core.networking
 
 import android.content.Context
+import com.chimerapps.niddler.interceptor.okhttp.NiddlerOkHttpInterceptor
 import com.squareup.anvil.annotations.ContributesTo
 import dagger.Module
 import dagger.Provides
@@ -14,19 +15,27 @@ import java.io.File
 import java.time.Duration
 import javax.inject.Singleton
 
+@Suppress("Unused")
 @Module
 @ContributesTo(AppScope::class)
 object NetworkingModule {
     @Singleton
     @Provides
-    fun provideOkHttpClient(@ApplicationContext context: Context): OkHttpClient = OkHttpClient.Builder()
-        .cache(Cache(File(context.cacheDir, "api_cache"), 50L * 1024 * 1024)) // setup 50 MB of api cache
-        .connectTimeout(Duration.ofSeconds(15))
-        .readTimeout(Duration.ofSeconds(15))
-        .writeTimeout(Duration.ofSeconds(30))
-        .addInterceptor(NoContentInterceptor())
-        .addInterceptor(RetryInterceptor())
-        .build()
+    fun provideOkHttpClient(@ApplicationContext context: Context): OkHttpClient {
+        val builder = OkHttpClient.Builder()
+            .cache(Cache(File(context.cacheDir, "api_cache"), 50L * 1024 * 1024)) // setup 50 MB of api cache
+            .connectTimeout(Duration.ofSeconds(15))
+            .readTimeout(Duration.ofSeconds(15))
+            .writeTimeout(Duration.ofSeconds(30))
+            .addInterceptor(NoContentInterceptor())
+            .addInterceptor(NiddlerOkHttpInterceptor(NiddlerHandler.niddler, "Niddler", true))
+
+        OkHttpBuilderSteps.applySteps(builder)
+
+        return builder
+            .addInterceptor(RetryInterceptor())
+            .build()
+    }
 
     @Singleton
     @Provides

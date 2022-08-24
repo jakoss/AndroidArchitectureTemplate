@@ -48,6 +48,7 @@ I'll complement the documentation in the future. Every module should have it's o
 - [Navigation](./core/navigation/README.md)
 - [Networking](./core/networking/README.md)
 - [Object Mapping](#object-mapping)
+- [Internal debug build](#internal-debug-build)
 
 ## Sample implementations:
 
@@ -63,6 +64,20 @@ and [features/message](./features/message/impl/src/main/java/pl/jsyty/architectu
 We are using Anvil as our DI framework which is much faster than Hilt due to usage of kotlin compiler plugin instead kapt. We are trying to avoid kapt as much as possible since the performance hit from it is pretty much always significant.
 
 We are using [Android Cache Fix Gradle Plugin](https://github.com/gradle/android-cache-fix-gradle-plugin) to fix some AGP cache issues.
+
+## Internal debug build
+
+At my company we have highly technical QA team that is doing a lot of manual testing on our apps. We wanted to provide them with
+some build-in debugging tools so they can take a look at logs, network calls, preferences, databases and so on. They can share
+whatever they find with developers to shorten feedback loop.
+
+For this to happen we wanted to provide QA team with some special build that will include those tools, but on the other side those
+tools should never made their way to production build. We could use `debug` build type for that, but downside of that is that
+debug builds have problems with performance (especially with compose as UI framework) and that way QA couldn't evaluate app performance
+using the internal debug build.
+
+To work around that we introduced the `internal` build type. It is basically the same build as `release` but with added debug tools.
+This way QA team is testing exact same build as clients with only few additional benefits to make their work easier.
 
 ## Object Mapping
 
@@ -85,7 +100,6 @@ So it's not a clear win and **you should always consider if it is worth doing in
 ## To be done
 
 - CI setup
-- Internal qa build with debugging tools for testing purposes
 - Documentation of more complex solutions
 - Testing setup and patterns!
 - Dokka setup
@@ -93,4 +107,4 @@ So it's not a clear win and **you should always consider if it is worth doing in
 
 ## Mentions
 
-[Weather data by Open-Meteo.com](https://open-meteo.com/)
+For network calls showcase we are using api provided by: [Weather data by Open-Meteo.com](https://open-meteo.com/).

@@ -19,8 +19,18 @@ android {
 
     buildTypes {
         release {
+            // You should change that to some internal key
+            signingConfig signingConfigs.debug
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        internal {
+            // You should change that to some internal key
+            signingConfig signingConfigs.debug
+
+            versionNameSuffix '-dbg'
         }
     }
 
@@ -70,4 +80,6 @@ dependencies {
     implementation libs.fragNav
 
     implementation libs.bundles.networking
+
+    internalImplementation libs.bundles.pluto
 }

@@ -21,6 +21,9 @@ retrofit = "2.9.0"
 resilience4j = "1.7.1"
 mapstruct = "1.5.2.Final"
 
+niddler = "1.7.0"
+pluto = "2.0.5"
+
 test-kotlinCompileTesting = "1.4.9"
 
 [libraries]
@@ -96,6 +99,15 @@ resilience4j-retry = { module = "io.github.resilience4j:resilience4j-retry", ver
 mapstruct-library = { module = "org.mapstruct:mapstruct", version.ref = "mapstruct" }
 mapstruct-compiler = { module = "org.mapstruct:mapstruct-processor", version.ref = "mapstruct" }
 
+niddler-library = { module = "com.chimerapps.niddler:niddler", version.ref = "niddler" }
+niddler-noop = { module = "com.chimerapps.niddler:niddler-noop", version.ref = "niddler" }
+
+pluto-core = { module = "com.plutolib:pluto", version.ref = "pluto" }
+pluto-logger = { module = "com.plutolib.plugins:logger", version.ref = "pluto" }
+pluto-network = { module = "com.plutolib.plugins:network", version.ref = "pluto" }
+pluto-exceptions = { module = "com.plutolib.plugins:exceptions", version.ref = "pluto" }
+pluto-preferences = { module = "com.plutolib.plugins:preferences", version.ref = "pluto" }
+
 [plugins]
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
@@ -133,3 +145,11 @@ test-kotlinCompile = ["test-kotlinCompile-base", "test-kotlinCompile-ksp"]
 anvil-compiler = ["anvil-compiler-api", "anvil-compiler-utils"]
 
 networking = ["okhttp-core", "kotlinx-serialization-json"]
+
+pluto = [
+    "pluto-core",
+    "pluto-logger",
+    "pluto-network",
+    "pluto-exceptions",
+    "pluto-preferences",
+]

@@ -1,5 +1,6 @@
 package pl.jsyty.architecturetemplate.core.networking
 
+import com.chimerapps.niddler.retrofit.NiddlerRetrofitCallInjector
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
@@ -20,6 +21,7 @@ class RetrofitFactory @Inject constructor(
             .client(httpClient)
             .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
             .baseUrl(buildInformation.apiUrl + "/$baseUrl/")
+        NiddlerRetrofitCallInjector.inject(builder, NiddlerHandler.niddler, httpClient)
         return builder.build().create(serviceType)
     }
 

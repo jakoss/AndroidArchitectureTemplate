@@ -15,4 +15,9 @@ dependencies {
     implementation libs.retrofit.kotlinSerializationConverter
     implementation libs.resilience4j.kotlin
     implementation libs.resilience4j.retry
+
+    // Niddler (network traffic inspector inside Android Studio)
+    debugImplementation libs.niddler.library
+    internalImplementation libs.niddler.library
+    releaseImplementation libs.niddler.noop
 }

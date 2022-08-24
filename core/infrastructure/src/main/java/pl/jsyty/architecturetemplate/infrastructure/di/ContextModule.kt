@@ -10,6 +10,7 @@ import javax.inject.Qualifier
 @Qualifier
 annotation class ApplicationContext
 
+@Suppress("Unused")
 @Module
 @ContributesTo(AppScope::class)
 interface ContextModule {

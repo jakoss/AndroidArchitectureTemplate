@@ -15,6 +15,7 @@ import pl.jsyty.architecturetemplate.features.longaction.LongActionDirection
 import pl.jsyty.architecturetemplate.ui.*
 import pl.jsyty.architecturetemplate.ui.helpers.RegisterForFragmentResult
 import pl.jsyty.architecturetemplate.ui.theme.ArchitectureTemplateTheme
+import tangle.viewmodel.compose.tangleViewModel
 
 class DashboardFragment : BaseDirectableComposeFragment<DashboardDirection>() {
     @Composable
@@ -23,7 +24,7 @@ class DashboardFragment : BaseDirectableComposeFragment<DashboardDirection>() {
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colors.background
         ) {
-            val viewModel = myViewModel<DashboardViewModel>()
+            val viewModel = tangleViewModel<DashboardViewModel>()
             val state by viewModel.collectAsState()
             DashboardPanel(
                 state = state,

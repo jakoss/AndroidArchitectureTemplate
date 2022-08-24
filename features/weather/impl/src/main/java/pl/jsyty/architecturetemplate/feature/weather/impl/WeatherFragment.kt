@@ -10,7 +10,7 @@ import pl.jsyty.architecturetemplate.feature.weather.WeatherDirection
 import pl.jsyty.architecturetemplate.infrastructure.extensions.localisedDateTime
 import pl.jsyty.architecturetemplate.ui.BaseDirectableComposeFragment
 import pl.jsyty.architecturetemplate.ui.async.FullscreenAsyncHandler
-import pl.jsyty.architecturetemplate.ui.myViewModel
+import tangle.viewmodel.compose.tangleViewModel
 
 class WeatherFragment : BaseDirectableComposeFragment<WeatherDirection>() {
     @Composable
@@ -19,7 +19,7 @@ class WeatherFragment : BaseDirectableComposeFragment<WeatherDirection>() {
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colors.background
         ) {
-            val viewModel = myViewModel<WeatherViewModel>()
+            val viewModel = tangleViewModel<WeatherViewModel>()
             val state by viewModel.collectAsState()
 
             FullscreenAsyncHandler(

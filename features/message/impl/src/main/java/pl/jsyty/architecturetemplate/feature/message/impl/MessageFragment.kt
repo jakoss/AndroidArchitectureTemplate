@@ -16,9 +16,11 @@ import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 import pl.jsyty.architecturetemplate.feature.message.MessageDirection
 import pl.jsyty.architecturetemplate.feature.message.MessageNavigationResult
-import pl.jsyty.architecturetemplate.ui.*
+import pl.jsyty.architecturetemplate.ui.BaseDirectableComposeDialogFragment
+import pl.jsyty.architecturetemplate.ui.LocalNavigationController
 import pl.jsyty.architecturetemplate.ui.helpers.setNavigationResult
 import pl.jsyty.architecturetemplate.ui.theme.ArchitectureTemplateTheme
+import tangle.viewmodel.compose.tangleViewModel
 import timber.log.Timber
 
 class MessageFragment : BaseDirectableComposeDialogFragment<MessageDirection>() {
@@ -36,7 +38,7 @@ class MessageFragment : BaseDirectableComposeDialogFragment<MessageDirection>() 
                 .fillMaxWidth(),
             color = MaterialTheme.colors.background
         ) {
-            val viewModel = myViewModel<MessageViewModel>()
+            val viewModel = tangleViewModel<MessageViewModel>()
             val state by viewModel.collectAsState()
             MessagePanel(
                 state = state,

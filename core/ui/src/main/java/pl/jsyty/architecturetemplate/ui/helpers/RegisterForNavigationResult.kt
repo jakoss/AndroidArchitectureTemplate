@@ -9,8 +9,17 @@ import androidx.lifecycle.LifecycleOwner
 import pl.jsyty.architecturetemplate.infrastructure.navigation.NavigationResult
 import pl.jsyty.architecturetemplate.ui.LocalChildFragmentManager
 
+/**
+ * Registers for result of navigation that is represented by given [navigationResult].
+ *
+ * @param T Type of result that will be returned
+ * @param navigationResult Type of navigation result we're registering for
+ * @param fragmentManager Fragment manager we want to use. Use [LocalChildFragmentManager] for dialogs (default) and [pl.jsyty.architecturetemplate.ui.LocalParentFragmentManager] for results from sibling screens.
+ * @param lifecycleOwner Lifecycle owner that will be used for listening. By default Fragments [LocalLifecycleOwner] is used.
+ * @param callback Will be called with a parameter of type [T] when the result is passed to us.
+ */
 @Composable
-fun <T : Any> RegisterForFragmentResult(
+fun <T : Any> RegisterForNavigationResult(
     navigationResult: NavigationResult<T>,
     fragmentManager: FragmentManager = LocalChildFragmentManager.current,
     lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current,
@@ -25,6 +34,13 @@ fun <T : Any> RegisterForFragmentResult(
     }
 }
 
+/**
+ * Sets the navigation result for listeners
+ *
+ * @param T Type of result that will be passed
+ * @param navigationResult Type of navigation result we're passing
+ * @param value Result that will be passed
+ */
 fun <T : Any> Fragment.setNavigationResult(navigationResult: NavigationResult<T>, value: T) {
     setFragmentResult(
         navigationResult.resultKey,

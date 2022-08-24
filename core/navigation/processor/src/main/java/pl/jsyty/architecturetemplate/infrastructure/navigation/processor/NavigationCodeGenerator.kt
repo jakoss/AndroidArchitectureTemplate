@@ -11,6 +11,9 @@ import org.jetbrains.kotlin.descriptors.ModuleDescriptor
 import org.jetbrains.kotlin.psi.KtFile
 import java.io.File
 
+/**
+ * Searches for any class that extends BaseDirectableComposeFragment or BaseDirectableComposeDialogFragment and generated binding code to this fragment
+ */
 @OptIn(ExperimentalAnvilApi::class)
 @AutoService(CodeGenerator::class)
 @Suppress("Unused")
@@ -21,11 +24,13 @@ class NavigationCodeGenerator : CodeGenerator {
         projectFiles: Collection<KtFile>
     ): Collection<GeneratedFile> {
         return projectFiles
+            // let's take only classes
             .classAndInnerClassReferences(module)
-            .map(::isDirectableFragment)
-            .filterNotNull()
+            // let's search only for directable fragments and filter out everything else
+            .mapNotNull(::isDirectableFragment)
+            // let's generate DirectionFactory file for all directable fragments
             .map {
-                val fileName = it.fragmentReference.shortName + "NavigationInjector"
+                val fileName = it.fragmentReference.shortName + "_DirectionFactory"
                 val packageName = it.fragmentReference.packageFqName.asString()
                 createGeneratedFile(
                     codeGenDir,
@@ -43,6 +48,14 @@ class NavigationCodeGenerator : CodeGenerator {
 
     override fun isApplicable(context: AnvilContext) = true
 
+    /**
+     * Checks given [reference] for proper directable base class and extracts the direction type from generic parameter
+     *
+     * @param reference Class we are analyzing
+     * @return [DirectableFragment] if the class is properly setup for binding, null otherwise
+     *
+     * @throws AnvilCompilationException if the processor cannot extract Direction type from the [reference]
+     */
     private fun isDirectableFragment(reference: ClassReference): DirectableFragment? {
         // search for all classes that have BaseDirectableComposeFragment as ancestor
         val ancestor = reference.directSuperTypeReferences()
@@ -53,7 +66,7 @@ class NavigationCodeGenerator : CodeGenerator {
         // check for the direction type
         val directionType =
             ancestor.unwrappedTypes.single().resolveGenericTypeNameOrNull(reference)?.toString()
-                ?: error("No Direction type can be inferred by generic type")
+                ?: throw AnvilCompilationException(message = "No Direction type can be inferred by generic type")
 
         // super class that marks directable fragment
         if (!reference.allSuperTypeClassReferences()
@@ -67,13 +80,23 @@ class NavigationCodeGenerator : CodeGenerator {
         return DirectableFragment(reference, directionType)
     }
 
+    /**
+     * Generate code for fragment factory that will bind Direction to a Fragment
+     *
+     * @param fileName Name of a file and class
+     * @param packageName Package of generated file
+     * @param directableFragment Info about Fragment and Direction we want to bind
+     */
     private fun generateCode(
         fileName: String,
         packageName: String,
         directableFragment: DirectableFragment
     ) = FileSpec.buildFile(packageName = packageName, fileName = fileName) {
         addType(
-            TypeSpec.classBuilder(directableFragment.fragmentReference.shortName + "_DirectionFactory")
+            // @ContributesMultibinding(AppScope::class)
+            // @DirectionKey("package.name.of.direction.DirectionName")
+            // public FragmentName_DirectionFactory : FragmentFactory
+            TypeSpec.classBuilder(fileName)
                 .addModifiers(KModifier.PUBLIC)
                 .primaryConstructor(
                     FunSpec.constructorBuilder()
@@ -96,6 +119,10 @@ class NavigationCodeGenerator : CodeGenerator {
                         .build()
                 )
                 .addSuperinterface(ClassNames.fragmentFactory)
+
+                // fun create(): Fragment {
+                //    return FragmentName()
+                //}
                 .addFunction(
                     FunSpec.builder("create")
                         .addModifiers(KModifier.OVERRIDE)

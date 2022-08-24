@@ -10,6 +10,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 
+/**
+ * Loading screen that will fill all available space
+ *
+ * @param modifier Modifier for the parent
+ * @param color Color of the loading indicator
+ * @param background Color of the background
+ * @param alpha Alpha of the background (by default the background is semi-transparent)
+ */
 @Composable
 fun FullscreenLoader(
     modifier: Modifier = Modifier,

@@ -9,6 +9,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
+/**
+ * Error screen that will fill all available space
+ *
+ *
+ * @param modifier Modifier for the parent view
+ * @param retryAction Will be called when used tries to retry action that failed
+ */
 @Composable
 fun FullscreenError(
     modifier: Modifier = Modifier,

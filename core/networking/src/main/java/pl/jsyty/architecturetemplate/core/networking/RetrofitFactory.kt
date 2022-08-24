@@ -10,6 +10,11 @@ import pl.jsyty.architecturetemplate.infrastructure.BuildInformation
 import retrofit2.Retrofit
 import javax.inject.Inject
 
+/**
+ * Simplifies setup of [Retrofit] based services.
+ *
+ * Attaches proper converters, setups shared base url and additional tools, like Niddler.
+ */
 class RetrofitFactory @Inject constructor(
     private val httpClient: OkHttpClient,
     private val buildInformation: BuildInformation,

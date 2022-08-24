@@ -13,7 +13,7 @@ import pl.jsyty.architecturetemplate.feature.message.MessageNavigationResult
 import pl.jsyty.architecturetemplate.feature.weather.WeatherDirection
 import pl.jsyty.architecturetemplate.features.longaction.LongActionDirection
 import pl.jsyty.architecturetemplate.ui.*
-import pl.jsyty.architecturetemplate.ui.helpers.RegisterForFragmentResult
+import pl.jsyty.architecturetemplate.ui.helpers.RegisterForNavigationResult
 import pl.jsyty.architecturetemplate.ui.theme.ArchitectureTemplateTheme
 import tangle.viewmodel.compose.tangleViewModel
 
@@ -32,7 +32,7 @@ class DashboardFragment : BaseDirectableComposeFragment<DashboardDirection>() {
                 updateName = viewModel::setName
             )
 
-            RegisterForFragmentResult(MessageNavigationResult) { fullMessage ->
+            RegisterForNavigationResult(MessageNavigationResult) { fullMessage ->
                 viewModel.setFullMessage(fullMessage)
             }
         }

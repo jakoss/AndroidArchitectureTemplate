@@ -6,6 +6,9 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import java.time.*
 
+/**
+ * Serializer that converts json string to [OffsetDateTime]
+ */
 object OffsetDateTimeSerializer : KSerializer<OffsetDateTime> {
     private val localZoneOffset: ZoneOffset by lazy { OffsetDateTime.now().offset }
 

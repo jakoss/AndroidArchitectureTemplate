@@ -3,6 +3,11 @@ package pl.jsyty.architecturetemplate.core.networking
 import android.app.Application
 import com.chimerapps.niddler.core.AndroidNiddler
 
+/**
+ * Manages [AndroidNiddler] initialization and lifecycle
+ *
+ * Stores internal [niddler] instance for interceptor and retrofit plugin setup
+ */
 object NiddlerHandler {
     internal lateinit var niddler: AndroidNiddler
 

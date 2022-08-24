@@ -7,6 +7,18 @@ import pl.jsyty.architecturetemplate.infrastructure.async.*
 import pl.jsyty.architecturetemplate.ui.components.FullscreenError
 import pl.jsyty.architecturetemplate.ui.components.FullscreenLoader
 
+/**
+ * Adds a fullscreen handler for whole [Async] states.
+ * This handler is specialized for components that should take whole available space.
+ * Fullscreen components are basically "fillMaxSize"
+ *
+ * @param state State to be handled
+ * @param retryAction Handler for "try again" click
+ * @param error Component for error state. Defaults to [FullscreenError]
+ * @param loading Component for loading state. Defaults to [FullscreenLoader]
+ * @param uninitialized Component for uninitialized state. Defaults to [FullscreenLoader]
+ * @param success Component for success state
+ */
 @Composable
 fun <T> FullscreenAsyncHandler(
     state: Async<T>,

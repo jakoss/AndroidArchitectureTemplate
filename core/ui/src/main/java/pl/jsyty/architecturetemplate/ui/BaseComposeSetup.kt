@@ -11,6 +11,11 @@ import pl.jsyty.architecturetemplate.ui.theme.ArchitectureTemplateTheme
 
 private val navigationComponent by lazy { ComponentHolder.component<NavigationComponent>() }
 
+/**
+ * Standard setup for all compose-based fragments
+ *
+ * @param content Content of screen that will be displayed
+ */
 fun Fragment.baseComposeSetup(content: @Composable () -> Unit) =
     ComposeView(requireContext()).apply {
         setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)

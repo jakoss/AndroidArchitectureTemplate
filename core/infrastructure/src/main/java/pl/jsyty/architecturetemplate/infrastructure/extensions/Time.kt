@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package pl.jsyty.architecturetemplate.infrastructure.extensions
 
 import java.time.*

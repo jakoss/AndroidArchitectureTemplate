@@ -29,56 +29,89 @@ class NavigationControllerImpl @Inject constructor(
     )
     override val navigationEvents = mutableNavigationEventsDispatcher.asSharedFlow()
 
+    /**
+     * @see NavigationController.push
+     */
     override fun push(direction: Direction) {
-        navigate(
+        emitNavigationEvent(
             NavigationEvent.PushFragment(
                 resolveFragment(direction)
             )
         )
     }
 
+    /**
+     * @see NavigationController.showDialog
+     */
     override fun showDialog(direction: Direction) {
         val fragment = resolveFragment(direction)
-        if (fragment !is DialogFragment) error("Direction does not point to dialog fragment")
-        navigate(NavigationEvent.ShowDialog(fragment))
+        require(fragment is DialogFragment){
+            "Direction does not point to dialog fragment"
+        }
+        emitNavigationEvent(NavigationEvent.ShowDialog(fragment))
     }
 
+    /**
+     * @see NavigationController.pop
+     */
     override fun pop(level: Int) {
-        navigate(NavigationEvent.Pop(level))
+        emitNavigationEvent(NavigationEvent.Pop(level))
     }
 
+    /**
+     * @see NavigationController.popToRoot
+     */
     override fun popToRoot() {
-        navigate(NavigationEvent.PopToRoot)
+        emitNavigationEvent(NavigationEvent.PopToRoot)
     }
 
+    /**
+     * @see NavigationController.popToRootAndPush
+     */
     override fun popToRootAndPush(direction: Direction) {
-        navigate(
+        emitNavigationEvent(
             NavigationEvent.PopToRootAndPush(
                 resolveFragment(direction)
             )
         )
     }
 
+    /**
+     * @see NavigationController.replace
+     */
     override fun replace(direction: Direction) {
-        navigate(
+        emitNavigationEvent(
             NavigationEvent.ReplaceFragment(
                 resolveFragment(direction)
             )
         )
     }
 
+    /**
+     * @see NavigationController.popToRootAndReplace
+     */
     override fun popToRootAndReplace(direction: Direction) {
-        navigate(
+        emitNavigationEvent(
             NavigationEvent.PopToRootAndReplace(
                 resolveFragment(direction)
             )
         )
     }
 
-    private fun navigate(event: NavigationEvent) {
+    private fun emitNavigationEvent(event: NavigationEvent) {
         mutableNavigationEventsDispatcher.tryEmit(event)
     }
 
+    /**
+     * We have [handlers] map which represents which [Direction] has been bound to which [Fragment].
+     * This funtion resolves proper [Fragment] for given [direction] and (if exists) attach arguments to this fragment.
+     *
+     * @param direction Direction that points to a [Fragment] we want in return
+     * @return Resolved [Fragment] that was bound to [direction]
+     *
+     * @see Direction
+     * @throws IllegalStateException if given [direction] was not bound to any [Fragment]
+     */
     override fun resolveFragment(direction: Direction): Fragment {
         val factory =
             handlers[direction.javaClass.canonicalName ?: error("No canonical name for direction")]

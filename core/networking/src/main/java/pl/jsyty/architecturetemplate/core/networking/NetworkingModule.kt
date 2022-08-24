@@ -19,6 +19,10 @@ import javax.inject.Singleton
 @Module
 @ContributesTo(AppScope::class)
 object NetworkingModule {
+
+    /**
+     * Provide basic [OkHttpClient] setup complete with cache, timeout and all interceptors
+     */
     @Singleton
     @Provides
     fun provideOkHttpClient(@ApplicationContext context: Context): OkHttpClient {
@@ -37,6 +41,9 @@ object NetworkingModule {
             .build()
     }
 
+    /**
+     * Provide basic [Json] setup that will be shared accross the application
+     */
     @Singleton
     @Provides
     fun provideJson(): Json = Json {

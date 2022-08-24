@@ -1,5 +1,8 @@
 package pl.jsyty.architecturetemplate.infrastructure.navigation
 
+/**
+ * Navigation controller that can be injected and used anywhere in the app (mostly from views, fragments or ViewModels).
+ */
 interface NavigationController {
     /**
      * Push given [Direction] to top of the stack

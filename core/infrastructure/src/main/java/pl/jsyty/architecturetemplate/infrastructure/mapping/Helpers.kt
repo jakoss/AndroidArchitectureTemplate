@@ -1,3 +1,4 @@
+// ktlint-disable filename
 package pl.jsyty.architecturetemplate.infrastructure.mapping
 
 import org.mapstruct.factory.Mappers

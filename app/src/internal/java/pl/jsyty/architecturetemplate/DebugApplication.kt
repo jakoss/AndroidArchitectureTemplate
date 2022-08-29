@@ -12,7 +12,7 @@ import pl.jsyty.architecturetemplate.core.networking.OkHttpBuilderSteps
 import timber.log.Timber
 
 @Suppress("unused")
-class DebugApplication: MyApplication() {
+class DebugApplication : MyApplication() {
     override fun setupPreInjection() {
         OkHttpBuilderSteps.addBuilder(object : OkHttpBuilderStep {
             override fun addBuildStep(builder: OkHttpClient.Builder) {

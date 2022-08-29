@@ -45,7 +45,7 @@ class NavigationControllerImpl @Inject constructor(
      */
     override fun showDialog(direction: Direction) {
         val fragment = resolveFragment(direction)
-        require(fragment is DialogFragment){
+        require(fragment is DialogFragment) {
             "Direction does not point to dialog fragment"
         }
         emitNavigationEvent(NavigationEvent.ShowDialog(fragment))

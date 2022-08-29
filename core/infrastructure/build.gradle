@@ -10,4 +10,7 @@ dependencies {
     implementation libs.androidx.fragment
     implementation libs.orbitmvi.viewmodel
     implementation libs.mapstruct.library
+
+    // needed to mark certain classes as @Stable or @Immutable
+    implementation libs.compose.runtime
 }

@@ -19,11 +19,11 @@ object NiddlerHandler {
             .build()
     }
 
-    fun start(){
+    fun start() {
         niddler.start()
     }
 
-    fun stop(){
+    fun stop() {
         niddler.close()
     }
 }

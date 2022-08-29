@@ -1,5 +1,7 @@
 package pl.jsyty.architecturetemplate.infrastructure.async
 
+import androidx.compose.runtime.Immutable
+
 /**
  * Class that represents single asynchronous action in multiple states
  *
@@ -10,6 +12,7 @@ package pl.jsyty.architecturetemplate.infrastructure.async
  * @property shouldLoad Should the resource be loaded? It will be true for uninitialized and failed states
  * @property value Value of loaded resource (null for failed, unitialized or loaded states)
  */
+@Immutable
 sealed class Async<out T>(val complete: Boolean, val shouldLoad: Boolean, private val value: T?) {
     /**
      * Returns the value or null.
@@ -22,15 +25,19 @@ sealed class Async<out T>(val complete: Boolean, val shouldLoad: Boolean, privat
     open operator fun invoke(): T? = value
 }
 
+@Immutable
 object Uninitialized : Async<Nothing>(complete = false, shouldLoad = true, value = null), Incomplete
 
+@Immutable
 data class Loading<out T>(private val value: T? = null) : Async<T>(complete = false, shouldLoad = false, value = value), Incomplete
 
+@Immutable
 data class Success<out T>(private val value: T) : Async<T>(complete = true, shouldLoad = false, value = value) {
 
     override operator fun invoke(): T = value
 }
 
+@Immutable
 data class Fail<out T>(val error: Throwable, private val value: T? = null) : Async<T>(complete = true, shouldLoad = true, value = value) {
     override fun equals(other: Any?): Boolean {
         if (other !is Fail<*>) return false
@@ -54,4 +61,5 @@ data class Fail<out T>(val error: Throwable, private val value: T? = null) : Asy
  *     is Fail       -> Unit
  * }
  */
+@Immutable
 interface Incomplete

@@ -37,6 +37,8 @@ jobs:
             -   name: Validating Gradle wrapper checksum
                 uses: gradle/wrapper-validation-action@v1
 
+            -   run: chmod +x ./gradlew
+
             -   name: Format code
                 uses: gradle/gradle-build-action@v2
                 with:

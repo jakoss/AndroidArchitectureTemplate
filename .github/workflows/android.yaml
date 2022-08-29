@@ -4,11 +4,12 @@ on:
     push:
         branches:
             - develop
+            - main
     pull_request:
         types: [ opened, synchronize, reopened ]
 jobs:
     validate:
-        runs-on: ubuntu
+        runs-on: ubuntu-latest
 
         steps:
             -   name: Cancel Workflow Action

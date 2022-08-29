@@ -104,8 +104,6 @@ So it's not a clear win and **you should always consider if it is worth doing in
 
 ## To be done
 
-- CI setup
-- Documentation of more complex solutions
 - Testing setup and patterns!
 - Dokka setup
 - Detekt setup

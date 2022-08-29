@@ -17,6 +17,11 @@ import pl.jsyty.architecturetemplate.infrastructure.navigation.NavigationCompone
 import pl.jsyty.architecturetemplate.infrastructure.navigation.NavigationEvent
 import timber.log.Timber
 
+/**
+ * Navigation host fragment - all backstack management happens here.
+ *
+ * It's basically the implementation of navigation events that's translated to fragments backstack.
+ */
 class MainNavigationFragment : Fragment(R.layout.fragment_main_navigation) {
     private val navigationComponent by lazy { ComponentHolder.component<NavigationComponent>() }
 

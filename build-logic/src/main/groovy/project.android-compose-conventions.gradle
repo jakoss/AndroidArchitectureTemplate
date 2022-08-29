@@ -5,6 +5,21 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion libs.versions.compose.compiler.get()
     }
+
+    // Added a property to reduce compilation bloat
+    // Also, the compose compiler reports should be done only for release builds anyway
+    if (findProperty("enableComposeCompilerReports") == "true") {
+        kotlinOptions {
+            freeCompilerArgs += [
+                "-P",
+                "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=" +
+                        buildDir.absolutePath + "/compose_metrics",
+                "-P",
+                "plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=" +
+                        buildDir.absolutePath + "/compose_metrics"
+            ]
+        }
+    }
 }
 
 dependencies {

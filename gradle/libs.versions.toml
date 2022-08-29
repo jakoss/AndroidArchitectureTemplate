@@ -42,6 +42,7 @@ anvil-compiler-utils = { module = "com.squareup.anvil:compiler-utils", version.r
 dagger-core = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
 
+compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "compose-ui" }
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose-ui" }
 compose-uitooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" , version.ref = "compose-ui" }
 compose-uitooling-core = { module = "androidx.compose.ui:ui-tooling" , version.ref = "compose-ui" }

@@ -17,10 +17,10 @@ Whole solution is created with consideration of how gradle works, so we are tryi
 
 ### Non-goals
 
-- This project does not aim to provide a final and full solution for any project. It should be always review and modified according to the needs of particular project
-- Library enforcement or flame wars. Since the goal is to provide patterns and starting point - pretty much all libraries used can be replace with something similar or even custom solution
+- This project does not aim to provide a final and full solution for any project. It should be always reviewed and modified according to the needs of particular project
+- Library enforcement or flame wars. Since the goal is to provide patterns and starting point - pretty much all libraries used can be replaced with something similar or even custom solution
 - Provide patterns that are tighly coupled - you can take anything you need from this template and leave out everything that does not apply to your use-case
-- It's never final. The template will evolve with my knowledge and the ecosystem
+- It's never final. The template will evolve along my knowledge and the ecosystem
 
 ## Libraries and Patterns used:
 
@@ -46,8 +46,6 @@ Whole solution is created with consideration of how gradle works, so we are tryi
 - OkHttp and Retrofit as network stack
 
 ## Documentation
-
-I'll complement the documentation in the future. Every module should have it's own README file and some non-trivial classes should be fully documented.
 
 - [Modularization](./MODULARIZATION.md)
 - [Navigation](./core/navigation/README.md)

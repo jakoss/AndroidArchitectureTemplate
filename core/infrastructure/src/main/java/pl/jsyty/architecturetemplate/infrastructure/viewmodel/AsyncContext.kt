@@ -12,7 +12,7 @@ import timber.log.Timber
 interface AsyncContext<STATE : Any, SIDE_EFFECT : Any, RESOURCE : Any> {
     suspend fun execute(
         cachedValue: Async<RESOURCE>? = null,
-        reducer: SimpleContext<STATE>.(Async<RESOURCE>) -> STATE
+        reducer: SimpleContext<STATE>.(Async<RESOURCE>) -> STATE,
     )
 }
 
@@ -25,7 +25,7 @@ internal class AsyncContextImpl<STATE : Any, SIDE_EFFECT : Any, RESOURCE : Any>(
 ) : AsyncContext<STATE, SIDE_EFFECT, RESOURCE> {
     override suspend fun execute(
         cachedValue: Async<RESOURCE>?,
-        reducer: SimpleContext<STATE>.(Async<RESOURCE>) -> STATE
+        reducer: SimpleContext<STATE>.(Async<RESOURCE>) -> STATE,
     ) {
         try {
             simpleSyntaxContext.reduce { reducer(Loading(cachedValue?.invoke())) }

@@ -1,5 +1,6 @@
 package pl.jsyty.architecturetemplate.infrastructure.viewmodel
 
+import kotlinx.coroutines.CancellationException
 import org.orbitmvi.orbit.syntax.simple.*
 import pl.jsyty.architecturetemplate.infrastructure.async.*
 import timber.log.Timber
@@ -9,7 +10,10 @@ import timber.log.Timber
  * It will emit proper loading/success/error stated depenending on the asynchronous call step.
  */
 interface AsyncContext<STATE : Any, SIDE_EFFECT : Any, RESOURCE : Any> {
-    suspend fun execute(cachedValue: Async<RESOURCE>? = null, reducer: SimpleContext<STATE>.(Async<RESOURCE>) -> STATE)
+    suspend fun execute(
+        cachedValue: Async<RESOURCE>? = null,
+        reducer: SimpleContext<STATE>.(Async<RESOURCE>) -> STATE
+    )
 }
 
 /**
@@ -19,11 +23,16 @@ internal class AsyncContextImpl<STATE : Any, SIDE_EFFECT : Any, RESOURCE : Any>(
     private val action: suspend (STATE) -> RESOURCE,
     private val simpleSyntaxContext: SimpleSyntax<STATE, SIDE_EFFECT>,
 ) : AsyncContext<STATE, SIDE_EFFECT, RESOURCE> {
-    override suspend fun execute(cachedValue: Async<RESOURCE>?, reducer: SimpleContext<STATE>.(Async<RESOURCE>) -> STATE) {
+    override suspend fun execute(
+        cachedValue: Async<RESOURCE>?,
+        reducer: SimpleContext<STATE>.(Async<RESOURCE>) -> STATE
+    ) {
         try {
             simpleSyntaxContext.reduce { reducer(Loading(cachedValue?.invoke())) }
             val result = action(simpleSyntaxContext.state)
             simpleSyntaxContext.reduce { reducer(Success(result)) }
+        } catch (_: CancellationException) {
+            Timber.i("Async actions has been cancelled")
         } catch (ex: Throwable) {
             Timber.e(ex)
             simpleSyntaxContext.reduce { reducer(Fail(ex, cachedValue?.invoke())) }

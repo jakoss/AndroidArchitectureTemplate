@@ -16,7 +16,6 @@ class RetryInterceptor : Interceptor {
                 maxAttempts(3)
                 retryExceptions(IOException::class.java)
                 retryOnResult { it.code in 502..504 }
-                failAfterMaxAttempts(true)
                 intervalFunction { numOfAttempts -> numOfAttempts * 1000L }
             }
         )

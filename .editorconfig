@@ -16,7 +16,7 @@ ij_formatter_tags_enabled = false
 ij_smart_tabs = false
 ij_wrap_on_typing = false
 
-disabled_rules = no-wildcard-imports, no-empty-class-body, import-ordering
+ktlint_disabled_rules = no-wildcard-imports, no-empty-class-body, import-ordering
 
 [*.sh]
 end_of_line = lf

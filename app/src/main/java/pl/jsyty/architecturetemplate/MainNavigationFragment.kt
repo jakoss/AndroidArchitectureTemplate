@@ -70,6 +70,7 @@ class MainNavigationFragment : Fragment(R.layout.fragment_main_navigation) {
             }
         }
 
+        @Suppress("MagicNumber")
         if (Build.VERSION.SDK_INT >= 33) {
             requireActivity().onBackInvokedDispatcher.registerOnBackInvokedCallback(
                 OnBackInvokedDispatcher.PRIORITY_DEFAULT

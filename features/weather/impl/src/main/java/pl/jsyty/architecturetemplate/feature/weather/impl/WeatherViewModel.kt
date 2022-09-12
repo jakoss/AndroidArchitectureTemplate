@@ -17,6 +17,7 @@ class WeatherViewModel @VMInject constructor(private val weatherRepository: Weat
 
     fun initialize() = intent {
         async {
+            @Suppress("MagicNumber")
             weatherRepository.getCurrentWeather(52.2297, 21.0122)
         }.execute { state.copy(currentWeather = it) }
     }

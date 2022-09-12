@@ -15,4 +15,5 @@ dependencies {
     implementation libs.tangle.plugin
     implementation libs.androidCacheFix
     implementation libs.kotlinx.serialization.plugin
+    implementation libs.detekt.plugin
 }

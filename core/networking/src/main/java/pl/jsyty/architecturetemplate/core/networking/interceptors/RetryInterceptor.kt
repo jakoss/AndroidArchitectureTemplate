@@ -9,6 +9,7 @@ import java.io.IOException
 /**
  * Retries all failed requests with exponential backoff
  */
+@Suppress("MagicNumber")
 class RetryInterceptor : Interceptor {
     private val retryRegistry = RetryRegistry {
         withRetryConfig(

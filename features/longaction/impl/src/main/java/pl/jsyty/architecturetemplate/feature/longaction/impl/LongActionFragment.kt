@@ -24,7 +24,7 @@ class LongActionFragment : BaseDirectableComposeFragment<LongActionDirection>() 
 
             FullscreenAsyncHandler(
                 state = state.action,
-                retryAction = { viewModel.initialize(fail = false) },
+                onRetryAction = { viewModel.initialize(fail = false) },
                 uninitialized = {
                     Column(
                         modifier = Modifier.padding(16.dp),

@@ -24,9 +24,12 @@ class WeatherFragment : BaseDirectableComposeFragment<WeatherDirection>() {
 
             FullscreenAsyncHandler(
                 state = state.currentWeather,
-                retryAction = { viewModel.initialize() }
+                onRetryAction = { viewModel.initialize() }
             ) {
-                Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                Column(
+                    modifier = Modifier.padding(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
                     Text(text = "Temperature: ${it.temperature}")
                     Text(text = "Windspeed: ${it.windspeed}")
                     Text(

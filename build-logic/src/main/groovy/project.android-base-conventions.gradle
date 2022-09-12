@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.plugin.parcelize'
     id 'com.squareup.anvil'
     id 'org.jmailen.kotlinter'
+    id 'io.gitlab.arturbosch.detekt'
     id 'org.gradle.android.cache-fix'
 }
 
@@ -51,8 +52,18 @@ anvil {
     generateDaggerFactories = true
 }
 
+detekt {
+    parallel = true
+
+    config = files(rootDir.absolutePath + "/config/detekt/detekt.yml")
+
+    ignoredBuildTypes = ["release", "internal"]
+}
+
 dependencies {
     coreLibraryDesugaring libs.desugaring
+
+    detektPlugins libs.detekt.rules.compose
 
     implementation libs.coroutines.lib
 

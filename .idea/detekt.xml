@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DetektPluginSettings">
+    <option name="configurationFilePaths">
+      <set>
+        <option value="$PROJECT_DIR$/config/detekt/detekt.yml" />
+      </set>
+    </option>
+    <option name="pluginJarPaths">
+      <set>
+        <option value="$PROJECT_DIR$/config/detekt/plugins/detekt-rules-compose-1.2.1.jar" />
+      </set>
+    </option>
+    <option name="treatAsErrors" value="true" />
+  </component>
+</project>

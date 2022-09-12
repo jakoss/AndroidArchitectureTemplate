@@ -11,6 +11,7 @@ import pl.jsyty.architecturetemplate.infrastructure.navigation.Direction
  */
 abstract class BaseDirectableComposeDialogFragment<T : Direction> : BaseComposeDialogFragment() {
     protected val direction: T
-        get() = @Suppress("DEPRECATION") arguments?.getParcelable(ARGUMENT_KEY) as? T
+        @Suppress("DEPRECATION")
+        get() = arguments?.getParcelable(ARGUMENT_KEY) as? T
             ?: error("No argument found")
 }

@@ -8,6 +8,7 @@ import okhttp3.ResponseBody.Companion.toResponseBody
 /**
  * Treats 200 as proper successful response
  */
+@Suppress("MagicNumber")
 class NoContentInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val response = chain.proceed(chain.request())

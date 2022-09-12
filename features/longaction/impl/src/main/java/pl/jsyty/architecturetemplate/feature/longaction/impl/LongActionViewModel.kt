@@ -15,8 +15,10 @@ class LongActionViewModel : BaseViewModel<LongActionViewModel.State, Unit>(State
     fun initialize(fail: Boolean) = intent {
         async {
             // simulate long running operation
+            @Suppress("MagicNumber")
             delay(5000)
             if (fail) {
+                @Suppress("TooGenericExceptionThrown")
                 throw RuntimeException("Operation failed!")
             } else {
                 "Success!"

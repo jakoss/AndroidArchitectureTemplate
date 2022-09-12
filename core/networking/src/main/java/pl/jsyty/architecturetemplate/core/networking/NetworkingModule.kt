@@ -25,9 +25,15 @@ object NetworkingModule {
      */
     @Singleton
     @Provides
+    @Suppress("MagicNumber")
     fun provideOkHttpClient(@ApplicationContext context: Context): OkHttpClient {
         val builder = OkHttpClient.Builder()
-            .cache(Cache(File(context.cacheDir, "api_cache"), 50L * 1024 * 1024)) // setup 50 MB of api cache
+            .cache(
+                Cache(
+                    File(context.cacheDir, "api_cache"),
+                    50L * 1024 * 1024
+                )
+            ) // setup 50 MB of api cache
             .connectTimeout(Duration.ofSeconds(15))
             .readTimeout(Duration.ofSeconds(15))
             .writeTimeout(Duration.ofSeconds(30))

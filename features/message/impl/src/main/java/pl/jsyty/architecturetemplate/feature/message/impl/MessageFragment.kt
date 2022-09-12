@@ -42,8 +42,8 @@ class MessageFragment : BaseDirectableComposeDialogFragment<MessageDirection>() 
             val state by viewModel.collectAsState()
             MessagePanel(
                 state = state,
-                updateMessage = viewModel::updateMessage,
-                returnMessage = viewModel::returnMessage
+                onMessageUpdate = viewModel::updateMessage,
+                onMessageReturn = viewModel::returnMessage
             )
 
             val navigationController = LocalNavigationController.current
@@ -61,8 +61,8 @@ class MessageFragment : BaseDirectableComposeDialogFragment<MessageDirection>() 
     @Composable
     private fun MessagePanel(
         state: MessageViewModel.State,
-        updateMessage: (String) -> Unit,
-        returnMessage: () -> Unit,
+        onMessageUpdate: (String) -> Unit,
+        onMessageReturn: () -> Unit,
     ) {
         Column(
             modifier = Modifier.padding(16.dp),
@@ -71,16 +71,16 @@ class MessageFragment : BaseDirectableComposeDialogFragment<MessageDirection>() 
             Text(text = "Provided name: ${state.name}")
             TextField(
                 value = state.message,
-                onValueChange = updateMessage,
+                onValueChange = onMessageUpdate,
                 label = { Text(text = "Message") },
                 keyboardActions = KeyboardActions(
                     onDone = {
-                        returnMessage()
+                        onMessageReturn()
                     }
                 ),
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done)
             )
-            Button(onClick = returnMessage) {
+            Button(onClick = onMessageReturn) {
                 Text(text = "Return message")
             }
         }
@@ -92,8 +92,8 @@ class MessageFragment : BaseDirectableComposeDialogFragment<MessageDirection>() 
         ArchitectureTemplateTheme {
             MessagePanel(
                 state = MessageViewModel.State(name = "Test name"),
-                updateMessage = {},
-                returnMessage = {}
+                onMessageUpdate = {},
+                onMessageReturn = {}
             )
         }
     }

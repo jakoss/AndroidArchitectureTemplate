@@ -28,21 +28,21 @@ class DashboardFragment : BaseDirectableComposeFragment<DashboardDirection>() {
             val state by viewModel.collectAsState()
             DashboardPanel(
                 state = state,
-                createMessage = viewModel::createMessage,
-                updateName = viewModel::setName
+                onMessageCreate = viewModel::createMessage,
+                onNameUpdate = viewModel::setName
             )
 
-            RegisterForNavigationResult(MessageNavigationResult) { fullMessage ->
+            RegisterForNavigationResult(MessageNavigationResult, onResultReturn = { fullMessage ->
                 viewModel.setFullMessage(fullMessage)
-            }
+            })
         }
     }
 
     @Composable
     private fun DashboardPanel(
         state: DashboardViewModel.State,
-        createMessage: () -> Unit,
-        updateName: (String) -> Unit,
+        onMessageCreate: () -> Unit,
+        onNameUpdate: (String) -> Unit,
     ) {
         Column(
             modifier = Modifier.padding(16.dp),
@@ -56,10 +56,10 @@ class DashboardFragment : BaseDirectableComposeFragment<DashboardDirection>() {
             }
             TextField(
                 value = state.name,
-                onValueChange = updateName,
+                onValueChange = onNameUpdate,
                 label = { Text(text = "Name") }
             )
-            Button(onClick = createMessage, enabled = state.name.isNotBlank()) {
+            Button(onClick = onMessageCreate, enabled = state.name.isNotBlank()) {
                 Text(text = "Create message")
             }
             val navigationController = LocalNavigationController.current
@@ -79,8 +79,8 @@ class DashboardFragment : BaseDirectableComposeFragment<DashboardDirection>() {
         ArchitectureTemplateTheme {
             DashboardPanel(
                 state = DashboardViewModel.State(returnedMessage = "test"),
-                createMessage = {},
-                updateName = {}
+                onMessageCreate = {},
+                onNameUpdate = {}
             )
         }
     }

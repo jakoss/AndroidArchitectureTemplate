@@ -33,6 +33,7 @@ plugins {
     alias libs.plugins.anvil apply false
     alias libs.plugins.tangle apply false
     alias libs.plugins.kotlinter apply false
+    alias libs.plugins.detekt apply false
 
     alias libs.plugins.benManesVersions
     alias libs.plugins.gradleDoctor

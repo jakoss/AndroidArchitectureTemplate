@@ -28,6 +28,7 @@ Whole solution is created with consideration of how gradle works, so we are tryi
 - Gradle conventions inside separate compiled plugin to share build.gradle logic between modules
 - .editorconfig file to share code style conventions
 - Ktlint to check for style errors and for automatic formatting
+- Detekt as static code analysis tool
 - Jetpack Compose for UI (but View system can be used or even mixed with current approach)
 - Anvil for dependency injection (can be swapped with Hilt or Koin, the patterns of usage are what's necessary here)
 - Tangle as android components injection solution (Anvil extension)
@@ -104,7 +105,6 @@ So it's not a clear win and **you should always consider if it is worth doing in
 
 - Testing setup and patterns!
 - Dokka setup
-- Detekt setup
 
 ## Mentions
 

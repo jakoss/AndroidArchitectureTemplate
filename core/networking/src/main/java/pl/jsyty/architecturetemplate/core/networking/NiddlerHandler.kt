@@ -11,6 +11,7 @@ import com.chimerapps.niddler.core.AndroidNiddler
 object NiddlerHandler {
     internal lateinit var niddler: AndroidNiddler
 
+    @Suppress("MagicNumber")
     fun init(app: Application) {
         niddler = AndroidNiddler.Builder()
             .setPort(0)

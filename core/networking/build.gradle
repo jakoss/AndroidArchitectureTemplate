@@ -8,7 +8,7 @@ android {
 }
 
 dependencies {
-    implementation project(':core:infrastructure')
+    api project(':core:infrastructure')
 
     implementation libs.bundles.networking
     implementation libs.retrofit.core

@@ -37,6 +37,35 @@ plugins {
 
     alias libs.plugins.benManesVersions
     alias libs.plugins.gradleDoctor
+    alias libs.plugins.moduleCheck
+}
+
+moduleCheck {
+    deleteUnused = true
+
+    checks {
+        overShotDependency = true
+        redundantDependency = false
+        unusedDependency = false
+        mustBeApi = true
+        inheritedDependency = true
+        sortDependencies = false
+        sortPlugins = false
+        unusedKapt = true
+        anvilFactoryGeneration = true
+        disableAndroidResources = false
+        disableViewBinding = true
+        unusedKotlinAndroidExtensions = true
+        depths = true
+    }
+
+    additionalCodeGenerators = [
+            new modulecheck.config.CodeGeneratorBinding.AnnotationProcessor(
+                    "MapStruct",
+                    "org.mapstruct:mapstruct-processor",
+                    ["org.mapstruct.Mapper"]
+            )
+    ]
 }
 
 def isNonStable = { String version ->

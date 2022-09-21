@@ -2,7 +2,13 @@ plugins {
     id 'project.android-library-conventions'
 }
 
+android {
+    buildFeatures {
+        androidResources = false
+    }
+}
+
 dependencies {
-    implementation project(':core:infrastructure')
-    implementation project(':core:navigation')
+    api project(':core:infrastructure')
+    api project(':core:navigation')
 }

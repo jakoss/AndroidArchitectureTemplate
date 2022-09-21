@@ -2,3 +2,9 @@ plugins {
     id 'com.android.library'
     id 'project.android-base-conventions'
 }
+
+android {
+    buildFeatures {
+        androidResources = false
+    }
+}

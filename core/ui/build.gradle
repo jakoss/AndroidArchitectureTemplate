@@ -5,10 +5,14 @@ plugins {
 
 android {
     namespace 'pl.jsyty.architecturetemplate.ui'
+
+    buildFeatures {
+        androidResources = true
+    }
 }
 
 dependencies {
-    implementation project(':core:infrastructure')
-    implementation project(':core:navigation')
+    api project(':core:infrastructure')
+    api project(':core:navigation')
     implementation libs.material
 }

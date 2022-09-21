@@ -8,5 +8,5 @@ android {
 }
 
 dependencies {
-    implementation project(':features:message')
+    api project(':features:message')
 }

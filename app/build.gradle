@@ -60,19 +60,14 @@ kapt {
 
 dependencies {
     implementation project(':core:ui')
-    implementation project(':core:infrastructure')
+    api project(':core:infrastructure')
     implementation project(':core:networking')
-    implementation project(':core:navigation')
-    implementation project(':core:navigation:impl')
 
-    implementation project(':features:dashboard')
-    implementation project(':features:dashboard:impl')
-    implementation project(':features:message:impl')
-    implementation project(':features:longaction:impl')
-    implementation project(':features:weather:impl')
-
-    implementation project(':data:weather')
-    implementation project(':data:weather:impl')
+    for (p in rootProject.subprojects) {
+        if (p.path.endsWith(":impl") && p != project) {
+            implementation p
+        }
+    }
 
     kapt libs.dagger.compiler
 

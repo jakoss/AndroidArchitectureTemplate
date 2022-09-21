@@ -36,20 +36,20 @@ desugaring = { module = "com.android.tools:desugar_jdk_libs", version = "2.0.0" 
 coroutines-lib = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 
 ksp-plugin = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
-anvil-plugin = { module = "com.squareup.anvil:gradle-plugin" , version.ref = "anvil" }
-anvil-compiler-api = { module = "com.squareup.anvil:compiler-api", version.ref = "anvil"}
-anvil-compiler-utils = { module = "com.squareup.anvil:compiler-utils", version.ref = "anvil"}
+anvil-plugin = { module = "com.squareup.anvil:gradle-plugin", version.ref = "anvil" }
+anvil-compiler-api = { module = "com.squareup.anvil:compiler-api", version.ref = "anvil" }
+anvil-compiler-utils = { module = "com.squareup.anvil:compiler-utils", version.ref = "anvil" }
 
 dagger-core = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
 
 compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "compose-ui" }
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose-ui" }
-compose-uitooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" , version.ref = "compose-ui" }
-compose-uitooling-core = { module = "androidx.compose.ui:ui-tooling" , version.ref = "compose-ui" }
-compose-material = { module = "androidx.compose.material:material" , version.ref = "compose-ui" }
-compose-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" , version.ref = "compose-ui" }
-compose-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" , version.ref = "compose-ui" }
+compose-uitooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose-ui" }
+compose-uitooling-core = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose-ui" }
+compose-material = { module = "androidx.compose.material:material", version.ref = "compose-ui" }
+compose-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose-ui" }
+compose-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose-ui" }
 
 tangle-plugin = { module = "com.rickbusarow.tangle:tangle-gradle-plugin", version.ref = "tangle" }
 tangle-viewmodel-api = { module = "com.rickbusarow.tangle:tangle-viewmodel-api", version.ref = "tangle" }
@@ -96,7 +96,7 @@ retrofit-kotlinSerializationConverter = { module = "com.jakewharton.retrofit:ret
 test-kotlinCompile-base = { module = "com.github.tschuchortdev:kotlin-compile-testing", version.ref = "test-kotlinCompileTesting" }
 test-kotlinCompile-ksp = { module = "com.github.tschuchortdev:kotlin-compile-testing-ksp", version.ref = "test-kotlinCompileTesting" }
 
-kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization"}
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 
 resilience4j-kotlin = { module = "io.github.resilience4j:resilience4j-kotlin", version.ref = "resilience4j" }
 resilience4j-retry = { module = "io.github.resilience4j:resilience4j-retry", version.ref = "resilience4j" }
@@ -132,6 +132,8 @@ tangle = { id = "com.rickbusarow.tangle", version.ref = "tangle" }
 
 kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+
+moduleCheck = { id = "com.rickbusarow.module-check", version = "0.12.3" }
 
 [bundles]
 compose-ui-core = ["compose-ui", "compose-uitooling-preview", "compose-material"]

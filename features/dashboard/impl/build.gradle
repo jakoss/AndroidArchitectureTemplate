@@ -8,7 +8,7 @@ android {
 }
 
 dependencies {
-    implementation project(':features:dashboard')
+    api project(':features:dashboard')
     implementation project(':features:message')
     implementation project(':features:longaction')
     implementation project(':features:weather')

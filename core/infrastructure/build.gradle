@@ -4,6 +4,10 @@ plugins {
 
 android {
     namespace 'pl.jsyty.architecturetemplate.infrastructure'
+
+    buildFeatures {
+        androidResources = true
+    }
 }
 
 dependencies {

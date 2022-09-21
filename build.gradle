@@ -48,7 +48,7 @@ moduleCheck {
         redundantDependency = false
         unusedDependency = false
         mustBeApi = true
-        inheritedDependency = true
+        inheritedDependency = false
         sortDependencies = false
         sortPlugins = false
         unusedKapt = true

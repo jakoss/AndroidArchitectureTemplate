@@ -60,14 +60,14 @@ jobs:
                 uses: gradle/gradle-build-action@v2
                 id: gradle
                 with:
-                    arguments: lintKotlin :app:assembleDebug :app:lintDebug --stacktrace # run tests here
+                    arguments: moduleCheck lintKotlin :app:assembleDebug :app:lintDebug --stacktrace # run tests here
                 if: steps.commit_formatted_code.outputs.pushed == 'false'
 
     actionlint:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3
-            - uses: reviewdog/action-actionlint@v1
+            -   uses: actions/checkout@v3
+            -   uses: reviewdog/action-actionlint@v1
 
     detekt:
         runs-on: ubuntu-latest

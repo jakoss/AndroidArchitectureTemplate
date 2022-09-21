@@ -98,4 +98,4 @@ jobs:
             -   name: Check modules
                 uses: gradle/gradle-build-action@v2
                 with:
-                    arguments: moduleCheck
+                    arguments: moduleCheck --no-daemon

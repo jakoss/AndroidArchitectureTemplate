@@ -8,7 +8,7 @@
     </option>
     <option name="pluginJarPaths">
       <set>
-        <option value="$PROJECT_DIR$/config/detekt/plugins/detekt-rules-compose-1.2.1.jar" />
+        <option value="$PROJECT_DIR$/config/detekt/plugins/detekt-rules-compose-1.2.2.jar" />
       </set>
     </option>
     <option name="treatAsErrors" value="true" />

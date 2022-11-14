@@ -53,7 +53,7 @@ jobs:
                     add: "*.kt"
 
             -   name: Cancelling due to formatted code
-                uses: andymckay/cancel-action@0.2
+                uses: andymckay/cancel-action@0.3
                 if: steps.commit_formatted_code.outputs.pushed == 'true'
 
             -   name: Run validations

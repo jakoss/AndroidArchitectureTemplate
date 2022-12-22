@@ -4,7 +4,10 @@
         "config:base"
     ],
     "groupName": "all dependencies",
-    "separateMajorMinor": false,
+    "separateMajorMinor": true,
+    "major": {
+      "dependencyDashboardApproval": true
+    },
     "groupSlug": "all",
     "packageRules": [
       {

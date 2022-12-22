@@ -16,5 +16,7 @@ dependencies {
     implementation libs.mapstruct.library
 
     // needed to mark certain classes as @Stable or @Immutable
+    var composeBom = platform(libs.compose.bom)
+    implementation composeBom
     implementation libs.compose.runtime
 }

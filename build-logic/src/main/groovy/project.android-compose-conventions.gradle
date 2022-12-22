@@ -23,10 +23,14 @@ android {
 }
 
 dependencies {
+    var composeBom = platform(libs.compose.bom)
+    implementation composeBom
+
     implementation libs.androidx.activity.compose
 
     implementation libs.bundles.compose.ui.core
 
+    androidTestImplementation composeBom
     androidTestImplementation libs.bundles.androidx.test
     androidTestImplementation libs.bundles.compose.test
 

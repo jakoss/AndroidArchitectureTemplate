@@ -13,6 +13,21 @@
         ],
         "groupName": "all dependencies",
         "groupSlug": "all"
+      },
+      {
+        "matchPackagePatterns": ["^io.github.resilience4j"],
+        "groupName": "resilience4j",
+        "allowedVersions": "<2.0"
+      },
+      {
+        "matchPackagePatterns": ["^org.jetbrains.kotlin"],
+        "groupName": "kotlin",
+        "allowedVersions": "!/1.7.22/"
+      },
+      {
+        "matchPackageNames": ["com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin"],
+        "groupName": "ksp plugin",
+        "allowedVersions": "!/^1.7.22/"
       }
     ]
 }

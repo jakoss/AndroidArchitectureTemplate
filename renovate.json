@@ -28,7 +28,7 @@
         "allowedVersions": "!/1.7.22/"
       },
       {
-        "matchPackageNames": ["com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin"],
+        "matchPackagePatterns": ["^com.google.devtools.ksp"],
         "groupName": "ksp plugin",
         "allowedVersions": "!/^1.7.22/"
       }

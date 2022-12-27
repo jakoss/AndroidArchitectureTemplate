@@ -3,16 +3,16 @@ kotlin = "1.7.21"
 android-gradle = "7.4.0-rc02"
 compose-bom = "2022.12.00"
 compose-compiler = "1.4.0-alpha02"
-orbitmvi = "4.4.0"
+orbitmvi = "4.5.0"
 androidx-room = "2.4.2"
 coroutines = "1.6.4"
 ksp = "1.7.21-1.0.8"
-anvil = "2.4.2"
+anvil = "2.4.3"
 dagger = "2.44.2"
 tangle = "0.15.1"
 lifecycle = "2.5.1"
 ktlint = "0.47.1"
-kotlinter = "3.12.0"
+kotlinter = "3.13.0"
 kotlinPoet = "1.12.0"
 androidCacheFix = "2.6.0"
 kotlinxSerialization = "1.4.1"
@@ -20,10 +20,10 @@ okhttp = "4.10.0"
 retrofit = "2.9.0"
 resilience4j = "1.7.1"
 mapstruct = "1.5.3.Final"
-detekt = "1.21.0"
+detekt = "1.22.0"
 
 niddler = "1.7.0"
-pluto = "2.0.6"
+pluto = "2.0.8"
 
 test-kotlinCompileTesting = "1.4.9"
 
@@ -66,7 +66,7 @@ androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core",
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.6.1" }
 androidx-core = { module = "androidx.core:core-ktx", version = "1.9.0" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version = "1.5.1" }
-androidx-fragment = { module = "androidx.fragment:fragment-ktx", version = "1.5.4" }
+androidx-fragment = { module = "androidx.fragment:fragment-ktx", version = "1.5.5" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
 
 androidx-coordinatorlayour = { module = "androidx.coordinatorlayout:coordinatorlayout", version = "1.2.0" }

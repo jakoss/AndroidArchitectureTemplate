@@ -19,8 +19,8 @@ kotlinxSerialization = "1.4.1"
 okhttp = "4.10.0"
 retrofit = "2.9.0"
 resilience4j = "1.7.1"
-mapstruct = "1.5.3.Final"
 detekt = "1.22.0"
+kmapper = "1.0.0"
 
 niddler = "1.7.0"
 pluto = "2.0.8"
@@ -102,8 +102,8 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 resilience4j-kotlin = { module = "io.github.resilience4j:resilience4j-kotlin", version.ref = "resilience4j" }
 resilience4j-retry = { module = "io.github.resilience4j:resilience4j-retry", version.ref = "resilience4j" }
 
-mapstruct-library = { module = "org.mapstruct:mapstruct", version.ref = "mapstruct" }
-mapstruct-compiler = { module = "org.mapstruct:mapstruct-processor", version.ref = "mapstruct" }
+kmapper-library = { module = "io.github.s0nicyouth:processor_annotations", version.ref = "kmapper" }
+kmapper-compiler = { module = "io.github.s0nicyouth:processor", version.ref = "kmapper" }
 
 niddler-library = { module = "com.chimerapps.niddler:niddler", version.ref = "niddler" }
 niddler-noop = { module = "com.chimerapps.niddler:niddler-noop", version.ref = "niddler" }

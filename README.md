@@ -95,9 +95,10 @@ but this have a few disadvantages:
 - You have to write this boring code, which can be really long at times
 - You have to share the type conversion logic if it's necessary
 
-All of those issues can be solved by using code generation library. In this pattern I'm using [MapStruct](https://mapstruct.org/).
-Disadvantage here is that this library is designed to be used for Java code, so i had to implement a few workarounds for annoying issues.
-Those can be found [here](./libraries/mapstructspi/src/main/java/pl/jsyty/architecturetemplate/libraries/mapstructspi/CustomAccessorNamingStrategy.kt).
+All of those issues can be solved by using code generation library. In this pattern I'm using [kmapper](https://github.com/s0nicyouth/kmapper).
+
+There is an alternative, more mature in JVM world, [MapStruct](https://mapstruct.org/).
+Disadvantage here is that this library is designed to be used for Java code, so there are some workarounds that have to be applied to kotlin code to make that integration smooth.
 Another disadvantage is that this library is using kapt, which might lower the build speed of a module that it is used in.
 So it's not a clear win and **you should always consider if it is worth doing in your use-case**.
 

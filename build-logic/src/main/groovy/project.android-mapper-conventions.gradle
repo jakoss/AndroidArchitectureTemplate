@@ -1,0 +1,8 @@
+plugins {
+    id 'com.google.devtools.ksp'
+}
+
+dependencies {
+    implementation libs.kmapper.library
+    ksp libs.kmapper.compiler
+}

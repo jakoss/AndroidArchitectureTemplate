@@ -1,10 +1,10 @@
 package pl.jsyty.architecturetemplate.data.weather.impl
 
-import org.mapstruct.Mapper
+import com.syouth.kmapper.processor_annotations.Mapper
 import pl.jsyty.architecturetemplate.data.weather.CurrentWeather
-import pl.jsyty.architecturetemplate.infrastructure.mapping.DateConversionMapper
+import pl.jsyty.architecturetemplate.infrastructure.mapping.DateTimeConverters
 
-@Mapper(uses = [DateConversionMapper::class])
-interface WeatherMapper {
+@Mapper
+interface WeatherMapper : DateTimeConverters {
     fun fromDto(weatherDto: CurrentWeatherDto): CurrentWeather
 }

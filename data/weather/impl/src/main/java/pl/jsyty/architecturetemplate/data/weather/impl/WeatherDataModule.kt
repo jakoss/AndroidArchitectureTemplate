@@ -5,7 +5,6 @@ import dagger.Module
 import dagger.Provides
 import pl.jsyty.architecturetemplate.core.networking.RetrofitFactory
 import pl.jsyty.architecturetemplate.infrastructure.di.AppScope
-import pl.jsyty.architecturetemplate.infrastructure.mapping.getMapper
 import javax.inject.Singleton
 
 @Suppress("Unused")
@@ -20,5 +19,5 @@ object WeatherDataModule {
 
     @Singleton
     @Provides
-    fun providesWeatherMapper(): WeatherMapper = getMapper()
+    fun providesWeatherMapper(): WeatherMapper = WeatherMapperImpl()
 }

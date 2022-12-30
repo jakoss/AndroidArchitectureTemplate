@@ -5,6 +5,6 @@ import pl.jsyty.architecturetemplate.data.weather.CurrentWeather
 import pl.jsyty.architecturetemplate.infrastructure.mapping.DateTimeConverters
 
 @Mapper
-interface WeatherMapper: DateTimeConverters {
+interface WeatherMapper : DateTimeConverters {
     fun fromDto(weatherDto: CurrentWeatherDto): CurrentWeather
 }

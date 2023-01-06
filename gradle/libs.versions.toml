@@ -14,7 +14,7 @@ lifecycle = "2.5.1"
 ktlint = "0.47.1"
 kotlinter = "3.13.0"
 kotlinPoet = "1.12.0"
-androidCacheFix = "2.6.0"
+androidCacheFix = "2.6.1"
 kotlinxSerialization = "1.4.1"
 okhttp = "4.10.0"
 retrofit = "2.9.0"
@@ -60,8 +60,8 @@ junit4 = { module = "junit:junit", version = "4.13.2" }
 fragNav = { module = "com.github.ncapdevi:FragNav", version = "3.3.0" }
 timber = { module = "com.jakewharton.timber:timber", version = "5.0.1" }
 
-androidx-test-junit4 = { module = "androidx.test.ext:junit", version = "1.1.4" }
-androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version = "3.5.0" }
+androidx-test-junit4 = { module = "androidx.test.ext:junit", version = "1.1.5" }
+androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version = "3.5.1" }
 
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.6.1" }
 androidx-core = { module = "androidx.core:core-ktx", version = "1.9.0" }

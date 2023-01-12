@@ -1,5 +1,5 @@
 [versions]
-kotlin = "1.7.21"
+kotlin = "1.8.0"
 android-gradle = "7.4.0-rc03"
 compose-bom = "2022.12.00"
 compose-compiler = "1.4.0-alpha02"

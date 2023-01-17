@@ -23,14 +23,8 @@
         "allowedVersions": "<2.0"
       },
       {
-        "matchPackagePatterns": ["^org.jetbrains.kotlin"],
-        "groupName": "kotlin",
-        "allowedVersions": "!/1.7.22/"
-      },
-      {
-        "matchPackagePatterns": ["^com.google.devtools.ksp"],
-        "groupName": "ksp plugin",
-        "allowedVersions": "!/^1.7.22/"
+        "matchPackagePatterns": ["^org.jetbrains.kotlin", "^com.google.devtools.ksp", "^com.squareup.anvil"],
+        "groupName": "kotlin"
       }
     ]
 }

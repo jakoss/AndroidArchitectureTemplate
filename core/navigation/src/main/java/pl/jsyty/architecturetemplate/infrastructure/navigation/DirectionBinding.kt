@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment
 /**
  * This interface will be implemented by Anvil processor plugin during compilation.
  *
- * It delegates cration of [Fragment] to class bound to specific [Direction]
+ * It delegates cration of [Fragment] (represented by class name) to class bound to specific [Direction]
  */
-interface FragmentFactory {
-    fun create(): Fragment
+interface DirectionBinding {
+    fun bind(): String
 }

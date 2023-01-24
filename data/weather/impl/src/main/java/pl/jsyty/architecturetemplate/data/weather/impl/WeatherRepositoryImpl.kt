@@ -1,12 +1,12 @@
 package pl.jsyty.architecturetemplate.data.weather.impl
 
+import com.deliveryhero.whetstone.app.ApplicationScope
 import com.squareup.anvil.annotations.ContributesBinding
 import pl.jsyty.architecturetemplate.data.weather.CurrentWeather
 import pl.jsyty.architecturetemplate.data.weather.WeatherRepository
-import pl.jsyty.architecturetemplate.infrastructure.di.AppScope
 import javax.inject.Inject
 
-@ContributesBinding(scope = AppScope::class)
+@ContributesBinding(scope = ApplicationScope::class)
 class WeatherRepositoryImpl @Inject constructor(
     private val weatherService: WeatherService,
     private val weatherMapper: WeatherMapper,

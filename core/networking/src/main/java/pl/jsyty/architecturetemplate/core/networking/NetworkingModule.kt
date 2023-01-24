@@ -2,6 +2,8 @@ package pl.jsyty.architecturetemplate.core.networking
 
 import android.content.Context
 import com.chimerapps.niddler.interceptor.okhttp.NiddlerOkHttpInterceptor
+import com.deliveryhero.whetstone.ForScope
+import com.deliveryhero.whetstone.app.ApplicationScope
 import com.squareup.anvil.annotations.ContributesTo
 import dagger.Module
 import dagger.Provides
@@ -9,15 +11,13 @@ import kotlinx.serialization.json.Json
 import okhttp3.*
 import pl.jsyty.architecturetemplate.core.networking.interceptors.NoContentInterceptor
 import pl.jsyty.architecturetemplate.core.networking.interceptors.RetryInterceptor
-import pl.jsyty.architecturetemplate.infrastructure.di.AppScope
-import pl.jsyty.architecturetemplate.infrastructure.di.ApplicationContext
 import java.io.File
 import java.time.Duration
 import javax.inject.Singleton
 
 @Suppress("Unused")
 @Module
-@ContributesTo(AppScope::class)
+@ContributesTo(ApplicationScope::class)
 object NetworkingModule {
 
     /**
@@ -26,7 +26,7 @@ object NetworkingModule {
     @Singleton
     @Provides
     @Suppress("MagicNumber")
-    fun provideOkHttpClient(@ApplicationContext context: Context): OkHttpClient {
+    fun provideOkHttpClient(@ForScope(ApplicationScope::class) context: Context): OkHttpClient {
         val builder = OkHttpClient.Builder()
             .cache(
                 Cache(

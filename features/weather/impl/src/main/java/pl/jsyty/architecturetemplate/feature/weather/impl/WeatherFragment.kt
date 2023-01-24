@@ -5,21 +5,24 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.deliveryhero.whetstone.fragment.ContributesFragment
 import org.orbitmvi.orbit.compose.collectAsState
 import pl.jsyty.architecturetemplate.feature.weather.WeatherDirection
 import pl.jsyty.architecturetemplate.infrastructure.extensions.localisedDateTime
 import pl.jsyty.architecturetemplate.ui.BaseDirectableComposeFragment
 import pl.jsyty.architecturetemplate.ui.async.FullscreenAsyncHandler
-import tangle.viewmodel.compose.tangleViewModel
+import pl.jsyty.architecturetemplate.ui.composeViewModel
+import javax.inject.Inject
 
-class WeatherFragment : BaseDirectableComposeFragment<WeatherDirection>() {
+@ContributesFragment
+class WeatherFragment @Inject constructor() : BaseDirectableComposeFragment<WeatherDirection>() {
     @Composable
     override fun Content() {
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colors.background
         ) {
-            val viewModel = tangleViewModel<WeatherViewModel>()
+            val viewModel = composeViewModel<WeatherViewModel>()
             val state by viewModel.collectAsState()
 
             FullscreenAsyncHandler(

@@ -5,26 +5,30 @@ import android.os.Bundle
 import android.view.View
 import android.window.OnBackInvokedDispatcher
 import androidx.activity.addCallback
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import com.deliveryhero.whetstone.fragment.ContributesFragment
 import com.ncapdevi.fragnav.*
 import kotlinx.coroutines.launch
 import pl.jsyty.architecturetemplate.feature.dashboard.DashboardDirection
 import pl.jsyty.architecturetemplate.infrastructure.animR
-import pl.jsyty.architecturetemplate.infrastructure.di.ComponentHolder
-import pl.jsyty.architecturetemplate.infrastructure.navigation.NavigationComponent
-import pl.jsyty.architecturetemplate.infrastructure.navigation.NavigationEvent
+import pl.jsyty.architecturetemplate.infrastructure.navigation.*
+import pl.jsyty.architecturetemplate.infrastructure.navigation.impl.NavigationFragmentResolverImpl
 import timber.log.Timber
+import javax.inject.Inject
 
 /**
  * Navigation host fragment - all backstack management happens here.
  *
  * It's basically the implementation of navigation events that's translated to fragments backstack.
  */
-class MainNavigationFragment : Fragment(R.layout.fragment_main_navigation) {
-    private val navigationComponent by lazy { ComponentHolder.component<NavigationComponent>() }
-
+@ContributesFragment
+class MainNavigationFragment @Inject constructor(
+    private val fragmentResolverFactory: NavigationFragmentResolver.Factory,
+    private val navigationEventsProvider: NavigationEventsProvider,
+) : Fragment(R.layout.fragment_main_navigation) {
     private val fragNavController by lazy {
         FragNavController(
             childFragmentManager,
@@ -32,10 +36,12 @@ class MainNavigationFragment : Fragment(R.layout.fragment_main_navigation) {
         )
     }
 
+    private val fragmentResolver by lazy {
+        fragmentResolverFactory.create(this)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val fragmentResolver = navigationComponent.navigationFragmentResolver()
 
         fragNavController.apply {
             fragNavLogger = object : FragNavLogger {
@@ -88,10 +94,11 @@ class MainNavigationFragment : Fragment(R.layout.fragment_main_navigation) {
         super.onViewCreated(view, savedInstanceState)
 
         viewLifecycleOwner.lifecycleScope.launch {
-            navigationComponent.navigationEventsProvider().navigationEvents
+            navigationEventsProvider.navigationEvents
                 .flowWithLifecycle(viewLifecycleOwner.lifecycle)
                 .collect {
                     Timber.i("Handling navigation event: $it")
+
                     when (it) {
                         is NavigationEvent.Pop -> {
                             if (fragNavController.currentDialogFrag != null) {
@@ -102,20 +109,34 @@ class MainNavigationFragment : Fragment(R.layout.fragment_main_navigation) {
                         }
                         NavigationEvent.PopToRoot -> fragNavController.clearStack()
                         is NavigationEvent.PopToRootAndReplace -> {
+                            val fragment = fragmentResolver.resolveFragment(it.direction)
                             fragNavController.clearStack()
-                            fragNavController.replaceFragment(it.fragment)
+                            fragNavController.replaceFragment(fragment)
                         }
                         is NavigationEvent.PopToRootAndPush -> {
+                            val fragment = fragmentResolver.resolveFragment(it.direction)
                             fragNavController.clearStack()
-                            fragNavController.pushFragment(it.fragment)
+                            fragNavController.pushFragment(fragment)
                         }
-                        is NavigationEvent.PushFragment -> fragNavController.pushFragment(it.fragment)
-                        is NavigationEvent.ReplaceFragment -> fragNavController.replaceFragment(
-                            it.fragment
-                        )
-                        is NavigationEvent.ShowDialog -> fragNavController.showDialogFragment(
-                            it.fragment
-                        )
+                        is NavigationEvent.Push -> {
+                            val fragment = fragmentResolver.resolveFragment(it.direction)
+                            fragNavController.pushFragment(fragment)
+                        }
+                        is NavigationEvent.ReplaceFragment -> {
+                            val fragment = fragmentResolver.resolveFragment(it.direction)
+                            fragNavController.replaceFragment(
+                                fragment
+                            )
+                        }
+                        is NavigationEvent.ShowDialog -> {
+                            val fragment = fragmentResolver.resolveFragment(it.direction)
+                            require(fragment is DialogFragment) {
+                                "Direction does not point to dialog fragment"
+                            }
+                            fragNavController.showDialogFragment(
+                                fragment
+                            )
+                        }
                     }
                 }
         }

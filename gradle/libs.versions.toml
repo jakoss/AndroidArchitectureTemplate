@@ -9,7 +9,7 @@ coroutines = "1.6.4"
 ksp = "1.8.0-1.0.8"
 anvil = "2.4.4"
 dagger = "2.44.2"
-tangle = "0.15.1"
+whetstone = "0.4.0"
 lifecycle = "2.5.1"
 ktlint = "0.47.1"
 kotlinter = "3.13.0"
@@ -39,6 +39,7 @@ ksp-plugin = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.
 anvil-plugin = { module = "com.squareup.anvil:gradle-plugin", version.ref = "anvil" }
 anvil-compiler-api = { module = "com.squareup.anvil:compiler-api", version.ref = "anvil" }
 anvil-compiler-utils = { module = "com.squareup.anvil:compiler-utils", version.ref = "anvil" }
+whetstone-plugin = { module = "com.deliveryhero.whetstone:whetstone-gradle-plugin", version.ref = "whetstone" }
 
 dagger-core = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
@@ -51,9 +52,6 @@ compose-uitooling-core = { module = "androidx.compose.ui:ui-tooling" }
 compose-material = { module = "androidx.compose.material:material" }
 compose-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 compose-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
-
-tangle-plugin = { module = "com.rickbusarow.tangle:tangle-gradle-plugin", version.ref = "tangle" }
-tangle-viewmodel-api = { module = "com.rickbusarow.tangle:tangle-viewmodel-api", version.ref = "tangle" }
 
 junit4 = { module = "junit:junit", version = "4.13.2" }
 
@@ -129,7 +127,7 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 benManesVersions = { id = "com.github.ben-manes.versions", version = "0.44.0" }
 gradleDoctor = { id = "com.osacky.doctor", version = "0.8.1" }
 
-tangle = { id = "com.rickbusarow.tangle", version.ref = "tangle" }
+whetstone = { id = "com.deliveryhero.whetstone", version.ref = "whetstone" }
 
 kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }

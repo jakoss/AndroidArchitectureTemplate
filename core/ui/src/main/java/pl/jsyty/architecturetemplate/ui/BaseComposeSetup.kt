@@ -1,15 +1,15 @@
 package pl.jsyty.architecturetemplate.ui
 
+import android.app.Application
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import pl.jsyty.architecturetemplate.infrastructure.di.ComponentHolder
+import com.deliveryhero.whetstone.Whetstone
+import pl.jsyty.architecturetemplate.infrastructure.di.getApplicationComponent
 import pl.jsyty.architecturetemplate.infrastructure.navigation.*
 import pl.jsyty.architecturetemplate.ui.theme.ArchitectureTemplateTheme
-
-private val navigationComponent by lazy { ComponentHolder.component<NavigationComponent>() }
 
 /**
  * Standard setup for all compose-based fragments
@@ -18,6 +18,7 @@ private val navigationComponent by lazy { ComponentHolder.component<NavigationCo
  */
 fun Fragment.baseComposeSetup(content: @Composable () -> Unit) =
     ComposeView(requireContext()).apply {
+        val navigationComponent = requireContext().getApplicationComponent<NavigationComponent>()
         setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
         setContent {
             CompositionLocalProvider(
@@ -63,6 +64,9 @@ private val navigationControllerFake = object :
     }
 }
 
-val LocalNavigationController = compositionLocalOf<NavigationController> { navigationControllerFake }
-val LocalChildFragmentManager = compositionLocalOf<FragmentManager> { object : FragmentManager() {} }
-val LocalParentFragmentManager = compositionLocalOf<FragmentManager> { object : FragmentManager() {} }
+val LocalNavigationController =
+    compositionLocalOf<NavigationController> { navigationControllerFake }
+val LocalChildFragmentManager =
+    compositionLocalOf<FragmentManager> { object : FragmentManager() {} }
+val LocalParentFragmentManager =
+    compositionLocalOf<FragmentManager> { object : FragmentManager() {} }

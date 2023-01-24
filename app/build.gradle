@@ -3,7 +3,7 @@ plugins {
     alias libs.plugins.android.application
     id 'project.android-base-conventions'
     id 'project.android-compose-conventions'
-    alias libs.plugins.tangle
+    alias libs.plugins.whetstone
 }
 
 android {
@@ -36,21 +36,6 @@ android {
 
     buildFeatures {
         buildConfig = true
-    }
-}
-
-anvil {
-    generateDaggerFactories = false
-}
-
-tangle {
-    fragmentsEnabled = false
-    workEnabled = false
-    viewModelOptions {
-        enabled = true
-        composeEnabled = true
-        fragmentsEnabled = false
-        activitiesEnabled = false
     }
 }
 

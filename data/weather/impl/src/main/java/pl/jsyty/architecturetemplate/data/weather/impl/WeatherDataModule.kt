@@ -1,15 +1,15 @@
 package pl.jsyty.architecturetemplate.data.weather.impl
 
+import com.deliveryhero.whetstone.app.ApplicationScope
 import com.squareup.anvil.annotations.ContributesTo
 import dagger.Module
 import dagger.Provides
 import pl.jsyty.architecturetemplate.core.networking.RetrofitFactory
-import pl.jsyty.architecturetemplate.infrastructure.di.AppScope
 import javax.inject.Singleton
 
 @Suppress("Unused")
 @Module
-@ContributesTo(AppScope::class)
+@ContributesTo(ApplicationScope::class)
 object WeatherDataModule {
     @Singleton
     @Provides

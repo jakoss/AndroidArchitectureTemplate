@@ -14,5 +14,6 @@ android {
 dependencies {
     api project(':core:infrastructure')
     api project(':core:navigation')
-    implementation libs.material
+    api libs.material
+    implementation libs.androidx.lifecycle.viewmodel.compose
 }

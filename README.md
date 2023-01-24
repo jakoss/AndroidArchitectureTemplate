@@ -31,7 +31,7 @@ Whole solution is created with consideration of how gradle works, so we are tryi
 - Detekt as static code analysis tool
 - Jetpack Compose for UI (but View system can be used or even mixed with current approach)
 - Anvil for dependency injection (can be swapped with Hilt or Koin, the patterns of usage are what's necessary here)
-- Tangle as android components injection solution (Anvil extension)
+- Whetstone as android components injection solution (Anvil extension)
 - Orbit MVI as an MVI pattern view model (but can be easily swapped for any other ViewModel implementation)
 - Custom navigation framework that work on injectable NavigationController interface. Using this
   interface developer can navigate from any point in code (mostly it will be ViewModel)

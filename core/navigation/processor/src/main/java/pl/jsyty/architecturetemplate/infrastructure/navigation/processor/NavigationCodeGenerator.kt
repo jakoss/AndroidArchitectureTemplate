@@ -7,6 +7,7 @@ import com.squareup.anvil.compiler.api.*
 import com.squareup.anvil.compiler.internal.buildFile
 import com.squareup.anvil.compiler.internal.reference.*
 import com.squareup.kotlinpoet.*
+import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import org.jetbrains.kotlin.descriptors.ModuleDescriptor
 import org.jetbrains.kotlin.psi.KtFile
 import java.io.File
@@ -30,7 +31,7 @@ class NavigationCodeGenerator : CodeGenerator {
             .mapNotNull(::isDirectableFragment)
             // let's generate DirectionFactory file for all directable fragments
             .map {
-                val fileName = it.fragmentReference.shortName + "_DirectionFactory"
+                val fileName = it.fragmentReference.shortName + "_DirectionBinding"
                 val packageName = it.fragmentReference.packageFqName.asString()
                 createGeneratedFile(
                     codeGenDir,
@@ -93,9 +94,9 @@ class NavigationCodeGenerator : CodeGenerator {
         directableFragment: DirectableFragment
     ) = FileSpec.buildFile(packageName = packageName, fileName = fileName) {
         addType(
-            // @ContributesMultibinding(AppScope::class)
+            // @ContributesMultibinding(ApplicationScope::class)
             // @DirectionKey("package.name.of.direction.DirectionName")
-            // public FragmentName_DirectionFactory : FragmentFactory
+            // public FragmentName_DirectionBinding : DirectionBinding
             TypeSpec.classBuilder(fileName)
                 .addModifiers(KModifier.PUBLIC)
                 .primaryConstructor(
@@ -118,18 +119,18 @@ class NavigationCodeGenerator : CodeGenerator {
                         )
                         .build()
                 )
-                .addSuperinterface(ClassNames.fragmentFactory)
+                .addSuperinterface(ClassNames.directionBinding)
 
-                // fun create(): Fragment {
-                //    return FragmentName()
+                // fun bind(): String {
+                //    return "com.test.path.to.FragmentName"
                 //}
                 .addFunction(
-                    FunSpec.builder("create")
+                    FunSpec.builder("bind")
                         .addModifiers(KModifier.OVERRIDE)
-                        .returns(ClassNames.androidFragment)
+                        .returns(String::class)
                         .addStatement(
-                            "return %T()",
-                            directableFragment.fragmentReference.asClassName()
+                            "return %S",
+                            directableFragment.fragmentReference.asClassName().canonicalName
                         )
                         .build()
                 )

@@ -6,20 +6,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.deliveryhero.whetstone.fragment.ContributesFragment
 import org.orbitmvi.orbit.compose.collectAsState
 import pl.jsyty.architecturetemplate.features.longaction.LongActionDirection
 import pl.jsyty.architecturetemplate.ui.BaseDirectableComposeFragment
 import pl.jsyty.architecturetemplate.ui.async.FullscreenAsyncHandler
-import tangle.viewmodel.compose.tangleViewModel
+import pl.jsyty.architecturetemplate.ui.composeViewModel
+import javax.inject.Inject
 
-class LongActionFragment : BaseDirectableComposeFragment<LongActionDirection>() {
+@ContributesFragment
+class LongActionFragment @Inject constructor() : BaseDirectableComposeFragment<LongActionDirection>() {
     @Composable
     override fun Content() {
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colors.background
         ) {
-            val viewModel = tangleViewModel<LongActionViewModel>()
+            val viewModel = composeViewModel<LongActionViewModel>()
             val state by viewModel.collectAsState()
 
             FullscreenAsyncHandler(

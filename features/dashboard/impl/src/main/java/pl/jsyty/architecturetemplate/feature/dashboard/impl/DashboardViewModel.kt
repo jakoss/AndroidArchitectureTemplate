@@ -1,13 +1,15 @@
 package pl.jsyty.architecturetemplate.feature.dashboard.impl
 
+import com.deliveryhero.whetstone.viewmodel.ContributesViewModel
 import org.orbitmvi.orbit.syntax.simple.intent
 import org.orbitmvi.orbit.syntax.simple.reduce
 import pl.jsyty.architecturetemplate.feature.message.MessageDirection
 import pl.jsyty.architecturetemplate.infrastructure.navigation.NavigationController
 import pl.jsyty.architecturetemplate.infrastructure.viewmodel.BaseViewModel
-import tangle.viewmodel.VMInject
+import javax.inject.Inject
 
-class DashboardViewModel @VMInject constructor(
+@ContributesViewModel
+class DashboardViewModel @Inject constructor(
     private val navigationController: NavigationController,
 ) : BaseViewModel<DashboardViewModel.State, Unit>(State()) {
     data class State(

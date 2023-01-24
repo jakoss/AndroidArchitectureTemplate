@@ -1,17 +1,5 @@
 plugins {
     id 'project.android-library-conventions'
-    id 'com.rickbusarow.tangle'
-}
-
-tangle {
-    fragmentsEnabled = false
-    workEnabled = false
-    viewModelOptions {
-        enabled = true
-        composeEnabled = true
-        fragmentsEnabled = true
-        activitiesEnabled = false
-    }
 }
 
 dependencies {

@@ -12,9 +12,9 @@ object FqNames {
 }
 
 object ClassNames {
-    val appScope = ClassName("pl.jsyty.architecturetemplate.infrastructure.di", "AppScope")
+    val appScope = ClassName("com.deliveryhero.whetstone.app", "ApplicationScope")
     val androidFragment = ClassName("androidx.fragment.app", "Fragment")
     val injectAnnotation = ClassName("javax.inject", "Inject")
     val directionKey = ClassName("pl.jsyty.architecturetemplate.infrastructure.navigation", "DirectionKey")
-    val fragmentFactory = ClassName("pl.jsyty.architecturetemplate.infrastructure.navigation", "FragmentFactory")
+    val directionBinding = ClassName("pl.jsyty.architecturetemplate.infrastructure.navigation", "DirectionBinding")
 }

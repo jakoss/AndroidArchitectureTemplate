@@ -22,6 +22,10 @@ android {
     }
 }
 
+whetstone {
+    addOns.compose.set(true)
+}
+
 dependencies {
     var composeBom = platform(libs.compose.bom)
     implementation composeBom

@@ -1,16 +1,17 @@
 package pl.jsyty.architecturetemplate.feature.message.impl
 
+import androidx.lifecycle.SavedStateHandle
+import com.deliveryhero.whetstone.viewmodel.ContributesViewModel
 import org.orbitmvi.orbit.syntax.simple.*
 import pl.jsyty.architecturetemplate.feature.message.MessageDirection
-import pl.jsyty.architecturetemplate.infrastructure.navigation.ARGUMENT_KEY
+import pl.jsyty.architecturetemplate.infrastructure.navigation.getNavigationArgument
 import pl.jsyty.architecturetemplate.infrastructure.viewmodel.BaseViewModel
-import tangle.inject.TangleParam
-import tangle.viewmodel.VMInject
+import javax.inject.Inject
 
-class MessageViewModel @VMInject constructor(
-    @TangleParam(ARGUMENT_KEY)
-    messageDirection: MessageDirection,
-) : BaseViewModel<MessageViewModel.State, MessageViewModel.SideEffects>(State(name = messageDirection.name)) {
+@ContributesViewModel
+class MessageViewModel @Inject constructor(
+    savedStateHandle: SavedStateHandle,
+) : BaseViewModel<MessageViewModel.State, MessageViewModel.SideEffects>(State(name = savedStateHandle.getNavigationArgument<MessageDirection>().name)) {
     data class State(
         val name: String,
         val message: String = "",

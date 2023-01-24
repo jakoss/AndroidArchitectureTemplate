@@ -1,13 +1,16 @@
 package pl.jsyty.architecturetemplate
 
 import android.app.Application
+import com.deliveryhero.whetstone.Whetstone
+import com.deliveryhero.whetstone.app.*
 import pl.jsyty.architecturetemplate.core.networking.NiddlerHandler
-import pl.jsyty.architecturetemplate.infrastructure.di.ComponentHolder
-import tangle.inject.TangleGraph
 import timber.log.Timber
 
-open class MyApplication : Application() {
+@ContributesAppInjector(generateAppComponent = true)
+open class MyApplication : Application(), ApplicationComponentOwner {
     override fun onCreate() {
+        setupPreInjection()
+        Whetstone.inject(this)
         super.onCreate()
 
         @Suppress("KotlinConstantConditions")
@@ -15,12 +18,6 @@ open class MyApplication : Application() {
             Timber.plant(Timber.DebugTree())
         }
         NiddlerHandler.init(this)
-
-        setupPreInjection()
-        val appComponent = DaggerAppComponent.factory().create(this)
-        ComponentHolder.components += appComponent
-        TangleGraph.add(appComponent)
-
         NiddlerHandler.start()
     }
 
@@ -36,5 +33,9 @@ open class MyApplication : Application() {
      */
     protected open fun setupPreInjection() {
         // nothing here, only for override
+    }
+
+    override val applicationComponent by lazy {
+        GeneratedApplicationComponent.create(this)
     }
 }

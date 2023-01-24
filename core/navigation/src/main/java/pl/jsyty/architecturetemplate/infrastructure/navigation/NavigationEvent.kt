@@ -1,26 +1,25 @@
 package pl.jsyty.architecturetemplate.infrastructure.navigation
 
-import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
-
 sealed class NavigationEvent {
-    data class PushFragment(
-        val fragment: Fragment,
+    data class Push(
+        val direction: Direction,
     ) : NavigationEvent()
 
     data class ReplaceFragment(
-        val fragment: Fragment,
+        val direction: Direction,
     ) : NavigationEvent()
 
     data class PopToRootAndReplace(
-        val fragment: Fragment,
+        val direction: Direction,
     ) : NavigationEvent()
 
     data class PopToRootAndPush(
-        val fragment: Fragment,
+        val direction: Direction,
     ) : NavigationEvent()
 
-    data class ShowDialog(val fragment: DialogFragment) : NavigationEvent()
+    data class ShowDialog(
+        val direction: Direction,
+    ) : NavigationEvent()
     data class Pop(val level: Int) :
         NavigationEvent()
 

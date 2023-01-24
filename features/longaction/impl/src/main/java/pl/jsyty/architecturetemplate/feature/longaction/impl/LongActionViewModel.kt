@@ -1,13 +1,17 @@
 package pl.jsyty.architecturetemplate.feature.longaction.impl
 
+import com.deliveryhero.whetstone.viewmodel.ContributesViewModel
 import kotlinx.coroutines.delay
 import org.orbitmvi.orbit.syntax.simple.intent
 import pl.jsyty.architecturetemplate.infrastructure.async.Async
 import pl.jsyty.architecturetemplate.infrastructure.async.Uninitialized
 import pl.jsyty.architecturetemplate.infrastructure.viewmodel.BaseViewModel
 import pl.jsyty.architecturetemplate.infrastructure.viewmodel.async
+import javax.inject.Inject
 
-class LongActionViewModel : BaseViewModel<LongActionViewModel.State, Unit>(State()) {
+@ContributesViewModel
+class LongActionViewModel @Inject constructor() :
+    BaseViewModel<LongActionViewModel.State, Unit>(State()) {
     data class State(
         val action: Async<String> = Uninitialized,
     )

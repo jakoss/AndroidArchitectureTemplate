@@ -12,18 +12,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.deliveryhero.whetstone.fragment.ContributesFragment
 import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 import pl.jsyty.architecturetemplate.feature.message.MessageDirection
 import pl.jsyty.architecturetemplate.feature.message.MessageNavigationResult
-import pl.jsyty.architecturetemplate.ui.BaseDirectableComposeDialogFragment
-import pl.jsyty.architecturetemplate.ui.LocalNavigationController
+import pl.jsyty.architecturetemplate.ui.*
 import pl.jsyty.architecturetemplate.ui.helpers.setNavigationResult
 import pl.jsyty.architecturetemplate.ui.theme.ArchitectureTemplateTheme
-import tangle.viewmodel.compose.tangleViewModel
 import timber.log.Timber
+import javax.inject.Inject
 
-class MessageFragment : BaseDirectableComposeDialogFragment<MessageDirection>() {
+@ContributesFragment
+class MessageFragment @Inject constructor() :
+    BaseDirectableComposeDialogFragment<MessageDirection>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -38,7 +40,7 @@ class MessageFragment : BaseDirectableComposeDialogFragment<MessageDirection>() 
                 .fillMaxWidth(),
             color = MaterialTheme.colors.background
         ) {
-            val viewModel = tangleViewModel<MessageViewModel>()
+            val viewModel = composeViewModel<MessageViewModel>()
             val state by viewModel.collectAsState()
             MessagePanel(
                 state = state,

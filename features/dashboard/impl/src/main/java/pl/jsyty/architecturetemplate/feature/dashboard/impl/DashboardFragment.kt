@@ -7,6 +7,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.deliveryhero.whetstone.fragment.ContributesFragment
 import org.orbitmvi.orbit.compose.collectAsState
 import pl.jsyty.architecturetemplate.feature.dashboard.DashboardDirection
 import pl.jsyty.architecturetemplate.feature.message.MessageNavigationResult
@@ -15,16 +16,18 @@ import pl.jsyty.architecturetemplate.features.longaction.LongActionDirection
 import pl.jsyty.architecturetemplate.ui.*
 import pl.jsyty.architecturetemplate.ui.helpers.RegisterForNavigationResult
 import pl.jsyty.architecturetemplate.ui.theme.ArchitectureTemplateTheme
-import tangle.viewmodel.compose.tangleViewModel
+import javax.inject.Inject
 
-class DashboardFragment : BaseDirectableComposeFragment<DashboardDirection>() {
+@ContributesFragment
+class DashboardFragment @Inject constructor() :
+    BaseDirectableComposeFragment<DashboardDirection>() {
     @Composable
     override fun Content() {
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colors.background
         ) {
-            val viewModel = tangleViewModel<DashboardViewModel>()
+            val viewModel = composeViewModel<DashboardViewModel>()
             val state by viewModel.collectAsState()
             DashboardPanel(
                 state = state,

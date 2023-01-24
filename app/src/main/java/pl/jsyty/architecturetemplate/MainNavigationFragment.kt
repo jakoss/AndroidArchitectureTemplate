@@ -15,7 +15,6 @@ import kotlinx.coroutines.launch
 import pl.jsyty.architecturetemplate.feature.dashboard.DashboardDirection
 import pl.jsyty.architecturetemplate.infrastructure.animR
 import pl.jsyty.architecturetemplate.infrastructure.navigation.*
-import pl.jsyty.architecturetemplate.infrastructure.navigation.impl.NavigationFragmentResolverImpl
 import timber.log.Timber
 import javax.inject.Inject
 

@@ -7,10 +7,10 @@ import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
 import com.deliveryhero.whetstone.compose.injectedViewModel
 
 @Composable
-public inline fun <reified VM: ViewModel> composeViewModel(
+public inline fun <reified VM : ViewModel> composeViewModel(
     viewModelStoreOwner: ViewModelStoreOwner = requireNotNull(LocalViewModelStoreOwner.current),
     key: String? = null,
     extras: CreationExtras = (viewModelStoreOwner as? HasDefaultViewModelProviderFactory)
         ?.defaultViewModelCreationExtras
-        ?: CreationExtras.Empty
+        ?: CreationExtras.Empty,
 ): VM = injectedViewModel(viewModelStoreOwner, key, extras)

@@ -1,12 +1,10 @@
 package pl.jsyty.architecturetemplate.ui
 
-import android.app.Application
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.deliveryhero.whetstone.Whetstone
 import pl.jsyty.architecturetemplate.infrastructure.di.getApplicationComponent
 import pl.jsyty.architecturetemplate.infrastructure.navigation.*
 import pl.jsyty.architecturetemplate.ui.theme.ArchitectureTemplateTheme

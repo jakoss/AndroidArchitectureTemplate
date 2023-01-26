@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-    api project(':core:networking')
+    api projects.core.networking
 
     implementation libs.retrofit.core
     implementation libs.kotlinx.serialization.json

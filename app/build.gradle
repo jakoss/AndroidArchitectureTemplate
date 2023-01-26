@@ -44,9 +44,9 @@ kapt {
 }
 
 dependencies {
-    implementation project(':core:ui')
-    api project(':core:infrastructure')
-    implementation project(':core:networking')
+    implementation projects.core.ui
+    api projects.core.infrastructure
+    implementation projects.core.networking
 
     for (p in rootProject.subprojects) {
         if (p.path.endsWith(":impl") && p != project) {

@@ -9,6 +9,6 @@ android {
 }
 
 dependencies {
-    api project(':core:infrastructure')
-    api project(':core:navigation')
+    api projects.core.infrastructure
+    api projects.core.navigation
 }

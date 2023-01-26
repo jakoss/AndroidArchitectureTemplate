@@ -3,11 +3,11 @@ plugins {
 }
 
 dependencies {
-    api project(':core:infrastructure')
-    api project(':core:ui')
-    api project(':core:navigation')
+    api projects.core.infrastructure
+    api projects.core.ui
+    api projects.core.navigation
 
-    anvil project(':core:navigation:processor')
+    anvil projects.core.navigation.processor
 
     implementation libs.bundles.orbitmvi
     implementation libs.material

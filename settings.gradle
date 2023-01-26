@@ -15,7 +15,10 @@ dependencyResolutionManagement {
         }
     }
 }
-rootProject.name = "Architecture Template"
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
+rootProject.name = "ArchitectureTemplate"
 
 includeBuild 'build-logic'
 

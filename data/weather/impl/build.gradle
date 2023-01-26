@@ -9,6 +9,6 @@ android {
 }
 
 dependencies {
-    api project(':data:weather')
-    api project(':core:infrastructure')
+    api projects.core.infrastructure
+    api projects.data.weather
 }

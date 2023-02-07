@@ -132,7 +132,7 @@ whetstone = { id = "com.deliveryhero.whetstone", version.ref = "whetstone" }
 kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 
-moduleCheck = { id = "com.rickbusarow.module-check", version = "0.12.3" }
+moduleCheck = { id = "com.rickbusarow.module-check", version = "0.12.5" }
 
 [bundles]
 compose-ui-core = ["compose-ui", "compose-uitooling-preview", "compose-material"]

@@ -23,8 +23,13 @@
         "allowedVersions": "<2.0"
       },
       {
-        "matchPackagePatterns": ["^org.jetbrains.kotlin", "^com.google.devtools.ksp", "^com.squareup.anvil"],
-        "groupName": "kotlin"
+        "matchPackagePatterns": [
+          "^org.jetbrains.kotlin", 
+          "^com.google.devtools.ksp", 
+          "^com.squareup.anvil",
+          "^androidx.compose.compiler"
+        ],
+        "groupName": "Kotlin related dependencies"
       }
     ]
 }

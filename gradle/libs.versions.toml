@@ -2,7 +2,7 @@
 kotlin = "1.8.10"
 android-gradle = "7.4.1"
 compose-bom = "2023.01.00"
-compose-compiler = "1.4.2"
+compose-compiler = "1.4.0"
 orbitmvi = "4.5.0"
 androidx-room = "2.4.2"
 coroutines = "1.6.4"
@@ -52,6 +52,9 @@ compose-uitooling-core = { module = "androidx.compose.ui:ui-tooling" }
 compose-material = { module = "androidx.compose.material:material" }
 compose-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 compose-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
+
+# We are not using this anywhere, but it's required so the renovate bot can properly spot new compiler releases
+compose-compiler = {module="androidx.compose.compiler:compiler", version.ref ="compose-compiler"}
 
 junit4 = { module = "junit:junit", version = "4.13.2" }
 

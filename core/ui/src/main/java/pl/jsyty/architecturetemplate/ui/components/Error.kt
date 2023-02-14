@@ -18,8 +18,8 @@ import androidx.compose.ui.unit.dp
  */
 @Composable
 fun FullscreenError(
-    retryAction: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
+    retryAction: (() -> Unit)? = null,
 ) {
     Box(modifier = Modifier.fillMaxSize().then(modifier), contentAlignment = Alignment.Center) {
         Column {

@@ -24,8 +24,6 @@ class LongActionFragment @Inject constructor() : BaseDirectableComposeFragment<L
             val viewModel = composeViewModel<LongActionViewModel>()
             val state by viewModel.collectAsState()
 
-            var testState by mutableStateOf(false)
-
             FullscreenAsyncHandler(
                 state = state.action,
                 onRetryAction = { viewModel.initialize(fail = false) },

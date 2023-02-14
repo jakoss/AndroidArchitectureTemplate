@@ -3,9 +3,9 @@ plugins {
 }
 
 dependencies {
-    implementation projects.core.infrastructure
-    implementation projects.core.ui
-    implementation projects.core.navigation
+    api projects.core.infrastructure
+    api projects.core.ui
+    api projects.core.navigation
 
     anvil projects.core.navigation.processor
 

@@ -153,8 +153,6 @@ test-kotlinCompile = ["test-kotlinCompile-base", "test-kotlinCompile-ksp"]
 
 anvil-compiler = ["anvil-compiler-api", "anvil-compiler-utils"]
 
-networking = ["okhttp-core", "kotlinx-serialization-json"]
-
 pluto = [
     "pluto-core",
     "pluto-logger",

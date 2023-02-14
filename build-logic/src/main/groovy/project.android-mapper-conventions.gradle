@@ -3,6 +3,6 @@ plugins {
 }
 
 dependencies {
-    implementation libs.kmapper.library
+    compileOnly libs.kmapper.library
     ksp libs.kmapper.compiler
 }

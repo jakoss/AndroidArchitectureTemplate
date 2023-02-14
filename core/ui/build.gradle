@@ -12,8 +12,8 @@ android {
 }
 
 dependencies {
-    implementation projects.core.infrastructure
-    implementation projects.core.navigation
-    implementation libs.material
+    api projects.core.infrastructure
+    api projects.core.navigation
+    api libs.material
     implementation libs.androidx.lifecycle.viewmodel.compose
 }

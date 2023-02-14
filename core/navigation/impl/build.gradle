@@ -8,6 +8,6 @@ android {
 
 dependencies {
     implementation projects.core.infrastructure
-    implementation projects.core.navigation
+    api projects.core.navigation
     implementation libs.androidx.fragment
 }

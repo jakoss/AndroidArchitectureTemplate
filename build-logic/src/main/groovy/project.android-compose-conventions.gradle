@@ -34,6 +34,8 @@ dependencies {
 
     api libs.bundles.compose.ui.core
 
+    lintChecks libs.compose.linter
+
     androidTestImplementation composeBom
     androidTestImplementation libs.bundles.androidx.test
     androidTestImplementation libs.bundles.compose.test

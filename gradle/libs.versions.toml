@@ -56,6 +56,8 @@ compose-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 # We are not using this anywhere, but it's required so the renovate bot can properly spot new compiler releases
 compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compose-compiler" }
 
+compose-linter = { module = "com.slack.lint.compose:compose-lint-checks", version = "1.0.0" }
+
 junit4 = { module = "junit:junit", version = "4.13.2" }
 
 fragNav = { module = "com.github.ncapdevi:FragNav", version = "3.3.0" }

@@ -2,8 +2,7 @@ package pl.jsyty.architecturetemplate.feature.longaction.impl
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.deliveryhero.whetstone.fragment.ContributesFragment
@@ -24,6 +23,8 @@ class LongActionFragment @Inject constructor() : BaseDirectableComposeFragment<L
         ) {
             val viewModel = composeViewModel<LongActionViewModel>()
             val state by viewModel.collectAsState()
+
+            var testState by mutableStateOf(false)
 
             FullscreenAsyncHandler(
                 state = state.action,

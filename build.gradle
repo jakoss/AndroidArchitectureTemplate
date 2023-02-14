@@ -38,6 +38,7 @@ plugins {
     alias libs.plugins.benManesVersions
     alias libs.plugins.gradleDoctor
     alias libs.plugins.moduleCheck
+    alias libs.plugins.dependencyAnalysis
 }
 
 moduleCheck {

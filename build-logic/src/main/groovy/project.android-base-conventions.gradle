@@ -48,6 +48,10 @@ android {
     }
 }
 
+kotlin {
+    jvmToolchain(11)
+}
+
 anvil {
     generateDaggerFactories = true
 }

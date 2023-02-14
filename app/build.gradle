@@ -45,8 +45,9 @@ kapt {
 
 dependencies {
     implementation projects.core.ui
-    api projects.core.infrastructure
+    implementation projects.core.infrastructure
     implementation projects.core.networking
+    implementation projects.core.navigation
 
     for (p in rootProject.subprojects) {
         if (p.path.endsWith(":impl") && p != project) {
@@ -60,6 +61,8 @@ dependencies {
     implementation libs.fragNav
 
     implementation libs.bundles.networking
+    implementation libs.orbitmvi.viewmodel
+    implementation libs.material
 
     internalImplementation libs.bundles.pluto
 }

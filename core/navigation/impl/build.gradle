@@ -7,7 +7,7 @@ android {
 }
 
 dependencies {
-    api projects.core.infrastructure
-    api projects.core.navigation
+    implementation projects.core.infrastructure
+    implementation projects.core.navigation
     implementation libs.androidx.fragment
 }

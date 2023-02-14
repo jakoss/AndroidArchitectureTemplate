@@ -140,6 +140,8 @@ detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 moduleCheck = { id = "com.rickbusarow.module-check", version = "0.12.5" }
 dependencyAnalysis = { id = "com.autonomousapps.dependency-analysis", version = "1.19.0" }
 
+composeCompilerReport = { id = "dev.shreyaspatil.compose-compiler-report-generator", version = "1.0.0-beta02" }
+
 [bundles]
 compose-ui-core = ["compose-ui", "compose-uitooling-preview", "compose-material"]
 compose-ui-debug = ["compose-uitooling-core", "compose-test-manifest"]

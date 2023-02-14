@@ -11,12 +11,12 @@ android {
     if (findProperty("enableComposeCompilerReports") == "true") {
         kotlinOptions {
             freeCompilerArgs += [
-                "-P",
-                "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=" +
-                        buildDir.absolutePath + "/compose_metrics",
-                "-P",
-                "plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=" +
-                        buildDir.absolutePath + "/compose_metrics"
+                    "-P",
+                    "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=" +
+                            buildDir.absolutePath + "/compose_metrics",
+                    "-P",
+                    "plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=" +
+                            buildDir.absolutePath + "/compose_metrics"
             ]
         }
     }
@@ -32,7 +32,9 @@ dependencies {
 
     implementation libs.androidx.activity.compose
 
-    implementation libs.bundles.compose.ui.core
+    api libs.bundles.compose.ui.core
+
+    lintChecks libs.compose.linter
 
     androidTestImplementation composeBom
     androidTestImplementation libs.bundles.androidx.test

@@ -5,6 +5,6 @@ plugins {
 dependencies {
     api projects.core.networking
 
-    implementation libs.retrofit.core
-    implementation libs.kotlinx.serialization.json
+    api libs.retrofit.core
+    api libs.kotlinx.serialization.json
 }

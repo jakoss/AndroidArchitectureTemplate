@@ -60,8 +60,14 @@ jobs:
                 uses: gradle/gradle-build-action@v2
                 id: gradle
                 with:
-                    arguments: lintKotlin :app:assembleDebug :app:lintDebug --stacktrace # run tests here
+                    arguments: lintKotlin lintDebug :app:assembleDebug --stacktrace # run tests here
                 if: steps.commit_formatted_code.outputs.pushed == 'false'
+
+            -   uses: github/codeql-action/upload-sarif@v2
+                if: steps.commit_formatted_code.outputs.pushed == 'false' && success() || failure()
+                with:
+                    sarif_file: app/build/reports/lint-results-debug.sarif
+                    category: lint
 
     actionlint:
         runs-on: ubuntu-latest
@@ -78,7 +84,6 @@ jobs:
                 with:
                     github_token: ${{ secrets.github_token }}
                     detekt_config: ./config/detekt/detekt.yml
-                    detekt_plugins: ./config/detekt/plugins/detekt-rules-compose-1.2.2.jar
                     reviewdog_filter: file # always analyse whole file that was added/modified
 
     modulecheck:

@@ -10,10 +10,5 @@ plugins {
 }
 
 dependencies {
-    implementation libs.kotlin.android.plugin
-    implementation libs.android.plugin
-    implementation libs.whetstone.plugin
     implementation libs.androidCacheFix
-    implementation libs.kotlinx.serialization.plugin
-    implementation libs.detekt.plugin
 }

@@ -48,6 +48,10 @@ android {
     }
 }
 
+kotlin {
+    jvmToolchain(11)
+}
+
 anvil {
     generateDaggerFactories = true
 }
@@ -67,7 +71,7 @@ dependencies {
 
     implementation libs.coroutines.lib
 
-    implementation libs.dagger.core
+    api libs.dagger.core
 
     implementation libs.bundles.androidx.core
     implementation libs.timber

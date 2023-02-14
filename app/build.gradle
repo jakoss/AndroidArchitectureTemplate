@@ -37,6 +37,11 @@ android {
     buildFeatures {
         buildConfig = true
     }
+
+    lint {
+        checkDependencies true
+        sarifReport true
+    }
 }
 
 kapt {
@@ -59,7 +64,8 @@ dependencies {
     implementation libs.androidx.coordinatorlayour
     implementation libs.fragNav
 
-    implementation libs.bundles.networking
+    implementation libs.orbitmvi.viewmodel
+    implementation libs.material
 
     internalImplementation libs.bundles.pluto
 }

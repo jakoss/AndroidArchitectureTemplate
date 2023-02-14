@@ -1,5 +1,8 @@
+@file:SuppressLint("ComposeCompositionLocalUsage")
+
 package pl.jsyty.architecturetemplate.ui
 
+import android.annotation.SuppressLint
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy

@@ -10,7 +10,8 @@ android {
 dependencies {
     api projects.core.infrastructure
 
-    implementation libs.bundles.networking
+    api libs.okhttp.core
+    implementation libs.kotlinx.serialization.json
     implementation libs.retrofit.core
     implementation libs.retrofit.kotlinSerializationConverter
     implementation libs.resilience4j.kotlin

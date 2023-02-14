@@ -45,7 +45,7 @@ dagger-core = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
 
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
-compose-runtime = { module = "androidx.compose.runtime:runtime"}
+compose-runtime = { module = "androidx.compose.runtime:runtime" }
 compose-ui = { module = "androidx.compose.ui:ui" }
 compose-uitooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 compose-uitooling-core = { module = "androidx.compose.ui:ui-tooling" }
@@ -55,6 +55,8 @@ compose-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 
 # We are not using this anywhere, but it's required so the renovate bot can properly spot new compiler releases
 compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compose-compiler" }
+
+compose-linter = { module = "com.slack.lint.compose:compose-lint-checks", version = "1.0.0" }
 
 junit4 = { module = "junit:junit", version = "4.13.2" }
 
@@ -136,6 +138,7 @@ kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 
 moduleCheck = { id = "com.rickbusarow.module-check", version = "0.12.5" }
+dependencyAnalysis = { id = "com.autonomousapps.dependency-analysis", version = "1.19.0" }
 
 [bundles]
 compose-ui-core = ["compose-ui", "compose-uitooling-preview", "compose-material"]
@@ -151,8 +154,6 @@ kotlinPoet = ["kotlinPoet-base", "kotlinPoet-ksp"]
 test-kotlinCompile = ["test-kotlinCompile-base", "test-kotlinCompile-ksp"]
 
 anvil-compiler = ["anvil-compiler-api", "anvil-compiler-utils"]
-
-networking = ["okhttp-core", "kotlinx-serialization-json"]
 
 pluto = [
     "pluto-core",

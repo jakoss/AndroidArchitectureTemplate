@@ -53,7 +53,7 @@ compose-material = { module = "androidx.compose.material:material" }
 compose-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 compose-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 
-# We are not using this anywhere, but it's required so the renovate bot can properly spot new compiler releases
+# Required so the renovate bot can properly spot new compiler releases
 compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compose-compiler" }
 
 compose-linter = { module = "com.slack.lint.compose:compose-lint-checks", version = "1.0.0" }

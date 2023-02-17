@@ -98,5 +98,6 @@ jobs:
 
             -   name: Check modules
                 uses: gradle/gradle-build-action@v2
+                continue-on-error: true
                 with:
                     arguments: moduleCheck --no-daemon

@@ -9,6 +9,9 @@
       "dependencyDashboardApproval": true
     },
     "groupSlug": "all",
+    "labels": ["dependencies"],
+    "assignees": ["jakoss"],
+    "reviewers": ["jakoss"],
     "packageRules": [
       {
         "matchPackagePatterns": [
@@ -31,5 +34,8 @@
         ],
         "groupName": "Kotlin related dependencies"
       }
-    ]
+    ],
+    "vulnerabilityAlerts": {
+        "labels": ["security"]
+      }
 }

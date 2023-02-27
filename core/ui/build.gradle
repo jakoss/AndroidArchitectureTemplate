@@ -1,7 +1,6 @@
 plugins {
     id 'project.android-library-conventions'
     id 'project.android-compose-conventions'
-    alias libs.plugins.composeCompilerReport
 }
 
 android {

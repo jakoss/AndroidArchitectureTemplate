@@ -2,8 +2,8 @@
 kotlin = "1.8.10"
 android-gradle = "7.4.1"
 compose-bom = "2023.01.00"
-compose-compiler = "1.4.2"
-orbitmvi = "4.5.0"
+compose-compiler = "1.4.3"
+orbitmvi = "4.6.1"
 androidx-room = "2.4.2"
 coroutines = "1.6.4"
 ksp = "1.8.10-1.0.9"
@@ -14,8 +14,8 @@ lifecycle = "2.5.1"
 ktlint = "0.47.1"
 kotlinter = "3.13.0"
 kotlinPoet = "1.12.0"
-androidCacheFix = "2.6.4"
-kotlinxSerialization = "1.4.1"
+androidCacheFix = "2.6.5"
+kotlinxSerialization = "1.5.0"
 okhttp = "4.10.0"
 retrofit = "2.9.0"
 resilience4j = "1.7.1"
@@ -53,10 +53,10 @@ compose-material = { module = "androidx.compose.material:material" }
 compose-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 compose-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 
-# We are not using this anywhere, but it's required so the renovate bot can properly spot new compiler releases
+# Required so the renovate bot can properly spot new compiler releases
 compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compose-compiler" }
 
-compose-linter = { module = "com.slack.lint.compose:compose-lint-checks", version = "1.0.0" }
+compose-linter = { module = "com.slack.lint.compose:compose-lint-checks", version = "1.0.1" }
 
 junit4 = { module = "junit:junit", version = "4.13.2" }
 
@@ -129,7 +129,7 @@ android-library = { id = "com.android.library", version.ref = "android-gradle" }
 anvil = { id = "com.squareup.anvil", version.ref = "anvil" }
 
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-benManesVersions = { id = "com.github.ben-manes.versions", version = "0.45.0" }
+benManesVersions = { id = "com.github.ben-manes.versions", version = "0.46.0" }
 gradleDoctor = { id = "com.osacky.doctor", version = "0.8.1" }
 
 whetstone = { id = "com.deliveryhero.whetstone", version.ref = "whetstone" }
@@ -140,7 +140,7 @@ detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 moduleCheck = { id = "com.rickbusarow.module-check", version = "0.12.5" }
 dependencyAnalysis = { id = "com.autonomousapps.dependency-analysis", version = "1.19.0" }
 
-composeCompilerReport = { id = "dev.shreyaspatil.compose-compiler-report-generator", version = "1.0.0-beta02" }
+composeCompilerReport = { id = "dev.shreyaspatil.compose-compiler-report-generator", version = "1.0.0" }
 
 [bundles]
 compose-ui-core = ["compose-ui", "compose-uitooling-preview", "compose-material"]

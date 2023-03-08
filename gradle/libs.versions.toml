@@ -10,7 +10,7 @@ ksp = "1.8.10-1.0.9"
 anvil = "2.4.4"
 dagger = "2.45"
 whetstone = "0.4.0"
-lifecycle = "2.5.1"
+lifecycle = "2.6.0"
 ktlint = "0.47.1"
 kotlinter = "3.13.0"
 kotlinPoet = "1.12.0"
@@ -56,7 +56,7 @@ compose-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 # Required so the renovate bot can properly spot new compiler releases
 compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compose-compiler" }
 
-compose-linter = { module = "com.slack.lint.compose:compose-lint-checks", version = "1.1.0" }
+compose-linter = { module = "com.slack.lint.compose:compose-lint-checks", version = "1.1.1" }
 
 junit4 = { module = "junit:junit", version = "4.13.2" }
 

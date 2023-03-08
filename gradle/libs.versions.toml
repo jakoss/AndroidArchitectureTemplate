@@ -20,7 +20,7 @@ okhttp = "4.10.0"
 retrofit = "2.9.0"
 resilience4j = "1.7.1"
 detekt = "1.22.0"
-kmapper = "1.0.0"
+kmapper = "1.1.0"
 
 niddler = "1.7.0"
 pluto = "2.0.9"

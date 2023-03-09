@@ -1,3 +1,5 @@
+import java.nio.file.Paths
+
 plugins {
     id 'org.jetbrains.kotlin.android'
     id 'org.jetbrains.kotlin.plugin.parcelize'
@@ -45,6 +47,10 @@ android {
     buildFeatures {
         // we want this to be disabled for everything besides the app project for perforamnce reasons
         buildConfig = false
+    }
+
+    lint {
+        lintConfig file(Paths.get(rootDir.absolutePath, "lint.xml"))
     }
 }
 

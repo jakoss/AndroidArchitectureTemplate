@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="ComposeViewModelInjection">
+        <option name="viewmodel-factories" value="composeViewModel" />
+    </issue>
+</lint>

@@ -24,8 +24,8 @@ android {
 
     compileOptions {
         coreLibraryDesugaringEnabled true
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     buildTypes {
@@ -35,7 +35,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = '11'
+        jvmTarget = '17'
     }
 
     packagingOptions {
@@ -44,18 +44,13 @@ android {
         }
     }
 
-    buildFeatures {
-        // we want this to be disabled for everything besides the app project for perforamnce reasons
-        buildConfig = false
-    }
-
     lint {
         lintConfig file(Paths.get(rootDir.absolutePath, "lint.xml"))
     }
 }
 
 kotlin {
-    jvmToolchain(11)
+    jvmToolchain(17)
 }
 
 anvil {

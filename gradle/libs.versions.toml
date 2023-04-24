@@ -95,7 +95,7 @@ androidCacheFix = { module = "org.gradle.android.cache-fix:org.gradle.android.ca
 okhttp-core = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 
 retrofit-core = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
-retrofit-kotlinSerializationConverter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version = "0.8.0" }
+retrofit-kotlinSerializationConverter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version = "1.0.0" }
 
 test-kotlinCompile-base = { module = "com.github.tschuchortdev:kotlin-compile-testing", version.ref = "test-kotlinCompileTesting" }
 test-kotlinCompile-ksp = { module = "com.github.tschuchortdev:kotlin-compile-testing-ksp", version.ref = "test-kotlinCompileTesting" }

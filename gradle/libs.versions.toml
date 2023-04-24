@@ -16,7 +16,7 @@ kotlinter = "3.14.0"
 kotlinPoet = "1.13.0"
 androidCacheFix = "2.7.1"
 kotlinxSerialization = "1.5.0"
-okhttp = "4.10.0"
+okhttp = "4.11.0"
 retrofit = "2.9.0"
 resilience4j = "1.7.1"
 detekt = "1.22.0"
@@ -138,7 +138,7 @@ kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 
 moduleCheck = { id = "com.rickbusarow.module-check", version = "0.12.5" }
-dependencyAnalysis = { id = "com.autonomousapps.dependency-analysis", version = "1.19.0" }
+dependencyAnalysis = { id = "com.autonomousapps.dependency-analysis", version = "1.20.0" }
 
 [bundles]
 compose-ui-core = ["compose-ui", "compose-uitooling-preview", "compose-material"]

@@ -117,6 +117,9 @@ pluto-network = { module = "com.plutolib.plugins:network", version.ref = "pluto"
 pluto-exceptions = { module = "com.plutolib.plugins:exceptions", version.ref = "pluto" }
 pluto-preferences = { module = "com.plutolib.plugins:preferences", version.ref = "pluto" }
 
+# Required so the renovate bot can properly spot new compiler releases
+ktlint-fake = { module = "com.pinterest:ktlint", version.ref = "ktlint" }
+
 [plugins]
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }

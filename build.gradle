@@ -9,7 +9,6 @@ buildscript {
                     "com.pinterest.ktlint:ktlint-reporter-html:$ktlintVersion",
                     "com.pinterest.ktlint:ktlint-reporter-plain:$ktlintVersion",
                     "com.pinterest.ktlint:ktlint-reporter-sarif:$ktlintVersion",
-                    "com.pinterest.ktlint:ktlint-ruleset-experimental:$ktlintVersion",
                     "com.pinterest.ktlint:ktlint-ruleset-standard:$ktlintVersion"
             )
         }

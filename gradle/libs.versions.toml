@@ -5,7 +5,7 @@ compose-bom = "2023.05.00"
 compose-compiler = "1.4.4"
 orbitmvi = "4.6.1"
 androidx-room = "2.4.2"
-coroutines = "1.6.4"
+coroutines = "1.7.0"
 ksp = "1.8.10-1.0.9"
 anvil = "2.4.4"
 dagger = "2.46"
@@ -20,7 +20,7 @@ okhttp = "4.11.0"
 retrofit = "2.9.0"
 resilience4j = "2.0.2"
 detekt = "1.22.0"
-kmapper = "1.1.0"
+konvert = "1.4.0"
 
 niddler = "1.7.0"
 pluto = "2.1.3"
@@ -105,8 +105,8 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 resilience4j-kotlin = { module = "io.github.resilience4j:resilience4j-kotlin", version.ref = "resilience4j" }
 resilience4j-retry = { module = "io.github.resilience4j:resilience4j-retry", version.ref = "resilience4j" }
 
-kmapper-library = { module = "io.github.s0nicyouth:processor_annotations", version.ref = "kmapper" }
-kmapper-compiler = { module = "io.github.s0nicyouth:processor", version.ref = "kmapper" }
+konvert-library = { module = "io.mcarle:konvert-api", version.ref = "konvert" }
+konvert-compiler = { module = "io.mcarle:konvert", version.ref = "konvert" }
 
 niddler-library = { module = "com.chimerapps.niddler:niddler", version.ref = "niddler" }
 niddler-noop = { module = "com.chimerapps.niddler:niddler-noop", version.ref = "niddler" }

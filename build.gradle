@@ -61,9 +61,9 @@ moduleCheck {
 
     additionalCodeGenerators = [
             new modulecheck.config.CodeGeneratorBinding.KspExtension(
-                    "kmapper",
-                    "io.github.s0nicyouth:processor",
-                    ["com.syouth.kmapper.processor_annotations.Mapper"]
+                    "konvert",
+                    "io.mcarle:konvert",
+                    ["io.mcarle.konvert.api.Konverter"]
             )
     ]
 }

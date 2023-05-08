@@ -2,7 +2,11 @@ plugins {
     id 'com.google.devtools.ksp'
 }
 
+ksp {
+    arg("konvert.konverter.generate-class", "true")
+}
+
 dependencies {
-    compileOnly libs.kmapper.library
-    ksp libs.kmapper.compiler
+    implementation libs.konvert.library
+    ksp libs.konvert.compiler
 }

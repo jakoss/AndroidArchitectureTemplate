@@ -23,7 +23,7 @@ detekt = "1.22.0"
 kmapper = "1.1.0"
 
 niddler = "1.7.0"
-pluto = "2.1.2"
+pluto = "2.1.3"
 
 test-kotlinCompileTesting = "1.5.0"
 

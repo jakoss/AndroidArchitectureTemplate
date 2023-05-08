@@ -21,11 +21,6 @@
         "groupSlug": "all"
       },
       {
-        "matchPackagePatterns": ["^io.github.resilience4j"],
-        "groupName": "resilience4j",
-        "allowedVersions": "<2.0"
-      },
-      {
         "matchPackagePatterns": [
           "^org.jetbrains.kotlin", 
           "^com.google.devtools.ksp", 

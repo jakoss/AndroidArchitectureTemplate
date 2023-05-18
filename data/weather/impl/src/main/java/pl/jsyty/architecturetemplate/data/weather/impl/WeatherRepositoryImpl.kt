@@ -14,9 +14,6 @@ class WeatherRepositoryImpl @Inject constructor(
     override suspend fun getCurrentWeather(latitude: Double, longitude: Double): CurrentWeather {
         val weather =
             weatherService.getWeather(latitude, longitude, currentWeather = true, timezone = "UTC")
-
-        val test = weatherMapper.fromDto(weather.currentWeather)
-        println(weatherMapper.toDto(test))
-        return test
+        return weatherMapper.fromDto(weather.currentWeather)
     }
 }

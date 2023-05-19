@@ -4,9 +4,13 @@ plugins {
 
 ksp {
     arg("konvert.konverter.generate-class", "true")
+    arg("konvert.anvil.default-injection-method", "FACTORY")
+    arg("konvert.anvil.default-scope", "com.deliveryhero.whetstone.app.ApplicationScope")
 }
 
 dependencies {
     implementation libs.konvert.library
+    implementation libs.konvert.anvil.annotations
     ksp libs.konvert.compiler
+    ksp libs.konvert.anvil.injector
 }

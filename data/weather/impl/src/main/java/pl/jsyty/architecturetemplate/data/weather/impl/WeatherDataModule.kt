@@ -16,8 +16,4 @@ object WeatherDataModule {
     fun provideWeatherService(retrofitFactory: RetrofitFactory): WeatherService {
         return retrofitFactory.create("forecast")
     }
-
-    @Singleton
-    @Provides
-    fun providesWeatherMapper(): WeatherMapper = WeatherMapperImpl()
 }

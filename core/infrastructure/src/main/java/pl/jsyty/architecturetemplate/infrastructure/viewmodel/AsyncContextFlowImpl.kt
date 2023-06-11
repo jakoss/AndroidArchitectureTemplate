@@ -21,7 +21,7 @@ internal class AsyncContextFlowImpl<STATE : Any, SIDE_EFFECT : Any, RESOURCE : A
         }.onEach {
             flowValue = it
             simpleSyntaxContext.reduce { reducer(Success(it)) }
-        }.catch {ex ->
+        }.catch { ex ->
             Timber.e(ex)
             customErrorHandler?.invoke(ex)
             simpleSyntaxContext.reduce { reducer(Fail(ex, flowValue ?: cachedValue?.invoke())) }
@@ -40,7 +40,7 @@ internal class AsyncContextFlowImpl<STATE : Any, SIDE_EFFECT : Any, RESOURCE : A
  * @see [AsyncContext]
  */
 fun <STATE : Any, SIDE_EFFECT : Any, RESOURCE : Any> SimpleSyntax<STATE, SIDE_EFFECT>.asyncFlow(
-    flow: Flow<RESOURCE>
+    flow: Flow<RESOURCE>,
 ): AsyncContext<STATE, SIDE_EFFECT, RESOURCE> {
     return AsyncContextFlowImpl(flow, this)
 }

@@ -3,7 +3,7 @@ buildscript {
     configurations.classpath {
         resolutionStrategy {
             force(
-                    "com.pinterest.ktlint:ktlint-core:$ktlintVersion",
+                    "com.pinterest.ktlint:ktlint:$ktlintVersion",
                     "com.pinterest.ktlint:ktlint-reporter-checkstyle:$ktlintVersion",
                     "com.pinterest.ktlint:ktlint-reporter-json:$ktlintVersion",
                     "com.pinterest.ktlint:ktlint-reporter-html:$ktlintVersion",

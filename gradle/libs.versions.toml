@@ -8,22 +8,22 @@ androidx-room = "2.4.2"
 coroutines = "1.7.3"
 ksp = "1.9.0-1.0.13"
 anvil = "2.4.7"
-dagger = "2.46.1"
+dagger = "2.47"
 whetstone = "0.6.0"
 lifecycle = "2.6.1"
 ktlint = "0.49.1"
 kotlinter = "3.15.0"
 kotlinPoet = "1.14.2"
-androidCacheFix = "2.7.2"
+androidCacheFix = "2.7.3"
 kotlinxSerialization = "1.5.1"
 okhttp = "4.11.0"
 retrofit = "2.9.0"
-resilience4j = "2.0.2"
-detekt = "1.23.0"
+resilience4j = "2.1.0"
+detekt = "1.23.1"
 konvert = "2.1.0"
 
 niddler = "1.7.0"
-pluto = "2.1.4"
+pluto = "2.1.5"
 
 test-kotlinCompileTesting = "1.5.0"
 
@@ -69,7 +69,7 @@ androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core",
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.7.2" }
 androidx-core = { module = "androidx.core:core-ktx", version = "1.10.1" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version = "1.6.1" }
-androidx-fragment = { module = "androidx.fragment:fragment-ktx", version = "1.6.0" }
+androidx-fragment = { module = "androidx.fragment:fragment-ktx", version = "1.6.1" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
 
 androidx-coordinatorlayour = { module = "androidx.coordinatorlayout:coordinatorlayout", version = "1.2.0" }
@@ -82,9 +82,9 @@ orbitmvi-compose = { module = "org.orbit-mvi:orbit-compose", version.ref = "orbi
 kotlinter-plugin = { module = "org.jmailen.gradle:kotlinter-gradle", version.ref = "kotlinter" }
 detekt-plugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
 
-detekt-rules-compose = { module = "ru.kode:detekt-rules-compose", version = "1.2.2" }
+detekt-rules-compose = { module = "ru.kode:detekt-rules-compose", version = "1.3.0" }
 
-autoService-Ksp = { module = "dev.zacsweers.autoservice:auto-service-ksp", version = "1.0.0" }
+autoService-Ksp = { module = "dev.zacsweers.autoservice:auto-service-ksp", version = "1.1.0" }
 autoService-annotations = { module = "com.google.auto.service:auto-service-annotations", version = "1.1.1" }
 
 kotlinPoet-base = { module = "com.squareup:kotlinpoet", version.ref = "kotlinPoet" }

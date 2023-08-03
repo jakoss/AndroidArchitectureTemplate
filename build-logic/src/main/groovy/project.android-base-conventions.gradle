@@ -3,7 +3,7 @@ import java.nio.file.Paths
 plugins {
     id 'org.jetbrains.kotlin.android'
     id 'org.jetbrains.kotlin.plugin.parcelize'
-    id 'com.deliveryhero.whetstone'
+    id 'dev.msfjarvis.whetstone'
     id 'org.jmailen.kotlinter'
     id 'io.gitlab.arturbosch.detekt'
     id 'org.gradle.android.cache-fix'

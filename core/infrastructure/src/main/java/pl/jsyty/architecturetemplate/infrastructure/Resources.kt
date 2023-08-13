@@ -1,5 +1,5 @@
-// ktlint-disable filename
-@file:Suppress("unused")
+
+@file:Suppress("ktlint:standard:filename", "unused")
 
 package pl.jsyty.architecturetemplate.infrastructure
 

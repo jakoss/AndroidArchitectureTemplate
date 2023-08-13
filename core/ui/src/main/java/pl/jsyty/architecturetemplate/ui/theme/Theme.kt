@@ -1,4 +1,6 @@
-// ktlint-disable filename
+
+@file:Suppress("ktlint:standard:filename")
+
 package pl.jsyty.architecturetemplate.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme

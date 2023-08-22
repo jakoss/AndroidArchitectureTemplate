@@ -27,6 +27,13 @@
       "groupSlug" : "all"
     },
     {
+      "matchPackagePatterns": [
+        "^com.squareup.anvil"
+      ],
+      "groupName": "Kotlin related dependencies",
+      "allowedVersions": "!/.*-1-8$/"
+    },
+    {
       "matchPackagePatterns" : [
         "^org.jetbrains.kotlin",
         "^com.google.devtools.ksp",

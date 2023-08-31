@@ -13,17 +13,13 @@ android {
             freeCompilerArgs += [
                     "-P",
                     "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=" +
-                            buildDir.absolutePath + "/compose_metrics",
+                            layout.buildDirectory.absolutePath + "/compose_metrics",
                     "-P",
                     "plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=" +
-                            buildDir.absolutePath + "/compose_metrics"
+                            layout.buildDirectory.absolutePath + "/compose_metrics"
             ]
         }
     }
-}
-
-whetstone {
-    addOns.compose.set(true)
 }
 
 dependencies {
@@ -35,6 +31,8 @@ dependencies {
     api libs.bundles.compose.ui.core
 
     lintChecks libs.compose.linter
+
+    implementation(libs.whetstone.compose)
 
     androidTestImplementation composeBom
     androidTestImplementation libs.bundles.androidx.test

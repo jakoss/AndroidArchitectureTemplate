@@ -1,5 +1,6 @@
 plugins {
     id 'project.android-feature-conventions'
+    id 'project.android-whetstone-conventions'
     id 'project.android-compose-conventions'
 }
 

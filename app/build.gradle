@@ -1,9 +1,9 @@
 plugins {
-    alias libs.plugins.kotlin.kapt
     alias libs.plugins.android.application
+    alias libs.plugins.ksp
     id 'project.android-base-conventions'
     id 'project.android-compose-conventions'
-    alias libs.plugins.whetstone
+    alias libs.plugins.anvil
 }
 
 android {
@@ -44,9 +44,6 @@ android {
     }
 }
 
-kapt {
-    useBuildCache = true
-}
 
 dependencies {
     implementation projects.core.ui
@@ -59,7 +56,9 @@ dependencies {
         }
     }
 
-    kapt libs.dagger.compiler
+    ksp libs.dagger.compiler
+
+    anvil(libs.whetstone.compiler)
 
     implementation libs.androidx.coordinatorlayour
     implementation libs.fragNav

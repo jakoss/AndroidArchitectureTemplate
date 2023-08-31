@@ -40,6 +40,8 @@ anvil-plugin = { module = "com.squareup.anvil:gradle-plugin", version.ref = "anv
 anvil-compiler-api = { module = "com.squareup.anvil:compiler-api", version.ref = "anvil" }
 anvil-compiler-utils = { module = "com.squareup.anvil:compiler-utils", version.ref = "anvil" }
 whetstone-plugin = { module = "dev.msfjarvis.whetstone:whetstone", version.ref = "whetstone" }
+whetstone-compiler = { module = "dev.msfjarvis.whetstone:whetstone-compiler", version.ref = "whetstone" }
+whetstone-compose = { module = "dev.msfjarvis.whetstone:whetstone-compose", version.ref = "whetstone" }
 
 dagger-core = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }

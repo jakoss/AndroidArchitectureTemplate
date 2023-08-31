@@ -3,10 +3,10 @@ import java.nio.file.Paths
 plugins {
     id 'org.jetbrains.kotlin.android'
     id 'org.jetbrains.kotlin.plugin.parcelize'
-    id 'dev.msfjarvis.whetstone'
     id 'org.jmailen.kotlinter'
     id 'io.gitlab.arturbosch.detekt'
     id 'org.gradle.android.cache-fix'
+    id 'com.squareup.anvil'
 }
 
 android {
@@ -55,10 +55,6 @@ kotlin {
     jvmToolchain(17)
 }
 
-anvil {
-    generateDaggerFactories = true
-}
-
 detekt {
     parallel = true
 
@@ -73,6 +69,8 @@ dependencies {
     detektPlugins libs.detekt.rules.compose
 
     implementation libs.coroutines.lib
+
+    implementation(libs.whetstone.plugin)
 
     api libs.dagger.core
 

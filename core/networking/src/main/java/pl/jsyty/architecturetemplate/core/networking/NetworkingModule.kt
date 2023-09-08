@@ -2,7 +2,7 @@ package pl.jsyty.architecturetemplate.core.networking
 
 import android.content.Context
 import com.chimerapps.niddler.interceptor.okhttp.NiddlerOkHttpInterceptor
-import com.deliveryhero.whetstone.ForScope
+import com.squareup.anvil.annotations.optional.ForScope
 import com.deliveryhero.whetstone.app.ApplicationScope
 import com.squareup.anvil.annotations.ContributesTo
 import dagger.Module

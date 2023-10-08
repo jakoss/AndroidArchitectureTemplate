@@ -14,11 +14,13 @@ import timber.log.Timber
 @Suppress("unused")
 class DebugApplication : MyApplication() {
     override fun setupPreInjection() {
-        OkHttpBuilderSteps.addBuilder(object : OkHttpBuilderStep {
-            override fun addBuildStep(builder: OkHttpClient.Builder) {
-                builder.addInterceptor(PlutoInterceptor())
+        OkHttpBuilderSteps.addBuilder(
+            object : OkHttpBuilderStep {
+                override fun addBuildStep(builder: OkHttpClient.Builder) {
+                    builder.addInterceptor(PlutoInterceptor())
+                }
             }
-        })
+        )
     }
 
     override fun onCreate() {

@@ -19,26 +19,28 @@ import javax.inject.Singleton
 @Module
 @ContributesTo(ApplicationScope::class)
 object NetworkingModule {
-
     /**
      * Provide basic [OkHttpClient] setup complete with cache, timeout and all interceptors
      */
     @Singleton
     @Provides
     @Suppress("MagicNumber")
-    fun provideOkHttpClient(@ForScope(ApplicationScope::class) context: Context): OkHttpClient {
-        val builder = OkHttpClient.Builder()
-            .cache(
-                Cache(
-                    File(context.cacheDir, "api_cache"),
-                    50L * 1024 * 1024
-                )
-            ) // setup 50 MB of api cache
-            .connectTimeout(Duration.ofSeconds(15))
-            .readTimeout(Duration.ofSeconds(15))
-            .writeTimeout(Duration.ofSeconds(30))
-            .addInterceptor(NoContentInterceptor())
-            .addInterceptor(NiddlerOkHttpInterceptor(NiddlerHandler.niddler, "Niddler", true))
+    fun provideOkHttpClient(
+        @ForScope(ApplicationScope::class) context: Context,
+    ): OkHttpClient {
+        val builder =
+            OkHttpClient.Builder()
+                .cache(
+                    Cache(
+                        File(context.cacheDir, "api_cache"),
+                        50L * 1024 * 1024
+                    )
+                ) // setup 50 MB of api cache
+                .connectTimeout(Duration.ofSeconds(15))
+                .readTimeout(Duration.ofSeconds(15))
+                .writeTimeout(Duration.ofSeconds(30))
+                .addInterceptor(NoContentInterceptor())
+                .addInterceptor(NiddlerOkHttpInterceptor(NiddlerHandler.niddler, "Niddler", true))
 
         OkHttpBuilderSteps.applySteps(builder)
 
@@ -52,8 +54,9 @@ object NetworkingModule {
      */
     @Singleton
     @Provides
-    fun provideJson(): Json = Json {
-        ignoreUnknownKeys = true
-        encodeDefaults = true
-    }
+    fun provideJson(): Json =
+        Json {
+            ignoreUnknownKeys = true
+            encodeDefaults = true
+        }
 }

@@ -41,7 +41,10 @@ fun <T : Any> RegisterForNavigationResult(
  * @param navigationResult Type of navigation result we're passing
  * @param value Result that will be passed
  */
-fun <T : Any> Fragment.setNavigationResult(navigationResult: NavigationResult<T>, value: T) {
+fun <T : Any> Fragment.setNavigationResult(
+    navigationResult: NavigationResult<T>,
+    value: T,
+) {
     setFragmentResult(
         navigationResult.resultKey,
         bundleOf(

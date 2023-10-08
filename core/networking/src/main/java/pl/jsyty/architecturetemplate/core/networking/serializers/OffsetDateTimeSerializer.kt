@@ -21,7 +21,10 @@ object OffsetDateTimeSerializer : KSerializer<OffsetDateTime> {
         return instant.atOffset(localZoneOffset)
     }
 
-    override fun serialize(encoder: Encoder, value: OffsetDateTime) {
+    override fun serialize(
+        encoder: Encoder,
+        value: OffsetDateTime,
+    ) {
         return encoder.encodeString(value.toInstant().toString())
     }
 }

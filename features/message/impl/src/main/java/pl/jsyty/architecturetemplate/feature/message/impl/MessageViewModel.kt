@@ -9,24 +9,28 @@ import pl.jsyty.architecturetemplate.infrastructure.viewmodel.BaseViewModel
 import javax.inject.Inject
 
 @ContributesViewModel
-class MessageViewModel @Inject constructor(
-    savedStateHandle: SavedStateHandle,
-) : BaseViewModel<MessageViewModel.State, MessageViewModel.SideEffects>(State(name = savedStateHandle.getNavigationArgument<MessageDirection>().name)) {
-    data class State(
-        val name: String,
-        val message: String = "",
-    )
+class MessageViewModel
+    @Inject
+    constructor(
+        savedStateHandle: SavedStateHandle,
+    ) : BaseViewModel<MessageViewModel.State, MessageViewModel.SideEffects>(State(name = savedStateHandle.getNavigationArgument<MessageDirection>().name)) {
+        data class State(
+            val name: String,
+            val message: String = "",
+        )
 
-    sealed class SideEffects {
-        data class ReturnMessage(val fullMessage: String) : SideEffects()
-    }
+        sealed class SideEffects {
+            data class ReturnMessage(val fullMessage: String) : SideEffects()
+        }
 
-    fun updateMessage(value: String) = intent {
-        reduce { state.copy(message = value) }
-    }
+        fun updateMessage(value: String) =
+            intent {
+                reduce { state.copy(message = value) }
+            }
 
-    fun returnMessage() = intent {
-        val fullMessage = "Hello ${state.name}\n${state.message}"
-        postSideEffect(SideEffects.ReturnMessage(fullMessage))
+        fun returnMessage() =
+            intent {
+                val fullMessage = "Hello ${state.name}\n${state.message}"
+                postSideEffect(SideEffects.ReturnMessage(fullMessage))
+            }
     }
-}

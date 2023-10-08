@@ -15,35 +15,37 @@ import pl.jsyty.architecturetemplate.ui.composeViewModel
 import javax.inject.Inject
 
 @ContributesFragment
-class WeatherFragment @Inject constructor() : BaseDirectableComposeFragment<WeatherDirection>() {
-    @Composable
-    override fun Content() {
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colors.background
-        ) {
-            val viewModel = composeViewModel<WeatherViewModel>()
-            val state by viewModel.collectAsState()
-
-            FullscreenAsyncHandler(
-                state = state.currentWeather,
-                onRetryAction = { viewModel.initialize() }
+class WeatherFragment
+    @Inject
+    constructor() : BaseDirectableComposeFragment<WeatherDirection>() {
+        @Composable
+        override fun Content() {
+            Surface(
+                modifier = Modifier.fillMaxSize(),
+                color = MaterialTheme.colors.background
             ) {
-                Column(
-                    modifier = Modifier.padding(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(16.dp)
-                ) {
-                    Text(text = "Temperature: ${it.temperature}")
-                    Text(text = "Windspeed: ${it.windspeed}")
-                    Text(
-                        text = "Time: ${it.time.localisedDateTime()}"
-                    )
-                }
-            }
+                val viewModel = composeViewModel<WeatherViewModel>()
+                val state by viewModel.collectAsState()
 
-            LaunchedEffect(Unit) {
-                viewModel.initialize()
+                FullscreenAsyncHandler(
+                    state = state.currentWeather,
+                    onRetryAction = { viewModel.initialize() }
+                ) {
+                    Column(
+                        modifier = Modifier.padding(16.dp),
+                        verticalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        Text(text = "Temperature: ${it.temperature}")
+                        Text(text = "Windspeed: ${it.windspeed}")
+                        Text(
+                            text = "Time: ${it.time.localisedDateTime()}"
+                        )
+                    }
+                }
+
+                LaunchedEffect(Unit) {
+                    viewModel.initialize()
+                }
             }
         }
     }
-}

@@ -8,6 +8,8 @@ import javax.inject.Singleton
 
 @Singleton
 @ContributesBinding(scope = ApplicationScope::class)
-class BuildInformationImpl @Inject constructor() : BuildInformation {
-    override val apiUrl: String = BuildConfig.API_URL
-}
+class BuildInformationImpl
+    @Inject
+    constructor() : BuildInformation {
+        override val apiUrl: String = BuildConfig.API_URL
+    }

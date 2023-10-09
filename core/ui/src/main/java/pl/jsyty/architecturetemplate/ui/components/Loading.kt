@@ -28,10 +28,11 @@ fun FullscreenLoader(
     alpha: Float = 0.6f,
 ) {
     Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(color = background.copy(alpha = alpha))
-            .then(modifier),
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .background(color = background.copy(alpha = alpha))
+                .then(modifier),
         contentAlignment = Alignment.Center
     ) {
         CircularProgressIndicator(color = color)

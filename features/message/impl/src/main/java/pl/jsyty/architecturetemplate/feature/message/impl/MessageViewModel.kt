@@ -21,12 +21,14 @@ class MessageViewModel @Inject constructor(
         data class ReturnMessage(val fullMessage: String) : SideEffects()
     }
 
-    fun updateMessage(value: String) = intent {
-        reduce { state.copy(message = value) }
-    }
+    fun updateMessage(value: String) =
+        intent {
+            reduce { state.copy(message = value) }
+        }
 
-    fun returnMessage() = intent {
-        val fullMessage = "Hello ${state.name}\n${state.message}"
-        postSideEffect(SideEffects.ReturnMessage(fullMessage))
-    }
+    fun returnMessage() =
+        intent {
+            val fullMessage = "Hello ${state.name}\n${state.message}"
+            postSideEffect(SideEffects.ReturnMessage(fullMessage))
+        }
 }

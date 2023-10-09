@@ -26,77 +26,75 @@ import javax.inject.Inject
 @ContributesFragment
 class MessageFragment @Inject constructor() :
     BaseDirectableComposeDialogFragment<MessageDirection>() {
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+            super.onViewCreated(view, savedInstanceState)
 
-        Timber.d("Name passed via argument: ${direction.name}")
-    }
+            Timber.d("Name passed via argument: ${direction.name}")
+        }
 
-    @Composable
-    override fun Content() {
-        Surface(
-            modifier = Modifier
-                .wrapContentHeight()
-                .fillMaxWidth(),
-            color = MaterialTheme.colors.background
-        ) {
-            val viewModel = composeViewModel<MessageViewModel>()
-            val state by viewModel.collectAsState()
-            MessagePanel(
-                state = state,
-                onMessageUpdate = viewModel::updateMessage,
-                onMessageReturn = viewModel::returnMessage
-            )
+        @Composable
+        override fun Content() {
+            Surface(
+                modifier =
+                    Modifier
+                        .wrapContentHeight()
+                        .fillMaxWidth(),
+                color = MaterialTheme.colors.background
+            ) {
+                val viewModel = composeViewModel<MessageViewModel>()
+                val state by viewModel.collectAsState()
+                MessagePanel(
+                    state = state,
+                    onMessageUpdate = viewModel::updateMessage,
+                    onMessageReturn = viewModel::returnMessage
+                )
 
-            val navigationController = LocalNavigationController.current
-            viewModel.collectSideEffect {
-                when (it) {
-                    is MessageViewModel.SideEffects.ReturnMessage -> {
-                        setNavigationResult(MessageNavigationResult, it.fullMessage)
-                        navigationController.pop()
+                val navigationController = LocalNavigationController.current
+                viewModel.collectSideEffect {
+                    when (it) {
+                        is MessageViewModel.SideEffects.ReturnMessage -> {
+                            setNavigationResult(MessageNavigationResult, it.fullMessage)
+                            navigationController.pop()
+                        }
                     }
                 }
             }
         }
-    }
 
-    @Composable
-    private fun MessagePanel(
-        state: MessageViewModel.State,
-        onMessageUpdate: (String) -> Unit,
-        onMessageReturn: () -> Unit,
-    ) {
-        Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            Text(text = "Provided name: ${state.name}")
-            TextField(
-                value = state.message,
-                onValueChange = onMessageUpdate,
-                label = { Text(text = "Message") },
-                keyboardActions = KeyboardActions(
-                    onDone = {
-                        onMessageReturn()
-                    }
-                ),
-                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done)
-            )
-            Button(onClick = onMessageReturn) {
-                Text(text = "Return message")
+        @Composable
+        private fun MessagePanel(state: MessageViewModel.State, onMessageUpdate: (String) -> Unit, onMessageReturn: () -> Unit) {
+            Column(
+                modifier = Modifier.padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                Text(text = "Provided name: ${state.name}")
+                TextField(
+                    value = state.message,
+                    onValueChange = onMessageUpdate,
+                    label = { Text(text = "Message") },
+                    keyboardActions =
+                        KeyboardActions(
+                            onDone = {
+                                onMessageReturn()
+                            }
+                        ),
+                    keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done)
+                )
+                Button(onClick = onMessageReturn) {
+                    Text(text = "Return message")
+                }
+            }
+        }
+
+        @Preview(showBackground = true)
+        @Composable
+        private fun DefaultPreview() {
+            ArchitectureTemplateTheme {
+                MessagePanel(
+                    state = MessageViewModel.State(name = "Test name"),
+                    onMessageUpdate = {},
+                    onMessageReturn = {}
+                )
             }
         }
     }
-
-    @Preview(showBackground = true)
-    @Composable
-    private fun DefaultPreview() {
-        ArchitectureTemplateTheme {
-            MessagePanel(
-                state = MessageViewModel.State(name = "Test name"),
-                onMessageUpdate = {},
-                onMessageReturn = {}
-            )
-        }
-    }
-}

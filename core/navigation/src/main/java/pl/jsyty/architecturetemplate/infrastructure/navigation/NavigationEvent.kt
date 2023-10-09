@@ -20,6 +20,7 @@ sealed class NavigationEvent {
     data class ShowDialog(
         val direction: Direction,
     ) : NavigationEvent()
+
     data class Pop(val level: Int) :
         NavigationEvent()
 

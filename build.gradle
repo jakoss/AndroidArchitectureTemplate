@@ -4,11 +4,11 @@ buildscript {
         resolutionStrategy {
             force(
                     "com.pinterest.ktlint:ktlint-core:$ktlintVersion",
-                    "com.pinterest.ktlint:ktlint-reporter-checkstyle:$ktlintVersion",
-                    "com.pinterest.ktlint:ktlint-reporter-json:$ktlintVersion",
-                    "com.pinterest.ktlint:ktlint-reporter-html:$ktlintVersion",
-                    "com.pinterest.ktlint:ktlint-reporter-plain:$ktlintVersion",
-                    "com.pinterest.ktlint:ktlint-reporter-sarif:$ktlintVersion",
+                    "com.pinterest.ktlint:ktlint-cli-reporter-checkstyle:$ktlintVersion",
+                    "com.pinterest.ktlint:ktlint-cli-reporter-json:$ktlintVersion",
+                    "com.pinterest.ktlint:ktlint-cli-reporter-html:$ktlintVersion",
+                    "com.pinterest.ktlint:ktlint-cli-reporter-plain:$ktlintVersion",
+                    "com.pinterest.ktlint:ktlint-cli-reporter-sarif:$ktlintVersion",
                     "com.pinterest.ktlint:ktlint-ruleset-standard:$ktlintVersion"
             )
         }

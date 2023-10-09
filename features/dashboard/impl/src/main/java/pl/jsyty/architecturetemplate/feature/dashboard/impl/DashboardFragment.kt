@@ -21,70 +21,66 @@ import javax.inject.Inject
 @ContributesFragment
 class DashboardFragment @Inject constructor() :
     BaseDirectableComposeFragment<DashboardDirection>() {
-    @Composable
-    override fun Content() {
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colors.background
-        ) {
-            val viewModel = composeViewModel<DashboardViewModel>()
-            val state by viewModel.collectAsState()
-            DashboardPanel(
-                state = state,
-                onMessageCreate = viewModel::createMessage,
-                onNameUpdate = viewModel::setName
-            )
+        @Composable
+        override fun Content() {
+            Surface(
+                modifier = Modifier.fillMaxSize(),
+                color = MaterialTheme.colors.background
+            ) {
+                val viewModel = composeViewModel<DashboardViewModel>()
+                val state by viewModel.collectAsState()
+                DashboardPanel(
+                    state = state,
+                    onMessageCreate = viewModel::createMessage,
+                    onNameUpdate = viewModel::setName
+                )
 
-            RegisterForNavigationResult(MessageNavigationResult, onResultReturn = { fullMessage ->
-                viewModel.setFullMessage(fullMessage)
-            })
-        }
-    }
-
-    @Composable
-    private fun DashboardPanel(
-        state: DashboardViewModel.State,
-        onMessageCreate: () -> Unit,
-        onNameUpdate: (String) -> Unit,
-    ) {
-        Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            Text(text = "Welcome on the dashboard")
-            if (state.returnedMessage == null) {
-                Text(text = "No message returned yet")
-            } else {
-                Text(text = "Returned message: ${state.returnedMessage}")
-            }
-            TextField(
-                value = state.name,
-                onValueChange = onNameUpdate,
-                label = { Text(text = "Name") }
-            )
-            Button(onClick = onMessageCreate, enabled = state.name.isNotBlank()) {
-                Text(text = "Create message")
-            }
-            val navigationController = LocalNavigationController.current
-
-            Button(onClick = { navigationController.push(LongActionDirection) }) {
-                Text(text = "Navigate to long action screen")
-            }
-            Button(onClick = { navigationController.push(WeatherDirection) }) {
-                Text(text = "Navigation to weather screen")
+                RegisterForNavigationResult(MessageNavigationResult, onResultReturn = { fullMessage ->
+                    viewModel.setFullMessage(fullMessage)
+                })
             }
         }
-    }
 
-    @Preview(showBackground = true)
-    @Composable
-    private fun DefaultPreview() {
-        ArchitectureTemplateTheme {
-            DashboardPanel(
-                state = DashboardViewModel.State(returnedMessage = "test"),
-                onMessageCreate = {},
-                onNameUpdate = {}
-            )
+        @Composable
+        private fun DashboardPanel(state: DashboardViewModel.State, onMessageCreate: () -> Unit, onNameUpdate: (String) -> Unit) {
+            Column(
+                modifier = Modifier.padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                Text(text = "Welcome on the dashboard")
+                if (state.returnedMessage == null) {
+                    Text(text = "No message returned yet")
+                } else {
+                    Text(text = "Returned message: ${state.returnedMessage}")
+                }
+                TextField(
+                    value = state.name,
+                    onValueChange = onNameUpdate,
+                    label = { Text(text = "Name") }
+                )
+                Button(onClick = onMessageCreate, enabled = state.name.isNotBlank()) {
+                    Text(text = "Create message")
+                }
+                val navigationController = LocalNavigationController.current
+
+                Button(onClick = { navigationController.push(LongActionDirection) }) {
+                    Text(text = "Navigate to long action screen")
+                }
+                Button(onClick = { navigationController.push(WeatherDirection) }) {
+                    Text(text = "Navigation to weather screen")
+                }
+            }
+        }
+
+        @Preview(showBackground = true)
+        @Composable
+        private fun DefaultPreview() {
+            ArchitectureTemplateTheme {
+                DashboardPanel(
+                    state = DashboardViewModel.State(returnedMessage = "test"),
+                    onMessageCreate = {},
+                    onNameUpdate = {}
+                )
+            }
         }
     }
-}

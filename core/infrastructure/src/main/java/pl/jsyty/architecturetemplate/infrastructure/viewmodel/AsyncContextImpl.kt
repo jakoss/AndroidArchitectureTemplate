@@ -15,10 +15,7 @@ internal class AsyncContextImpl<STATE : Any, SIDE_EFFECT : Any, RESOURCE : Any>(
 ) : AsyncContext<STATE, SIDE_EFFECT, RESOURCE> {
     private var customErrorHandler: (suspend (Throwable) -> Unit)? = null
 
-    override suspend fun execute(
-        cachedValue: Async<RESOURCE>?,
-        reducer: SimpleContext<STATE>.(Async<RESOURCE>) -> STATE,
-    ) {
+    override suspend fun execute(cachedValue: Async<RESOURCE>?, reducer: SimpleContext<STATE>.(Async<RESOURCE>) -> STATE) {
         try {
             simpleSyntaxContext.reduce { reducer(Loading(cachedValue?.invoke())) }
             val result = action(simpleSyntaxContext.state)
@@ -42,6 +39,8 @@ internal class AsyncContextImpl<STATE : Any, SIDE_EFFECT : Any, RESOURCE : Any>(
  *
  * @see [AsyncContext]
  */
-fun <STATE : Any, SIDE_EFFECT : Any, RESOURCE : Any> SimpleSyntax<STATE, SIDE_EFFECT>.async(action: suspend (STATE) -> RESOURCE): AsyncContext<STATE, SIDE_EFFECT, RESOURCE> {
+fun <STATE : Any, SIDE_EFFECT : Any, RESOURCE : Any> SimpleSyntax<STATE, SIDE_EFFECT>.async(
+    action: suspend (STATE) -> RESOURCE,
+): AsyncContext<STATE, SIDE_EFFECT, RESOURCE> {
     return AsyncContextImpl(action, this)
 }

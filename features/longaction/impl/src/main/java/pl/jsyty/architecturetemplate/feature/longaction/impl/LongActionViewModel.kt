@@ -12,23 +12,24 @@ import javax.inject.Inject
 @ContributesViewModel
 class LongActionViewModel @Inject constructor() :
     BaseViewModel<LongActionViewModel.State, Unit>(State()) {
-    data class State(
-        val action: Async<String> = Uninitialized,
-    )
+        data class State(
+            val action: Async<String> = Uninitialized,
+        )
 
-    fun initialize(fail: Boolean) = intent {
-        async {
-            // simulate long running operation
-            @Suppress("MagicNumber")
-            delay(5000)
-            if (fail) {
-                @Suppress("TooGenericExceptionThrown")
-                throw RuntimeException("Operation failed!")
-            } else {
-                "Success!"
+        fun initialize(fail: Boolean) =
+            intent {
+                async {
+                    // simulate long running operation
+                    @Suppress("MagicNumber")
+                    delay(5000)
+                    if (fail) {
+                        @Suppress("TooGenericExceptionThrown")
+                        throw RuntimeException("Operation failed!")
+                    } else {
+                        "Success!"
+                    }
+                }.execute {
+                    state.copy(action = it)
+                }
             }
-        }.execute {
-            state.copy(action = it)
-        }
     }
-}

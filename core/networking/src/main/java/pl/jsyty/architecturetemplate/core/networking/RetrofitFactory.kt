@@ -22,10 +22,11 @@ class RetrofitFactory @Inject constructor(
 ) {
     @OptIn(ExperimentalSerializationApi::class)
     fun <T> create(baseUrl: String, serviceType: Class<T>): T {
-        val builder = Retrofit.Builder()
-            .client(httpClient)
-            .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
-            .baseUrl(buildInformation.apiUrl + "/$baseUrl/")
+        val builder =
+            Retrofit.Builder()
+                .client(httpClient)
+                .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
+                .baseUrl(buildInformation.apiUrl + "/$baseUrl/")
         NiddlerRetrofitCallInjector.inject(builder, NiddlerHandler.niddler, httpClient)
         return builder.build().create(serviceType)
     }

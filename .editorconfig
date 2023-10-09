@@ -16,11 +16,6 @@ ij_formatter_tags_enabled = false
 ij_smart_tabs = false
 ij_wrap_on_typing = false
 
-ktlint_standard_no-wildcard-imports = disabled
-ktlint_standard_no-empty-class-body = disabled
-ktlint_standard_import-ordering = disabled
-ktlint_standard_function-naming = disabled
-
 [*.sh]
 end_of_line = lf
 
@@ -65,6 +60,14 @@ ij_xml_text_wrap = normal
 ij_xml_use_custom_settings = true
 
 [{*.kt,*.kts}]
+ktlint_standard_no-wildcard-imports = disabled
+ktlint_standard_no-empty-class-body = disabled
+ktlint_standard_import-ordering = disabled
+ktlint_standard_function-naming = disabled
+ktlint_standard_annotation = disabled
+
+ktlint_function_signature_wrapping_rule_always_with_minimum_parameters = disabled
+
 ij_continuation_indent_size = 4
 ij_kotlin_align_in_columns_case_branch = false
 ij_kotlin_align_multiline_binary_operation = false

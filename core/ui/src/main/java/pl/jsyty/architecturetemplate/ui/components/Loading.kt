@@ -21,7 +21,12 @@ import androidx.compose.ui.graphics.Color
  * @param alpha Alpha of the background (by default the background is semi-transparent)
  */
 @Composable
-fun FullscreenLoader(modifier: Modifier = Modifier, color: Color = MaterialTheme.colors.primary, background: Color = MaterialTheme.colors.surface, alpha: Float = 0.6f) {
+fun FullscreenLoader(
+    modifier: Modifier = Modifier,
+    color: Color = MaterialTheme.colors.primary,
+    background: Color = MaterialTheme.colors.surface,
+    alpha: Float = 0.6f,
+) {
     Box(
         modifier =
             Modifier

@@ -39,6 +39,8 @@ internal class AsyncContextImpl<STATE : Any, SIDE_EFFECT : Any, RESOURCE : Any>(
  *
  * @see [AsyncContext]
  */
-fun <STATE : Any, SIDE_EFFECT : Any, RESOURCE : Any> SimpleSyntax<STATE, SIDE_EFFECT>.async(action: suspend (STATE) -> RESOURCE): AsyncContext<STATE, SIDE_EFFECT, RESOURCE> {
+fun <STATE : Any, SIDE_EFFECT : Any, RESOURCE : Any> SimpleSyntax<STATE, SIDE_EFFECT>.async(
+    action: suspend (STATE) -> RESOURCE,
+): AsyncContext<STATE, SIDE_EFFECT, RESOURCE> {
     return AsyncContextImpl(action, this)
 }

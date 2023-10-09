@@ -17,22 +17,25 @@ class DashboardViewModel @Inject constructor(
         val name: String = "",
     )
 
-    fun createMessage() = intent {
-        navigationController.showDialog(MessageDirection(name = state.name))
-        reduce {
-            state.copy(name = "")
+    fun createMessage() =
+        intent {
+            navigationController.showDialog(MessageDirection(name = state.name))
+            reduce {
+                state.copy(name = "")
+            }
         }
-    }
 
-    fun setName(value: String) = intent {
-        reduce {
-            state.copy(name = value)
+    fun setName(value: String) =
+        intent {
+            reduce {
+                state.copy(name = value)
+            }
         }
-    }
 
-    fun setFullMessage(value: String) = intent {
-        reduce {
-            state.copy(returnedMessage = value)
+    fun setFullMessage(value: String) =
+        intent {
+            reduce {
+                state.copy(returnedMessage = value)
+            }
         }
-    }
 }

@@ -39,8 +39,6 @@ internal class AsyncContextFlowImpl<STATE : Any, SIDE_EFFECT : Any, RESOURCE : A
  *
  * @see [AsyncContext]
  */
-fun <STATE : Any, SIDE_EFFECT : Any, RESOURCE : Any> SimpleSyntax<STATE, SIDE_EFFECT>.asyncFlow(
-    flow: Flow<RESOURCE>,
-): AsyncContext<STATE, SIDE_EFFECT, RESOURCE> {
+fun <STATE : Any, SIDE_EFFECT : Any, RESOURCE : Any> SimpleSyntax<STATE, SIDE_EFFECT>.asyncFlow(flow: Flow<RESOURCE>): AsyncContext<STATE, SIDE_EFFECT, RESOURCE> {
     return AsyncContextFlowImpl(flow, this)
 }

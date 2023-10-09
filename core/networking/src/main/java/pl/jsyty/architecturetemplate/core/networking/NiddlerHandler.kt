@@ -13,11 +13,12 @@ object NiddlerHandler {
 
     @Suppress("MagicNumber")
     fun init(app: Application) {
-        niddler = AndroidNiddler.Builder()
-            .setPort(0)
-            .setNiddlerInformation(AndroidNiddler.fromApplication(app))
-            .setMaxStackTraceSize(50)
-            .build()
+        niddler =
+            AndroidNiddler.Builder()
+                .setPort(0)
+                .setNiddlerInformation(AndroidNiddler.fromApplication(app))
+                .setMaxStackTraceSize(50)
+                .build()
     }
 
     fun start() {

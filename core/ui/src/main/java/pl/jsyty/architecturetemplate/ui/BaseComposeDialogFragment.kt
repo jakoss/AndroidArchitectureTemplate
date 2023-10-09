@@ -14,7 +14,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
  * [Content] method will be called inside the [ComposeView] with theme provider applied
  */
 abstract class BaseComposeDialogFragment : BottomSheetDialogFragment() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NORMAL, R.style.ThemeOverlay_App_BottomSheetDialog)

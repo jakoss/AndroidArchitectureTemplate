@@ -13,14 +13,15 @@ import javax.inject.Inject
 @ContributesViewModel
 class WeatherViewModel @Inject constructor(private val weatherRepository: WeatherRepository) :
     BaseViewModel<WeatherViewModel.State, Unit>(State()) {
-    data class State(
-        val currentWeather: Async<CurrentWeather> = Uninitialized,
-    )
+        data class State(
+            val currentWeather: Async<CurrentWeather> = Uninitialized,
+        )
 
-    fun initialize() = intent {
-        async {
-            @Suppress("MagicNumber")
-            weatherRepository.getCurrentWeather(52.2297, 21.0122)
-        }.execute { state.copy(currentWeather = it) }
+        fun initialize() =
+            intent {
+                async {
+                    @Suppress("MagicNumber")
+                    weatherRepository.getCurrentWeather(52.2297, 21.0122)
+                }.execute { state.copy(currentWeather = it) }
+            }
     }
-}

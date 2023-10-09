@@ -43,18 +43,23 @@ class MainNavigationFragment @Inject constructor(
         super.onCreate(savedInstanceState)
 
         fragNavController.apply {
-            fragNavLogger = object : FragNavLogger {
-                override fun error(message: String, throwable: Throwable) {
-                    Timber.e(throwable, message)
+            fragNavLogger =
+                object : FragNavLogger {
+                    override fun error(
+                        message: String,
+                        throwable: Throwable,
+                    ) {
+                        Timber.e(throwable, message)
+                    }
                 }
-            }
 
-            defaultTransactionOptions = FragNavTransactionOptions.newBuilder().customAnimations(
-                animR.slide_left_from_right,
-                animR.slide_left_from_middle,
-                animR.slide_right_from_left,
-                animR.slide_right_from_middle
-            ).build()
+            defaultTransactionOptions =
+                FragNavTransactionOptions.newBuilder().customAnimations(
+                    animR.slide_left_from_right,
+                    animR.slide_left_from_middle,
+                    animR.slide_right_from_left,
+                    animR.slide_right_from_middle
+                ).build()
 
             val startFragment = fragmentResolver.resolveFragment(DashboardDirection)
             rootFragments = listOf(startFragment)
@@ -89,7 +94,10 @@ class MainNavigationFragment @Inject constructor(
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
 
         viewLifecycleOwner.lifecycleScope.launch {

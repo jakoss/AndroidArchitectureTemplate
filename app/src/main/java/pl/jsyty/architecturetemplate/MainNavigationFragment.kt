@@ -45,10 +45,7 @@ class MainNavigationFragment @Inject constructor(
         fragNavController.apply {
             fragNavLogger =
                 object : FragNavLogger {
-                    override fun error(
-                        message: String,
-                        throwable: Throwable,
-                    ) {
+                    override fun error(message: String, throwable: Throwable) {
                         Timber.e(throwable, message)
                     }
                 }
@@ -94,10 +91,7 @@ class MainNavigationFragment @Inject constructor(
         }
     }
 
-    override fun onViewCreated(
-        view: View,
-        savedInstanceState: Bundle?,
-    ) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         viewLifecycleOwner.lifecycleScope.launch {

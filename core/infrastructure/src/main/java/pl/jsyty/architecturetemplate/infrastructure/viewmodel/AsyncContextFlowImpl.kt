@@ -11,10 +11,7 @@ internal class AsyncContextFlowImpl<STATE : Any, SIDE_EFFECT : Any, RESOURCE : A
 ) : AsyncContext<STATE, SIDE_EFFECT, RESOURCE> {
     private var customErrorHandler: (suspend (Throwable) -> Unit)? = null
 
-    override suspend fun execute(
-        cachedValue: Async<RESOURCE>?,
-        reducer: SimpleContext<STATE>.(Async<RESOURCE>) -> STATE,
-    ) {
+    override suspend fun execute(cachedValue: Async<RESOURCE>?, reducer: SimpleContext<STATE>.(Async<RESOURCE>) -> STATE) {
         var flowValue: RESOURCE? = null
         action.onStart {
             simpleSyntaxContext.reduce { reducer(Loading(cachedValue?.invoke())) }

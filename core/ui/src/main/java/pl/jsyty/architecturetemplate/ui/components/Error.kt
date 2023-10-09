@@ -19,10 +19,7 @@ import androidx.compose.ui.unit.dp
  * @param retryAction Will be called when used tries to retry action that failed
  */
 @Composable
-fun FullscreenError(
-    modifier: Modifier = Modifier,
-    retryAction: (() -> Unit)? = null,
-) {
+fun FullscreenError(modifier: Modifier = Modifier, retryAction: (() -> Unit)? = null) {
     Box(modifier = Modifier.fillMaxSize().then(modifier), contentAlignment = Alignment.Center) {
         Column {
             Text(text = "Error!")

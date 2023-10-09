@@ -21,10 +21,7 @@ class RetrofitFactory @Inject constructor(
     private val json: Json,
 ) {
     @OptIn(ExperimentalSerializationApi::class)
-    fun <T> create(
-        baseUrl: String,
-        serviceType: Class<T>,
-    ): T {
+    fun <T> create(baseUrl: String, serviceType: Class<T>): T {
         val builder =
             Retrofit.Builder()
                 .client(httpClient)

@@ -26,10 +26,7 @@ import javax.inject.Inject
 @ContributesFragment
 class MessageFragment @Inject constructor() :
     BaseDirectableComposeDialogFragment<MessageDirection>() {
-        override fun onViewCreated(
-            view: View,
-            savedInstanceState: Bundle?,
-        ) {
+        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
 
             Timber.d("Name passed via argument: ${direction.name}")
@@ -65,11 +62,7 @@ class MessageFragment @Inject constructor() :
         }
 
         @Composable
-        private fun MessagePanel(
-            state: MessageViewModel.State,
-            onMessageUpdate: (String) -> Unit,
-            onMessageReturn: () -> Unit,
-        ) {
+        private fun MessagePanel(state: MessageViewModel.State, onMessageUpdate: (String) -> Unit, onMessageReturn: () -> Unit) {
             Column(
                 modifier = Modifier.padding(16.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp)

@@ -42,11 +42,7 @@ class DashboardFragment @Inject constructor() :
         }
 
         @Composable
-        private fun DashboardPanel(
-            state: DashboardViewModel.State,
-            onMessageCreate: () -> Unit,
-            onNameUpdate: (String) -> Unit,
-        ) {
+        private fun DashboardPanel(state: DashboardViewModel.State, onMessageCreate: () -> Unit, onNameUpdate: (String) -> Unit) {
             Column(
                 modifier = Modifier.padding(16.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp)

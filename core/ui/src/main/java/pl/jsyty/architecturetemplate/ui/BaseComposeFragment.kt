@@ -19,11 +19,8 @@ abstract class BaseComposeFragment : Fragment() {
     @Composable
     abstract fun Content()
 
-    final override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ) = baseComposeSetup {
-        Content()
-    }
+    final override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
+        baseComposeSetup {
+            Content()
+        }
 }

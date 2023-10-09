@@ -32,10 +32,7 @@ private val LightColorPalette =
     )
 
 @Composable
-fun ArchitectureTemplateTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable () -> Unit,
-) {
+fun ArchitectureTemplateTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
     val colors =
         if (darkTheme) {
             DarkColorPalette

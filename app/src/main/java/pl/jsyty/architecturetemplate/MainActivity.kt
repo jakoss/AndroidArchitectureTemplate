@@ -13,11 +13,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val mainNavigationFragment =
-            supportFragmentManager.fragmentFactory.instantiate(
-                this.classLoader,
-                MainNavigationFragment::class.java.name
-            )
+        val mainNavigationFragment = supportFragmentManager.fragmentFactory.instantiate(
+            this.classLoader,
+            MainNavigationFragment::class.java.name
+        )
         supportFragmentManager.commit {
             replace(R.id.activityFragmentContainer, mainNavigationFragment)
         }

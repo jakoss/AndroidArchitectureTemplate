@@ -10,8 +10,7 @@ import com.deliveryhero.whetstone.compose.injectedViewModel
 public inline fun <reified VM : ViewModel> composeViewModel(
     viewModelStoreOwner: ViewModelStoreOwner = requireNotNull(LocalViewModelStoreOwner.current),
     key: String? = null,
-    extras: CreationExtras =
-        (viewModelStoreOwner as? HasDefaultViewModelProviderFactory)
-            ?.defaultViewModelCreationExtras
-            ?: CreationExtras.Empty,
+    extras: CreationExtras = (viewModelStoreOwner as? HasDefaultViewModelProviderFactory)
+        ?.defaultViewModelCreationExtras
+        ?: CreationExtras.Empty,
 ): VM = injectedViewModel(viewModelStoreOwner, key, extras)

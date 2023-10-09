@@ -33,6 +33,7 @@ data class Loading<out T>(private val value: T? = null) : Async<T>(complete = fa
 
 @Immutable
 data class Success<out T>(private val value: T) : Async<T>(complete = true, shouldLoad = false, value = value) {
+
     override operator fun invoke(): T = value
 }
 

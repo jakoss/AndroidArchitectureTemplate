@@ -9,35 +9,30 @@ import pl.jsyty.architecturetemplate.infrastructure.viewmodel.BaseViewModel
 import javax.inject.Inject
 
 @ContributesViewModel
-class DashboardViewModel
-    @Inject
-    constructor(
-        private val navigationController: NavigationController,
-    ) : BaseViewModel<DashboardViewModel.State, Unit>(State()) {
-        data class State(
-            val returnedMessage: String? = null,
-            val name: String = "",
-        )
+class DashboardViewModel @Inject constructor(
+    private val navigationController: NavigationController,
+) : BaseViewModel<DashboardViewModel.State, Unit>(State()) {
+    data class State(
+        val returnedMessage: String? = null,
+        val name: String = "",
+    )
 
-        fun createMessage() =
-            intent {
-                navigationController.showDialog(MessageDirection(name = state.name))
-                reduce {
-                    state.copy(name = "")
-                }
-            }
-
-        fun setName(value: String) =
-            intent {
-                reduce {
-                    state.copy(name = value)
-                }
-            }
-
-        fun setFullMessage(value: String) =
-            intent {
-                reduce {
-                    state.copy(returnedMessage = value)
-                }
-            }
+    fun createMessage() = intent {
+        navigationController.showDialog(MessageDirection(name = state.name))
+        reduce {
+            state.copy(name = "")
+        }
     }
+
+    fun setName(value: String) = intent {
+        reduce {
+            state.copy(name = value)
+        }
+    }
+
+    fun setFullMessage(value: String) = intent {
+        reduce {
+            state.copy(returnedMessage = value)
+        }
+    }
+}

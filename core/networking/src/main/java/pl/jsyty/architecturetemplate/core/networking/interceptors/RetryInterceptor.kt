@@ -11,17 +11,16 @@ import java.io.IOException
  */
 @Suppress("MagicNumber")
 class RetryInterceptor : Interceptor {
-    private val retryRegistry =
-        RetryRegistry {
-            withRetryConfig(
-                RetryConfig<Response> {
-                    maxAttempts(3)
-                    retryExceptions(IOException::class.java)
-                    retryOnResult { it.code in 502..504 }
-                    intervalFunction { numOfAttempts -> numOfAttempts * 1000L }
-                }
-            )
-        }
+    private val retryRegistry = RetryRegistry {
+        withRetryConfig(
+            RetryConfig<Response> {
+                maxAttempts(3)
+                retryExceptions(IOException::class.java)
+                retryOnResult { it.code in 502..504 }
+                intervalFunction { numOfAttempts -> numOfAttempts * 1000L }
+            }
+        )
+    }
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()

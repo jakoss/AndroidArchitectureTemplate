@@ -34,37 +34,36 @@ fun Fragment.baseComposeSetup(content: @Composable () -> Unit) =
         }
     }
 
-private val navigationControllerFake =
-    object :
-        NavigationController {
-        override fun push(direction: Direction) {
-            error("Used fake navigation controller")
-        }
-
-        override fun pop(level: Int) {
-            error("Used fake navigation controller")
-        }
-
-        override fun popToRoot() {
-            error("Used fake navigation controller")
-        }
-
-        override fun replace(direction: Direction) {
-            error("Used fake navigation controller")
-        }
-
-        override fun popToRootAndReplace(direction: Direction) {
-            error("Used fake navigation controller")
-        }
-
-        override fun popToRootAndPush(direction: Direction) {
-            error("Used fake navigation controller")
-        }
-
-        override fun showDialog(direction: Direction) {
-            error("Used fake navigation controller")
-        }
+private val navigationControllerFake = object :
+    NavigationController {
+    override fun push(direction: Direction) {
+        error("Used fake navigation controller")
     }
+
+    override fun pop(level: Int) {
+        error("Used fake navigation controller")
+    }
+
+    override fun popToRoot() {
+        error("Used fake navigation controller")
+    }
+
+    override fun replace(direction: Direction) {
+        error("Used fake navigation controller")
+    }
+
+    override fun popToRootAndReplace(direction: Direction) {
+        error("Used fake navigation controller")
+    }
+
+    override fun popToRootAndPush(direction: Direction) {
+        error("Used fake navigation controller")
+    }
+
+    override fun showDialog(direction: Direction) {
+        error("Used fake navigation controller")
+    }
+}
 
 val LocalNavigationController =
     compositionLocalOf<NavigationController> { navigationControllerFake }

@@ -7,6 +7,5 @@ import pl.jsyty.architecturetemplate.infrastructure.mapping.DateTimeConverters
 @Konverter
 interface WeatherMapper : DateTimeConverters {
     fun fromDto(weatherDto: CurrentWeatherDto): CurrentWeather
-
     fun toDto(weather: CurrentWeather): CurrentWeatherDto
 }

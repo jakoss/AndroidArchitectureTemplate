@@ -23,7 +23,7 @@ detekt = "1.23.1"
 konvert = "2.3.0"
 
 niddler = "1.7.0"
-pluto = "2.1.7"
+pluto = "2.1.8"
 
 test-kotlinCompileTesting = "1.5.0"
 

@@ -69,7 +69,7 @@ androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core",
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.8.0" }
 androidx-core = { module = "androidx.core:core-ktx", version = "1.12.0" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version = "1.6.1" }
-androidx-fragment = { module = "androidx.fragment:fragment-ktx", version = "1.6.1" }
+androidx-fragment = { module = "androidx.fragment:fragment-ktx", version = "1.6.2" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
 
 androidx-coordinatorlayour = { module = "androidx.coordinatorlayout:coordinatorlayout", version = "1.2.0" }

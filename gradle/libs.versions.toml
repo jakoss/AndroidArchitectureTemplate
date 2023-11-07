@@ -1,8 +1,8 @@
 [versions]
-kotlin = "1.9.10"
+kotlin = "1.9.20"
 android-gradle = "8.1.3"
 compose-bom = "2023.10.01"
-compose-compiler = "1.5.3"
+compose-compiler = "1.5.4"
 orbitmvi = "6.1.0"
 androidx-room = "2.4.2"
 coroutines = "1.7.3"

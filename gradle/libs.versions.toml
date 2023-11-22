@@ -135,7 +135,7 @@ anvil = { id = "com.squareup.anvil", version.ref = "anvil" }
 
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 benManesVersions = { id = "com.github.ben-manes.versions", version = "0.50.0" }
-gradleDoctor = { id = "com.osacky.doctor", version = "0.9.0" }
+gradleDoctor = { id = "com.osacky.doctor", version = "0.9.1" }
 
 whetstone = { id = "dev.msfjarvis.whetstone", version.ref = "whetstone" }
 

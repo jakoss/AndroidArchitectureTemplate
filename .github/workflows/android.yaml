@@ -61,7 +61,7 @@ jobs:
                     arguments: lintKotlin lintDebug :app:assembleDebug --stacktrace # run tests here
                 if: steps.commit_formatted_code.outputs.pushed == 'false'
 
-            -   uses: github/codeql-action/upload-sarif@v2
+            -   uses: github/codeql-action/upload-sarif@v3
                 if: steps.commit_formatted_code.outputs.pushed == 'false' && success() || failure()
                 with:
                     sarif_file: app/build/reports/lint-results-debug.sarif

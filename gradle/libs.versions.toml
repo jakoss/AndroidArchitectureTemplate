@@ -143,7 +143,7 @@ kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 
 moduleCheck = { id = "com.rickbusarow.module-check", version = "0.12.5" }
-dependencyAnalysis = { id = "com.autonomousapps.dependency-analysis", version = "1.30.0" }
+dependencyAnalysis = { id = "com.autonomousapps.dependency-analysis", version = "1.31.0" }
 
 [bundles]
 compose-ui-core = ["compose-ui", "compose-uitooling-preview", "compose-material"]

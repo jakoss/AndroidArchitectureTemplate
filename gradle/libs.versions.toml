@@ -2,7 +2,7 @@
 kotlin = "1.9.23"
 android-gradle = "8.3.2"
 compose-bom = "2023.10.01"
-compose-compiler = "1.5.11"
+compose-compiler = "1.5.12"
 orbitmvi = "6.1.1"
 androidx-room = "2.4.2"
 coroutines = "1.8.0"

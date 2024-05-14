@@ -10,7 +10,7 @@ ksp = "1.9.23-1.0.20"
 anvil = "2.4.9"
 dagger = "2.51.1"
 whetstone = "0.8.0"
-lifecycle = "2.7.0"
+lifecycle = "2.8.0"
 ktlint = "1.1.1"
 kotlinter = "4.3.0"
 kotlinPoet = "1.16.0"
@@ -69,7 +69,7 @@ androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core",
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.9.0" }
 androidx-core = { module = "androidx.core:core-ktx", version = "1.13.1" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version = "1.6.1" }
-androidx-fragment = { module = "androidx.fragment:fragment-ktx", version = "1.7.0" }
+androidx-fragment = { module = "androidx.fragment:fragment-ktx", version = "1.7.1" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
 
 androidx-coordinatorlayour = { module = "androidx.coordinatorlayout:coordinatorlayout", version = "1.2.0" }

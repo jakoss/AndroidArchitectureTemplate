@@ -25,7 +25,7 @@ konvert = "2.4.0"
 niddler = "1.7.0"
 pluto = "2.2.2"
 
-test-kotlinCompileTesting = "1.5.0"
+test-kotlinCompileTesting = "1.6.0"
 
 [libraries]
 kotlin-android-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }

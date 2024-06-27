@@ -63,13 +63,13 @@ junit4 = { module = "junit:junit", version = "4.13.2" }
 fragNav = { module = "com.github.ncapdevi:FragNav", version = "3.3.0" }
 timber = { module = "com.jakewharton.timber:timber", version = "5.0.1" }
 
-androidx-test-junit4 = { module = "androidx.test.ext:junit", version = "1.2.0" }
-androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version = "3.6.0" }
+androidx-test-junit4 = { module = "androidx.test.ext:junit", version = "1.2.1" }
+androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version = "3.6.1" }
 
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.9.0" }
 androidx-core = { module = "androidx.core:core-ktx", version = "1.13.1" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version = "1.7.0" }
-androidx-fragment = { module = "androidx.fragment:fragment-ktx", version = "1.8.0" }
+androidx-fragment = { module = "androidx.fragment:fragment-ktx", version = "1.8.1" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
 
 androidx-coordinatorlayour = { module = "androidx.coordinatorlayout:coordinatorlayout", version = "1.2.0" }

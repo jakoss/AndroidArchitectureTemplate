@@ -1,6 +1,6 @@
 [versions]
 kotlin = "1.9.24"
-android-gradle = "8.5.1"
+android-gradle = "8.5.2"
 compose-bom = "2023.10.01"
 compose-compiler = "1.5.14"
 orbitmvi = "6.1.1"

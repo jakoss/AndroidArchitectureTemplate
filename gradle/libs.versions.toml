@@ -19,7 +19,7 @@ kotlinxSerialization = "1.6.3"
 okhttp = "4.12.0"
 retrofit = "2.11.0"
 resilience4j = "2.2.0"
-detekt = "1.23.6"
+detekt = "1.23.7"
 konvert = "2.4.0"
 
 niddler = "1.7.0"

@@ -56,7 +56,7 @@ compose-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 # Required so the renovate bot can properly spot new compiler releases
 compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compose-compiler" }
 
-compose-linter = { module = "com.slack.lint.compose:compose-lint-checks", version = "1.4.0" }
+compose-linter = { module = "com.slack.lint.compose:compose-lint-checks", version = "1.4.1" }
 
 junit4 = { module = "junit:junit", version = "4.13.2" }
 
@@ -69,7 +69,7 @@ androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core",
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.9.2" }
 androidx-core = { module = "androidx.core:core-ktx", version = "1.13.1" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version = "1.7.0" }
-androidx-fragment = { module = "androidx.fragment:fragment-ktx", version = "1.8.3" }
+androidx-fragment = { module = "androidx.fragment:fragment-ktx", version = "1.8.4" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
 
 androidx-coordinatorlayour = { module = "androidx.coordinatorlayout:coordinatorlayout", version = "1.2.0" }

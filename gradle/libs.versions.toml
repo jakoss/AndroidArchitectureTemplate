@@ -1,6 +1,6 @@
 [versions]
 kotlin = "1.9.24"
-android-gradle = "8.7.0"
+android-gradle = "8.13.2"
 compose-bom = "2023.10.01"
 compose-compiler = "1.5.14"
 orbitmvi = "6.1.1"
@@ -8,18 +8,18 @@ androidx-room = "2.4.2"
 coroutines = "1.8.1"
 ksp = "1.9.24-1.0.20"
 anvil = "2.4.9"
-dagger = "2.52"
+dagger = "2.59.2"
 whetstone = "0.8.0"
-lifecycle = "2.8.6"
+lifecycle = "2.10.0"
 ktlint = "1.1.1"
-kotlinter = "4.4.1"
+kotlinter = "4.5.0"
 kotlinPoet = "1.18.1"
-androidCacheFix = "3.0.1"
+androidCacheFix = "3.0.3"
 kotlinxSerialization = "1.6.3"
 okhttp = "4.12.0"
-retrofit = "2.11.0"
-resilience4j = "2.2.0"
-detekt = "1.23.7"
+retrofit = "2.12.0"
+resilience4j = "2.3.0"
+detekt = "1.23.8"
 konvert = "2.4.0"
 
 niddler = "1.7.0"
@@ -31,7 +31,7 @@ test-kotlinCompileTesting = "1.6.0"
 kotlin-android-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlinx-serialization-plugin = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
 android-plugin = { module = "com.android.tools.build:gradle", version.ref = "android-gradle" }
-desugaring = { module = "com.android.tools:desugar_jdk_libs", version = "2.1.2" }
+desugaring = { module = "com.android.tools:desugar_jdk_libs", version = "2.1.5" }
 
 coroutines-lib = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 
@@ -56,25 +56,25 @@ compose-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 # Required so the renovate bot can properly spot new compiler releases
 compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compose-compiler" }
 
-compose-linter = { module = "com.slack.lint.compose:compose-lint-checks", version = "1.4.1" }
+compose-linter = { module = "com.slack.lint.compose:compose-lint-checks", version = "1.4.2" }
 
 junit4 = { module = "junit:junit", version = "4.13.2" }
 
 fragNav = { module = "com.github.ncapdevi:FragNav", version = "3.3.0" }
 timber = { module = "com.jakewharton.timber:timber", version = "5.0.1" }
 
-androidx-test-junit4 = { module = "androidx.test.ext:junit", version = "1.2.1" }
-androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version = "3.6.1" }
+androidx-test-junit4 = { module = "androidx.test.ext:junit", version = "1.3.0" }
+androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version = "3.7.0" }
 
-androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.9.2" }
-androidx-core = { module = "androidx.core:core-ktx", version = "1.13.1" }
-androidx-appcompat = { module = "androidx.appcompat:appcompat", version = "1.7.0" }
-androidx-fragment = { module = "androidx.fragment:fragment-ktx", version = "1.8.4" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.12.4" }
+androidx-core = { module = "androidx.core:core-ktx", version = "1.17.0" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version = "1.7.1" }
+androidx-fragment = { module = "androidx.fragment:fragment-ktx", version = "1.8.9" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
 
-androidx-coordinatorlayour = { module = "androidx.coordinatorlayout:coordinatorlayout", version = "1.2.0" }
+androidx-coordinatorlayour = { module = "androidx.coordinatorlayout:coordinatorlayout", version = "1.3.0" }
 
-material = { module = "com.google.android.material:material", version = "1.12.0" }
+material = { module = "com.google.android.material:material", version = "1.13.0" }
 
 orbitmvi-viewmodel = { module = "org.orbit-mvi:orbit-viewmodel", version.ref = "orbitmvi" }
 orbitmvi-compose = { module = "org.orbit-mvi:orbit-compose", version.ref = "orbitmvi" }
@@ -134,8 +134,8 @@ android-library = { id = "com.android.library", version.ref = "android-gradle" }
 anvil = { id = "com.squareup.anvil", version.ref = "anvil" }
 
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-benManesVersions = { id = "com.github.ben-manes.versions", version = "0.51.0" }
-gradleDoctor = { id = "com.osacky.doctor", version = "0.10.0" }
+benManesVersions = { id = "com.github.ben-manes.versions", version = "0.53.0" }
+gradleDoctor = { id = "com.osacky.doctor", version = "0.12.1" }
 
 whetstone = { id = "dev.msfjarvis.whetstone", version.ref = "whetstone" }
 
